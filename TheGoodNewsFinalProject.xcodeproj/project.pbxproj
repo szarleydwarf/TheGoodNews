@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -89,7 +89,6 @@
 				68250907F8B108E922C7DCAA /* Pods-TheGoodNewsFinalProjectTests.debug.xcconfig */,
 				2D989C55B25D54344B7CBBA2 /* Pods-TheGoodNewsFinalProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -116,10 +115,10 @@
 		D771B62D2535B6FA003E99A9 /* TheGoodNewsFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				D771B6322535B6FA003E99A9 /* ViewController.swift */,
 				D771B6532535B742003E99A9 /* GoogleAds */,
 				D771B62E2535B6FA003E99A9 /* AppDelegate.swift */,
 				D771B6302535B6FA003E99A9 /* SceneDelegate.swift */,
-				D771B6322535B6FA003E99A9 /* ViewController.swift */,
 				D771B6342535B6FA003E99A9 /* Main.storyboard */,
 				D771B63A2535B6FC003E99A9 /* Assets.xcassets */,
 				D771B63C2535B6FC003E99A9 /* LaunchScreen.storyboard */,
