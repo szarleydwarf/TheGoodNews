@@ -61,9 +61,9 @@
                                 <rect key="frame" x="0.0" y="763" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="HmZ-um-TAo"/>
-                                    <tabBarItem title="Item" id="jX2-qF-mfN"/>
-                                    <tabBarItem systemItem="more" id="eIg-oF-cjl"/>
+                                    <tabBarItem systemItem="more" id="HmZ-um-TAo"/>
+                                    <tabBarItem systemItem="bookmarks" id="jX2-qF-mfN"/>
+                                    <tabBarItem systemItem="contacts" id="eIg-oF-cjl"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -93,6 +93,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="6oO-pu-YtC"/>
+                    <connections>
+                        <outlet property="authorNameLabel" destination="pjy-HN-Cjo" id="ytT-X8-1D4"/>
+                        <outlet property="backgroundImageView" destination="Upc-2C-vfz" id="Bru-Fl-YgS"/>
+                        <outlet property="facebookShareButton" destination="LH0-aP-OIo" id="1Uf-y2-duc"/>
+                        <outlet property="favouriteButton" destination="Odd-Rz-aXl" id="qai-xa-ylG"/>
+                        <outlet property="instagramShareButton" destination="eSx-V6-Aev" id="HdO-wC-VIv"/>
+                        <outlet property="quoteLabel" destination="8iq-fE-6hc" id="3yH-i3-nxQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

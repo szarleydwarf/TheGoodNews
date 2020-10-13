@@ -26,6 +26,9 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.7.2)"
   - GoogleUtilities/Reachability (6.7.2):
     - GoogleUtilities/Logger
+  - Kingfisher (5.15.6):
+    - Kingfisher/Core (= 5.15.6)
+  - Kingfisher/Core (5.15.6)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -35,6 +38,7 @@ PODS:
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
+  - Kingfisher (~> 5.0)
 
 SPEC REPOS:
   trunk:
@@ -42,6 +46,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
     - GoogleUtilities
+    - Kingfisher
     - nanopb
     - PromisesObjC
 
@@ -50,9 +55,10 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleUserMessagingPlatform: c85530d930ba509583aa5a6d50a10aca22cf8502
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
+  Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 81d6ced79dc63643fc6c180145e6b305876601a0
+PODFILE CHECKSUM: ab6a9547d6d94340b43f3e4bbcc77d368b10a1ff
 
 COCOAPODS: 1.9.3
