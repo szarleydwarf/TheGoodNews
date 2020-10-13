@@ -10,17 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let banner = GoogleAdsManager().banner
+    var googleAdsManager = GoogleAdsManager()
+    var banner:GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self
         view.addSubview(banner)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        banner.frame = CGRect(x: 0, y: view.frame.size.height-50, width: view.frame.size.width, height: 50).integral
+        banner.frame = googleAdsManager.getBannerSize(size: view.frame.size).integral
     }
 }
 

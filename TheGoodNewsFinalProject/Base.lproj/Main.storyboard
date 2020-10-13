@@ -14,7 +14,18 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="Upc-2C-vfz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Upc-2C-vfz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2bd-h8-eWv"/>
+                            <constraint firstItem="Upc-2C-vfz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aes-1M-aQR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Upc-2C-vfz" secondAttribute="trailing" id="wF6-gH-zaJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Upc-2C-vfz" secondAttribute="bottom" constant="50" id="zgz-iV-3qW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="6oO-pu-YtC"/>
@@ -42,4 +53,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="119.86607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="landscape" width="1024" height="683"/>
+    </resources>
 </document>
