@@ -15,14 +15,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="Upc-2C-vfz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="Upc-2C-vfz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All our dreams can come true, if we have the courage to pursue them.” " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iq-fE-6hc">
+                                <rect key="frame" x="10" y="108" width="394" height="607"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walt Disney" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjy-HN-Cjo">
+                                <rect key="frame" x="0.0" y="722.5" width="414" height="39.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Upc-2C-vfz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2bd-h8-eWv"/>
+                            <constraint firstItem="8iq-fE-6hc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="78i-53-nU7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8iq-fE-6hc" secondAttribute="trailing" constant="10" id="EFY-a6-o3t"/>
+                            <constraint firstItem="8iq-fE-6hc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="EIH-gL-my6"/>
+                            <constraint firstItem="Upc-2C-vfz" firstAttribute="bottom" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="50" id="N6e-W0-h2g"/>
+                            <constraint firstItem="pjy-HN-Cjo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wpr-GF-4T1"/>
                             <constraint firstItem="Upc-2C-vfz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aes-1M-aQR"/>
+                            <constraint firstItem="8iq-fE-6hc" firstAttribute="bottom" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="-47" id="cXH-b3-dlb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pjy-HN-Cjo" secondAttribute="trailing" id="qma-56-ziZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Upc-2C-vfz" secondAttribute="trailing" id="wF6-gH-zaJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Upc-2C-vfz" secondAttribute="bottom" constant="50" id="zgz-iV-3qW"/>
                         </constraints>
