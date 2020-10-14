@@ -32,12 +32,12 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-
-        fetchFavourites()
+        
+        Favourites().fetchFavourites(view: self.view)
         
         Backgrounds().getBackgroundImage(imageView: backgroundImageView)
         Quotes().getQuote(quoteLabel: quoteLabel, authorLabel: authorNameLabel)
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setBanner()
         
-        checkIfFavourite()
+        Favourites().checkIfFavourite()
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         let mainCtx = self.coreDataCtrl.mainCtx
         let favourite = Favourite(context: mainCtx)
         var message:String = ""
-        if checkIfFavourite(){
+        if Favourites().checkIfFavourite(){
             message = "REMOVING FROM FAVOURITES"
             self.favouriteButton.backgroundColor = .lightGray
             self.coreDataCtrl.mainCtx.delete(favourite)
@@ -78,31 +78,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func fetchFavourites() {
-        let ctx = self.coreDataCtrl.mainCtx
-        let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
-        do{
-            self.fetchedFavourites = try ctx.fetch(fetchRequest)
-        } catch let err {
-            Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 20.0), view: self.view)
-        }
-    }
-    
-    
-    func checkIfFavourite() -> Bool{
-        for quote in self.fetchedFavourites {
-            if quote.author == authorNameLabel.text {
-                if quote.quote == quoteLabel.text {
-                    favouriteButton.backgroundColor = quote.isFavourite ? .red : .lightGray
-                    return true
-                }
-            }
-            print("QUOTE > \(quote.author)")
-        }
-        return false
-    }
-    
-    
+ 
     func setBanner() {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self

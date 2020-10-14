@@ -16,7 +16,6 @@ struct Quotes {
         URLSession.shared.dataTask(with: url) {(data, respons, error) in
             guard let data = data else{return}
             guard let json = try? JSONDecoder().decode(Quote.self, from: data) else {return}
-
             DispatchQueue.main.async {
                 quoteLabel.text = json.quoteText
                 authorLabel.text = json.quoteAuthor
