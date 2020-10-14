@@ -34,11 +34,13 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - ProgressHUD (13.4)
   - PromisesObjC (1.2.11)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - Kingfisher (~> 5.0)
+  - ProgressHUD (~> 13.4)
 
 SPEC REPOS:
   trunk:
@@ -48,6 +50,7 @@ SPEC REPOS:
     - GoogleUtilities
     - Kingfisher
     - nanopb
+    - ProgressHUD
     - PromisesObjC
 
 SPEC CHECKSUMS:
@@ -57,8 +60,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  ProgressHUD: 137a7fc677487c5581668f4490563124fb35c232
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: ab6a9547d6d94340b43f3e4bbcc77d368b10a1ff
+PODFILE CHECKSUM: 4c6c57ac191aa6d5da8d2415e2eb99d252a04b80
 
 COCOAPODS: 1.9.3

@@ -2,9 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Favourite" representedClassName="Favourite" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="isFavourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="quote" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Favourite" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Favourite" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

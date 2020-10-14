@@ -20,6 +20,8 @@
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
 		D77486012536EA350040E2CF /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77486002536EA350040E2CF /* Quotes.swift */; };
+		D774860325371D350040E2CF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860225371D350040E2CF /* CoreDataController.swift */; };
+		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		D77486002536EA350040E2CF /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		D774860225371D350040E2CF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -163,6 +167,7 @@
 		D771B6572535E18A003E99A9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D774860225371D350040E2CF /* CoreDataController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 		D771B6592535E1BC003E99A9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				D774860425371EC80040E2CF /* ToastDisplay.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -353,8 +359,10 @@
 			files = (
 				D77486012536EA350040E2CF /* Quotes.swift in Sources */,
 				D771B6392535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld in Sources */,
+				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
+				D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */,
 				D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */,
 				D771B6312535B6FA003E99A9 /* SceneDelegate.swift in Sources */,
 				D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */,
