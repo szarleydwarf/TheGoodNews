@@ -51,8 +51,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBanner()
-        
-        //        Favourites().checkIfFavourite()
+        if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
+            favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) ? .red : .lightGray
+        }
     }
     
     override func viewDidLayoutSubviews() {

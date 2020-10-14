@@ -33,7 +33,7 @@ class Favourites {
         favourite.isFavourite = true
         
         if self.coreDataController.save() {
-            Toast().showToast(message: "SAVED 2 FAVOURITES", font: .systemFont(ofSize: 18.0), view: view)
+            Toast().showToast(message: "SAVED 2 FAVOURITES", font: .systemFont(ofSize: 22.0), view: view)
         }
     }
     
@@ -45,7 +45,6 @@ class Favourites {
         do {
             let result = try mainCtx.fetch(request)
             if result.count > 0 {
-                print("RESULT \(result)")
                 mainCtx.delete(result[0])
             }
         } catch let err {
@@ -62,15 +61,11 @@ class Favourites {
         for favQuote in favourites {
             if let author = favQuote.author, let oneQoute = favQuote.quote {
                 if author == authorName {
-                    print("QUOTE > \(author) - \(authorName) -\n >\(oneQoute)< - >\(quote)<")
                     if oneQoute == quote {
-                        print("QUOTE > >\(oneQoute)< - >\(quote)<")
-                        
                         return true
                     }
                 }
-//                print("AUTHOR > \(favQuote.author) \(author)")
-            }
+       }
         }
         return false
     }
