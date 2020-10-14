@@ -25,7 +25,7 @@ class Favourites {
         return fetchedFavourites
     }
     
-    func save(view:UIView, authorName:String, quote:String) {
+    func saveFavourite(view:UIView, authorName:String, quote:String) {
         let mainCtx = self.coreDataController.mainCtx
         let favourite = Favourite(context: mainCtx)
         favourite.author = authorName
@@ -37,22 +37,39 @@ class Favourites {
         }
     }
     
-    func delete() {
+    func deleteFavourite(view:UIView ,author: String, quote: String) {
+        let mainCtx = self.coreDataController.mainCtx
+        let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+        request.predicate = NSPredicate(format: "author = %@ && quote = %@", author, quote)
+
+        do {
+            let result = try mainCtx.fetch(request)
+            if result.count > 0 {
+                print("RESULT \(result)")
+                mainCtx.delete(result[0])
+            }
+        } catch let err {
+            print("fetch error \(err)")
+        }
         
+        
+        if self.coreDataController.save() {
+            Toast().showToast(message: "REMOVED FROM FAVOURITES", font: .systemFont(ofSize: 18.0), view: view)
+        }
     }
     
     func checkIfFavourite(authorName:String, quote:String, favourites:[Favourite]) -> Bool{
         for favQuote in favourites {
             if let author = favQuote.author, let oneQoute = favQuote.quote {
                 if author == authorName {
-                    print("QUOTE > \(author) - \(authorName) -\n \(oneQoute)- \(quote)")
+                    print("QUOTE > \(author) - \(authorName) -\n >\(oneQoute)< - >\(quote)<")
                     if oneQoute == quote {
-                        print("QUOTE > \(oneQoute) - \(quote)")
+                        print("QUOTE > >\(oneQoute)< - >\(quote)<")
                         
                         return true
                     }
                 }
-                print("AUTHOR > \(favQuote.author) \(author)")
+//                print("AUTHOR > \(favQuote.author) \(author)")
             }
         }
         return false

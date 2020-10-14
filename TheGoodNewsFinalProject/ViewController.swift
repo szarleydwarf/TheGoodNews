@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setBanner()
         
-//        Favourites().checkIfFavourite()
+        //        Favourites().checkIfFavourite()
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,16 +61,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addToFavourites(_ sender: UIButton) {
-//        if yes remove in no add
         if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
-//        check if is not already in favourites
-            if Favourites().checkIfFavourite(authorName: "Edwin Chapin", quote: "Every action of our lives touches on some chord that will vibrate in eternity", favourites: fetchedFavourites) {
-                print("FOUND FAV")
+            if Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) {
+                favouriteButton.backgroundColor = .lightGray
+                Favourites().deleteFavourite(view: self.view, author: author, quote: quote)
+            } else {
                 favouriteButton.backgroundColor = .red
+                Favourites().saveFavourite(view: self.view,authorName: author, quote: quote)
             }
-            
-            
-//            Favourites().save(view: self.view,authorName: author, quote: quote)
+            self.fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         }
     }
     
