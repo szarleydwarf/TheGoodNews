@@ -19,6 +19,7 @@
 		D771B6492535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */; };
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
+		D77486012536EA350040E2CF /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77486002536EA350040E2CF /* Quotes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D771B64A2535B6FC003E99A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		D77486002536EA350040E2CF /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				D771B65A25360536003E99A9 /* BackgroundImage.swift */,
+				D77486002536EA350040E2CF /* Quotes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77486012536EA350040E2CF /* Quotes.swift in Sources */,
 				D771B6392535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,

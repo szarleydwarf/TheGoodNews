@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setBanner()
         Backgrounds().getBackgroundImage(imageView: backgroundImageView)
+        Quotes().getQuote(quoteLabel: quoteLabel, authorLabel: authorNameLabel)
     }
     
     override func viewDidLayoutSubviews() {

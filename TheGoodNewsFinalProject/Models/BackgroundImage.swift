@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class Backgrounds {
+struct Backgrounds {
     public func getBackgroundImage(imageView: UIImageView) {
         var backgrounds:[URL] = []
         guard let url = URL(string: "https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=beautiful+landscape&image_type=photo") else {return}
@@ -18,11 +18,11 @@ class Backgrounds {
             guard let results = try? JSONDecoder().decode(BackgroundImages.self, from: data) else {return}
             for hit in results.hits {
                 backgrounds.append(hit.webformatURL)
-                print("JSON> \(hit.webformatURL)")
             }
             DispatchQueue.main.async {
                 let randomInt = Int.random(in: 1..<backgrounds.count)
                 imageView.kf.setImage(with: backgrounds[randomInt], placeholder: UIImage(imageLiteralResourceName:"landscape"))
+                imageView.alpha = 0.4
             }
             
         }.resume()
