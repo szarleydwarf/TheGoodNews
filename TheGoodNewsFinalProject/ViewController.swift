@@ -7,6 +7,7 @@
 //
 import GoogleMobileAds
 import UIKit
+import CoreData
 import Kingfisher
 import ProgressHUD
 
@@ -22,6 +23,8 @@ class ViewController: UIViewController {
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
+    var fetchedFavourites:[Favourite]=[]
+    
     let coreDataCtrl = CoreDataController.shared
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +32,12 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
+
+        fetchFavourites()
+        
+        Backgrounds().getBackgroundImage(imageView: backgroundImageView)
+        Quotes().getQuote(quoteLabel: quoteLabel, authorLabel: authorNameLabel)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,8 +48,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBanner()
-        Backgrounds().getBackgroundImage(imageView: backgroundImageView)
-        Quotes().getQuote(quoteLabel: quoteLabel, authorLabel: authorNameLabel)
+        
+        checkIfFavourite()
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,17 +61,46 @@ class ViewController: UIViewController {
         print("Adding to favourites > \(self.authorNameLabel)")
         let mainCtx = self.coreDataCtrl.mainCtx
         let favourite = Favourite(context: mainCtx)
-        
-        favourite.author = self.authorNameLabel.text
-        favourite.quote = self.quoteLabel.text
-        favourite.isFavourite = true
-        
-        if self.coreDataCtrl.save() {
-            Toast().showToast(message: "SAVED 2 FAVOURITES", font: .systemFont(ofSize: 18.0), view: self.view)
+        var message:String = ""
+        if checkIfFavourite(){
+            message = "REMOVING FROM FAVOURITES"
+            self.favouriteButton.backgroundColor = .lightGray
+            self.coreDataCtrl.mainCtx.delete(favourite)
+        } else {
+            favourite.author = self.authorNameLabel.text
+            favourite.quote = self.quoteLabel.text
+            favourite.isFavourite = true
+            message = "SAVED 2 FAVOURITES"
+            self.favouriteButton.backgroundColor = .red
         }
-        
+        if self.coreDataCtrl.save() {
+            Toast().showToast(message: message, font: .systemFont(ofSize: 18.0), view: self.view)
+        }
     }
     
+    func fetchFavourites() {
+        let ctx = self.coreDataCtrl.mainCtx
+        let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+        do{
+            self.fetchedFavourites = try ctx.fetch(fetchRequest)
+        } catch let err {
+            Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 20.0), view: self.view)
+        }
+    }
+    
+    
+    func checkIfFavourite() -> Bool{
+        for quote in self.fetchedFavourites {
+            if quote.author == authorNameLabel.text {
+                if quote.quote == quoteLabel.text {
+                    favouriteButton.backgroundColor = quote.isFavourite ? .red : .lightGray
+                    return true
+                }
+            }
+            print("QUOTE > \(quote.author)")
+        }
+        return false
+    }
     
     
     func setBanner() {
