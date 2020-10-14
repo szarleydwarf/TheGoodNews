@@ -12,32 +12,35 @@ struct Quotes {
     
     public func getQuote(quoteLabel:UILabel, authorLabel: UILabel) {
         
-        guard let url = URL(string: "https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand") else {return}
+        guard let url = URL(string: "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en") else {return}
         URLSession.shared.dataTask(with: url) {(data, respons, error) in
             guard let data = data else{return}
             guard let json = try? JSONDecoder().decode(Quote.self, from: data) else {return}
             print("DATA > \(data)")
-            print("JSON > \(json)")
+            print("JSON > \(json.quoteAuthor)")
+            print("JSON > \(json.quoteText)")
             print("ERRO > \(error)")
-            
+            DispatchQueue.main.async {
+                quoteLabel.text = json.quoteText
+                authorLabel.text = json.quoteAuthor
+            }
         }.resume()
     }
 }
 /*
  "title": {
-     "rendered": "Piet Zwart"
+ "rendered": "Piet Zwart"
  },
  "content": {
-     "rendered": "<p>The more uninteresting the letter, the more useful it is to the typographer.  </p>\n",
-     "protected": false
+ "rendered": "<p>The more uninteresting the letter, the more useful it is to the typographer.  </p>\n",
+ "protected": false
  },
  */
 
 struct Quote:Decodable {
-    let title:Title
-    let content:Content
+    let quoteText:String
+    let quoteAuthor:String
 }
-
 struct Title:Decodable {
     let rendered:String
 }
