@@ -10,30 +10,51 @@ import UIKit
 import CoreData
 
 class Favourites {
-    var fetchedFavourites:[Favourite]=[]
+    //    var fetchedFavourites:[Favourite]=[]
     let coreDataController = CoreDataController.shared
     
-    func fetchFavourites(view:UIView) {
-         let ctx = coreDataController.mainCtx
-         let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
-         do{
-             self.fetchedFavourites = try ctx.fetch(fetchRequest)
-         } catch let err {
-             Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 20.0), view: view)
-         }
-     }
-     
-     
-     func checkIfFavourite() -> Bool{
-         for quote in self.fetchedFavourites {
-//             if quote.author == authorNameLabel.text {
-//                 if quote.quote == quoteLabel.text {
-//                     favouriteButton.backgroundColor = quote.isFavourite ? .red : .lightGray
-//                     return true
-//                 }
-//             }
-             print("QUOTE > \(quote.author)")
-         }
-         return false
-     }
+    func fetchFavourites(view:UIView) -> [Favourite] {
+        var fetchedFavourites:[Favourite]=[]
+        let ctx = coreDataController.mainCtx
+        let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+        do{
+            fetchedFavourites = try ctx.fetch(fetchRequest)
+        } catch let err {
+            Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 20.0), view: view)
+        }
+        return fetchedFavourites
+    }
+    
+    func save(view:UIView, authorName:String, quote:String) {
+        let mainCtx = self.coreDataController.mainCtx
+        let favourite = Favourite(context: mainCtx)
+        favourite.author = authorName
+        favourite.quote = quote
+        favourite.isFavourite = true
+        
+        if self.coreDataController.save() {
+            Toast().showToast(message: "SAVED 2 FAVOURITES", font: .systemFont(ofSize: 18.0), view: view)
+        }
+    }
+    
+    func delete() {
+        
+    }
+    
+    func checkIfFavourite(authorName:String, quote:String, favourites:[Favourite]) -> Bool{
+        for favQuote in favourites {
+            if let author = favQuote.author, let oneQoute = favQuote.quote {
+                if author == authorName {
+                    print("QUOTE > \(author) - \(authorName) -\n \(oneQoute)- \(quote)")
+                    if oneQoute == quote {
+                        print("QUOTE > \(oneQoute) - \(quote)")
+                        
+                        return true
+                    }
+                }
+                print("AUTHOR > \(favQuote.author) \(author)")
+            }
+        }
+        return false
+    }
 }

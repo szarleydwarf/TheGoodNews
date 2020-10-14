@@ -33,10 +33,13 @@ class ViewController: UIViewController {
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
         
-        Favourites().fetchFavourites(view: self.view)
+        fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         
         Backgrounds().getBackgroundImage(imageView: backgroundImageView)
-        Quotes().getQuote(quoteLabel: quoteLabel, authorLabel: authorNameLabel)
+        Quotes().getQuote{ (author, quote) in
+            self.quoteLabel.text = quote
+            self.authorNameLabel.text = author
+        }
         
     }
     
@@ -49,7 +52,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setBanner()
         
-        Favourites().checkIfFavourite()
+//        Favourites().checkIfFavourite()
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,27 +61,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addToFavourites(_ sender: UIButton) {
-        print("Adding to favourites > \(self.authorNameLabel)")
-        let mainCtx = self.coreDataCtrl.mainCtx
-        let favourite = Favourite(context: mainCtx)
-        var message:String = ""
-        if Favourites().checkIfFavourite(){
-            message = "REMOVING FROM FAVOURITES"
-            self.favouriteButton.backgroundColor = .lightGray
-            self.coreDataCtrl.mainCtx.delete(favourite)
-        } else {
-            favourite.author = self.authorNameLabel.text
-            favourite.quote = self.quoteLabel.text
-            favourite.isFavourite = true
-            message = "SAVED 2 FAVOURITES"
-            self.favouriteButton.backgroundColor = .red
-        }
-        if self.coreDataCtrl.save() {
-            Toast().showToast(message: message, font: .systemFont(ofSize: 18.0), view: self.view)
+//        if yes remove in no add
+        if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
+//        check if is not already in favourites
+            if Favourites().checkIfFavourite(authorName: "Edwin Chapin", quote: "Every action of our lives touches on some chord that will vibrate in eternity", favourites: fetchedFavourites) {
+                print("FOUND FAV")
+                favouriteButton.backgroundColor = .red
+            }
+            
+            
+//            Favourites().save(view: self.view,authorName: author, quote: quote)
         }
     }
     
- 
+    
     func setBanner() {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self

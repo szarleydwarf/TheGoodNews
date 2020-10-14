@@ -9,16 +9,17 @@
 import UIKit
 
 struct Quotes {
-    
-    public func getQuote(quoteLabel:UILabel, authorLabel: UILabel) {
+//    public func getQuote(quoteLabel:UILabel, authorLabel: UILabel, completion:((String, String))->Void)
+    public func getQuote( completion:@escaping((String, String))->Void) {
         
         guard let url = URL(string: "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en") else {return}
         URLSession.shared.dataTask(with: url) {(data, respons, error) in
             guard let data = data else{return}
             guard let json = try? JSONDecoder().decode(Quote.self, from: data) else {return}
             DispatchQueue.main.async {
-                quoteLabel.text = json.quoteText
-                authorLabel.text = json.quoteAuthor
+                completion((json.quoteAuthor, json.quoteText))
+//                quoteLabel.text = json.quoteText
+//                authorLabel.text = json.quoteAuthor
             }
         }.resume()
     }
