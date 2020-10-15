@@ -13,7 +13,10 @@ class Toast {
     //https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
     func showToast(message : String, font: UIFont, view: UIView) {
         
-        let toastLabel = UILabel(frame: CGRect(x: view.frame.size.width/2 - 125, y: view.frame.size.height/2-90, width: 250, height: 50))
+        let toastLabel = UILabel(frame: CGRect(x: view.frame.size.width/2 - 125, y: view.frame.size.height/2-90, width: 250, height: 110))
+        toastLabel.lineBreakMode = .byWordWrapping
+        toastLabel.contentMode = .scaleToFill
+        toastLabel.numberOfLines = 0
         toastLabel.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.7)
         toastLabel.textColor = UIColor.white
         toastLabel.font = font

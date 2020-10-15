@@ -20,24 +20,22 @@ class Favourites {
         do{
             fetchedFavourites = try ctx.fetch(fetchRequest)
         } catch let err {
-            Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 20.0), view: view)
+            Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 17.0), view: view)
         }
         return fetchedFavourites
     }
     
-    func saveFavourite(view:UIView, authorName:String, quote:String) {
+    func saveFavourite(authorName:String, quote:String) -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let favourite = Favourite(context: mainCtx)
         favourite.author = authorName
         favourite.quote = quote
         favourite.isFavourite = true
         
-        if self.coreDataController.save() {
-            Toast().showToast(message: "SAVED 2 FAVOURITES", font: .systemFont(ofSize: 22.0), view: view)
-        }
+        return self.coreDataController.save()
     }
     
-    func deleteFavourite(view:UIView ,author: String, quote: String) {
+    func deleteFavourite(author: String, quote: String) -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
         request.predicate = NSPredicate(format: "author = %@ && quote = %@", author, quote)
@@ -52,9 +50,7 @@ class Favourites {
         }
         
         
-        if self.coreDataController.save() {
-            Toast().showToast(message: "REMOVED FROM FAVOURITES", font: .systemFont(ofSize: 18.0), view: view)
-        }
+        return self.coreDataController.save()
     }
     
     func checkIfFavourite(authorName:String, quote:String, favourites:[Favourite]) -> Bool{

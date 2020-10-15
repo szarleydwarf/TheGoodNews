@@ -66,13 +66,19 @@ class ViewController: UIViewController {
     
     @IBAction func addToFavourites(_ sender: UIButton) {
         if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
+            var message:String=""
             if Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) {
                 favouriteButton.backgroundColor = .lightGray
-                Favourites().deleteFavourite(view: self.view, author: author, quote: quote)
+                if Favourites().deleteFavourite( author: author, quote: quote) {
+                    message = "REMOVED FROM FAVOURITES"
+                }
             } else {
                 favouriteButton.backgroundColor = .red
-                Favourites().saveFavourite(view: self.view,authorName: author, quote: quote)
+                if Favourites().saveFavourite(authorName: author, quote: quote) {
+                    message = "SAVED 2 FAVOURITES"
+                }
             }
+            Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         }
     }
