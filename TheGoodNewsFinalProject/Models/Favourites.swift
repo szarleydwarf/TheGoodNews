@@ -44,12 +44,10 @@ class Favourites {
             let result = try mainCtx.fetch(request)
             if result.count > 0 {
                 mainCtx.delete(result[0])
-            }
+            } 
         } catch let err {
             print("fetch error \(err)")
         }
-        
-        
         return self.coreDataController.save()
     }
     

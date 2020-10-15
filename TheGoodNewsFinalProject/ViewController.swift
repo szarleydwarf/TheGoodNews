@@ -57,6 +57,7 @@ class ViewController: UIViewController {
         if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
             favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) ? .red : .lightGray
         }
+
     }
     
     override func viewDidLayoutSubviews() {
