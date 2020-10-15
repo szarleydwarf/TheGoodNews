@@ -35,7 +35,10 @@ class ViewController: UIViewController {
         
         fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         
-        Backgrounds().getBackgroundImage(imageView: backgroundImageView)
+        Backgrounds().getBackgroundImage{ url in
+            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
+            self.backgroundImageView.alpha = 0.4
+        }
         Quotes().getQuote{ (author, quote) in
             self.quoteLabel.text = quote
             self.authorNameLabel.text = author

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		54D611969E351D7FD1ABFA6F /* Pods_TheGoodNewsFinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */; };
 		9C4B82247E161A3C0CD1B12C /* Pods_TheGoodNewsFinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */; };
+		D7715E5E25383C550062B024 /* BackgroundImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E5D25383C550062B024 /* BackgroundImageTests.swift */; };
 		D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B62E2535B6FA003E99A9 /* AppDelegate.swift */; };
 		D771B6312535B6FA003E99A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6302535B6FA003E99A9 /* SceneDelegate.swift */; };
 		D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6322535B6FA003E99A9 /* ViewController.swift */; };
@@ -26,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D7715E6025383C550062B024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D771B6232535B6FA003E99A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D771B62A2535B6FA003E99A9;
+			remoteInfo = TheGoodNewsFinalProject;
+		};
 		D771B6452535B6FC003E99A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D771B6232535B6FA003E99A9 /* Project object */;
@@ -41,6 +49,9 @@
 		846007B7B0F3528DF4104E34 /* Pods-TheGoodNewsFinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.debug.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5EFC7245EB7BF40CE7EBD5 /* Pods-TheGoodNewsFinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.release.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7715E5B25383C550062B024 /* BackgroundImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7715E5D25383C550062B024 /* BackgroundImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageTests.swift; sourceTree = "<group>"; };
+		D7715E5F25383C550062B024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D771B62B2535B6FA003E99A9 /* TheGoodNewsFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGoodNewsFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D771B62E2535B6FA003E99A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D771B6302535B6FA003E99A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +74,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D7715E5825383C550062B024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D771B6282535B6FA003E99A9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -102,11 +120,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D7715E5C25383C550062B024 /* BackgroundImageTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7715E5D25383C550062B024 /* BackgroundImageTests.swift */,
+				D7715E5F25383C550062B024 /* Info.plist */,
+			);
+			path = BackgroundImageTests;
+			sourceTree = "<group>";
+		};
 		D771B6222535B6FA003E99A9 = {
 			isa = PBXGroup;
 			children = (
 				D771B62D2535B6FA003E99A9 /* TheGoodNewsFinalProject */,
 				D771B6472535B6FC003E99A9 /* TheGoodNewsFinalProjectTests */,
+				D7715E5C25383C550062B024 /* BackgroundImageTests */,
 				D771B62C2535B6FA003E99A9 /* Products */,
 				49BDDF4A18F26B391E6EE030 /* Pods */,
 				23CB2F3073032A9150B19864 /* Frameworks */,
@@ -118,6 +146,7 @@
 			children = (
 				D771B62B2535B6FA003E99A9 /* TheGoodNewsFinalProject.app */,
 				D771B6442535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.xctest */,
+				D7715E5B25383C550062B024 /* BackgroundImageTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +224,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D7715E5A25383C550062B024 /* BackgroundImageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7715E6425383C550062B024 /* Build configuration list for PBXNativeTarget "BackgroundImageTests" */;
+			buildPhases = (
+				D7715E5725383C550062B024 /* Sources */,
+				D7715E5825383C550062B024 /* Frameworks */,
+				D7715E5925383C550062B024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7715E6125383C550062B024 /* PBXTargetDependency */,
+			);
+			name = BackgroundImageTests;
+			productName = BackgroundImageTests;
+			productReference = D7715E5B25383C550062B024 /* BackgroundImageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D771B64D2535B6FC003E99A9 /* Build configuration list for PBXNativeTarget "TheGoodNewsFinalProject" */;
@@ -243,6 +290,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "The App Experts";
 				TargetAttributes = {
+					D7715E5A25383C550062B024 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = D771B62A2535B6FA003E99A9;
+					};
 					D771B62A2535B6FA003E99A9 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -267,11 +318,19 @@
 			targets = (
 				D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */,
 				D771B6432535B6FC003E99A9 /* TheGoodNewsFinalProjectTests */,
+				D7715E5A25383C550062B024 /* BackgroundImageTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D7715E5925383C550062B024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D771B6292535B6FA003E99A9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +415,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D7715E5725383C550062B024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7715E5E25383C550062B024 /* BackgroundImageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D771B6272535B6FA003E99A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +451,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D7715E6125383C550062B024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */;
+			targetProxy = D7715E6025383C550062B024 /* PBXContainerItemProxy */;
+		};
 		D771B6462535B6FC003E99A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */;
@@ -411,6 +483,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D7715E6225383C550062B024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4B9WRAZKW;
+				INFOPLIST_FILE = BackgroundImageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.BackgroundImageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheGoodNewsFinalProject.app/TheGoodNewsFinalProject";
+			};
+			name = Debug;
+		};
+		D7715E6325383C550062B024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4B9WRAZKW;
+				INFOPLIST_FILE = BackgroundImageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.BackgroundImageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheGoodNewsFinalProject.app/TheGoodNewsFinalProject";
+			};
+			name = Release;
+		};
 		D771B64B2535B6FC003E99A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -612,6 +724,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D7715E6425383C550062B024 /* Build configuration list for PBXNativeTarget "BackgroundImageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7715E6225383C550062B024 /* Debug */,
+				D7715E6325383C550062B024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D771B6262535B6FA003E99A9 /* Build configuration list for PBXProject "TheGoodNewsFinalProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
