@@ -99,5 +99,6 @@ class ViewController: UIViewController {
         banner.rootViewController = self
         view.addSubview(banner)
     }
+
 }
 
