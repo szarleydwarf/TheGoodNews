@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Kingfisher
 import ProgressHUD
+import Social
 
 
 class ViewController: UIViewController {
@@ -18,7 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var authorNameLabel: UILabel!
     
     @IBOutlet weak var instagramShareButton: UIButton!
-    @IBOutlet weak var facebookShareButton: UIButton!
     @IBOutlet weak var favouriteButton: UIButton!
     
     var googleAdsManager = GoogleAdsManager()
@@ -83,7 +83,16 @@ class ViewController: UIViewController {
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         }
     }
-    
+
+    @IBAction func shareToSocialMedia(_ sender: UIButton) {
+        if let quote = self.quoteLabel.text, let author = self.authorNameLabel.text {
+            let objectToShare:[Any] = [quote, author]
+            let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
+            activity.popoverPresentationController?.sourceView = sender
+            self.present(activity, animated: true, completion: nil)
+            print("SHARED")
+        }
+    }
     
     func setBanner() {
         self.banner = googleAdsManager.getBanner()

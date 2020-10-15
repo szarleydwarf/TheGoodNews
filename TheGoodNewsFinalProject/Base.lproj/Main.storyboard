@@ -30,15 +30,6 @@
                                     <action selector="addToFavourites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4S-og-ppk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH0-aP-OIo">
-                                <rect key="frame" x="244" y="98" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="LH0-aP-OIo" secondAttribute="height" multiplier="1:1" id="0Jw-1l-qj5"/>
-                                    <constraint firstAttribute="width" constant="50" id="Cv0-Fj-vDG"/>
-                                    <constraint firstAttribute="height" constant="50" id="NvY-3R-Con"/>
-                                </constraints>
-                                <state key="normal" title="FB" image="fb"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-V6-Aev">
                                 <rect key="frame" x="344" y="98" width="50" height="50"/>
                                 <constraints>
@@ -46,7 +37,10 @@
                                     <constraint firstAttribute="height" constant="50" id="uNe-4w-tJU"/>
                                     <constraint firstAttribute="width" constant="50" id="y5z-ze-SoV"/>
                                 </constraints>
-                                <state key="normal" title="Instagram" image="insta"/>
+                                <state key="normal" title="Instagram" image="share"/>
+                                <connections>
+                                    <action selector="shareToSocialMedia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHu-Pq-hhy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All our dreams can come true, if we have the courage to pursue them.” " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iq-fE-6hc">
                                 <rect key="frame" x="10" y="108" width="394" height="597"/>
@@ -78,7 +72,6 @@
                             <constraint firstItem="Odd-Rz-aXl" firstAttribute="leading" secondItem="Upc-2C-vfz" secondAttribute="leading" constant="20" id="8wj-Tc-RLb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8iq-fE-6hc" secondAttribute="trailing" constant="10" id="EFY-a6-o3t"/>
                             <constraint firstItem="8iq-fE-6hc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="EIH-gL-my6"/>
-                            <constraint firstItem="eSx-V6-Aev" firstAttribute="top" secondItem="LH0-aP-OIo" secondAttribute="top" id="K7x-mv-gct"/>
                             <constraint firstItem="Upc-2C-vfz" firstAttribute="bottom" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="60" id="N6e-W0-h2g"/>
                             <constraint firstItem="Odd-Rz-aXl" firstAttribute="top" secondItem="Upc-2C-vfz" secondAttribute="top" constant="10" id="N91-Qh-eOi"/>
                             <constraint firstItem="pjy-HN-Cjo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Wpr-GF-4T1"/>
@@ -87,9 +80,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ngw-G7-Ghu" secondAttribute="bottom" constant="50" id="gKh-XY-i6g"/>
                             <constraint firstItem="ngw-G7-Ghu" firstAttribute="leading" secondItem="Upc-2C-vfz" secondAttribute="leading" id="hdw-g7-hAp"/>
                             <constraint firstItem="eSx-V6-Aev" firstAttribute="trailing" secondItem="Upc-2C-vfz" secondAttribute="trailing" constant="-20" id="l2W-Kn-uLn"/>
-                            <constraint firstItem="LH0-aP-OIo" firstAttribute="trailing" secondItem="eSx-V6-Aev" secondAttribute="leading" constant="-50" id="l7e-zG-YZz"/>
+                            <constraint firstItem="eSx-V6-Aev" firstAttribute="top" secondItem="Odd-Rz-aXl" secondAttribute="top" id="lQE-sL-I8G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pjy-HN-Cjo" secondAttribute="trailing" constant="10" id="qma-56-ziZ"/>
-                            <constraint firstItem="LH0-aP-OIo" firstAttribute="top" secondItem="Odd-Rz-aXl" secondAttribute="top" id="slb-0C-GLB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Upc-2C-vfz" secondAttribute="trailing" id="wF6-gH-zaJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Upc-2C-vfz" secondAttribute="bottom" constant="50" id="zgz-iV-3qW"/>
                         </constraints>
@@ -99,7 +91,6 @@
                     <connections>
                         <outlet property="authorNameLabel" destination="pjy-HN-Cjo" id="ytT-X8-1D4"/>
                         <outlet property="backgroundImageView" destination="Upc-2C-vfz" id="Bru-Fl-YgS"/>
-                        <outlet property="facebookShareButton" destination="LH0-aP-OIo" id="1Uf-y2-duc"/>
                         <outlet property="favouriteButton" destination="Odd-Rz-aXl" id="qai-xa-ylG"/>
                         <outlet property="instagramShareButton" destination="eSx-V6-Aev" id="HdO-wC-VIv"/>
                         <outlet property="quoteLabel" destination="8iq-fE-6hc" id="3yH-i3-nxQ"/>
@@ -129,9 +120,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fb" width="840" height="859"/>
-        <image name="insta" width="600" height="600"/>
         <image name="landscape" width="1024" height="683"/>
+        <image name="share" width="329" height="338"/>
         <image name="star" width="183" height="177"/>
     </resources>
 </document>
