@@ -23,15 +23,28 @@ class BackgroundImageTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testURLnil() {
+        backgroudImagesUnderTest.getBackgroundImage{url in
+            XCTAssertNil(url)
+        }
+    }
+    
+    func testURLNotNil() {
+        backgroudImagesUnderTest.getBackgroundImage{ url in
+            XCTAssertNotNil(url)
+        }
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func testURLEmpty() {
+        backgroudImagesUnderTest.getBackgroundImage {url in
+            XCTAssert(url.absoluteString == "")
+        }
+    }
+
+    
+    func testURLNotEmpty() {
+        backgroudImagesUnderTest.getBackgroundImage {url in
+            XCTAssert(url.absoluteString != "")
         }
     }
 
