@@ -9,7 +9,7 @@
 import UIKit
 
 class PoemsViewController: UIViewController {
-    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var poemTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var poemLabel: UILabel!

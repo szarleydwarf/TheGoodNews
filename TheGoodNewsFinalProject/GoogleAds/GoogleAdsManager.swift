@@ -10,7 +10,7 @@ import Foundation
 
 class GoogleAdsManager {
     func getBannerSize(size:CGSize) -> CGRect {
-        let rect = CGRect(x: 0, y: size.height-70, width: size.width, height: 50)
+        let rect = CGRect(x: 0, y: size.height-130, width: size.width, height: 50)
         return rect
         
     }
