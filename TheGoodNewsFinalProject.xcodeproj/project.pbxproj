@@ -12,6 +12,7 @@
 		D7715E5E25383C550062B024 /* BackgroundImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E5D25383C550062B024 /* BackgroundImageTests.swift */; };
 		D7715E6C2538425E0062B024 /* QuotesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E6B2538425E0062B024 /* QuotesModelTests.swift */; };
 		D7715E7A2538498E0062B024 /* Favouritesests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E792538498E0062B024 /* Favouritesests.swift */; };
+		D7715E82253883630062B024 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E81253883630062B024 /* SettingsViewController.swift */; };
 		D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B62E2535B6FA003E99A9 /* AppDelegate.swift */; };
 		D771B6312535B6FA003E99A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6302535B6FA003E99A9 /* SceneDelegate.swift */; };
 		D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6322535B6FA003E99A9 /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 		D7715E772538498E0062B024 /* Favouritesests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Favouritesests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7715E792538498E0062B024 /* Favouritesests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favouritesests.swift; sourceTree = "<group>"; };
 		D7715E7B2538498E0062B024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7715E81253883630062B024 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D771B62B2535B6FA003E99A9 /* TheGoodNewsFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGoodNewsFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D771B62E2535B6FA003E99A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D771B6302535B6FA003E99A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		D771B6562535E176003E99A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7715E81253883630062B024 /* SettingsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			files = (
 				D77486012536EA350040E2CF /* Quotes.swift in Sources */,
 				D771B6392535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld in Sources */,
+				D7715E82253883630062B024 /* SettingsViewController.swift in Sources */,
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
