@@ -14,6 +14,7 @@ import Kingfisher
 class SettingsViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
+    var email:String?
     
     @IBOutlet weak var userImageView: UIImageView!
     /*
@@ -26,6 +27,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBanner()
+        isUserSigned()
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,6 +48,17 @@ class SettingsViewController: UIViewController {
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
         print("TO BE IMLEMENTED SOON")
          Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+    }
+    
+    func isUserSigned() {
+        if let email = self.email {
+            do {
+                let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email, accessGroup: KeychainConfiguration.accessGroup)
+            }
+            catch {
+                fatalError("Error reading password from keychain - \(error)")
+            }
+        }
     }
     
     func setBanner() {
