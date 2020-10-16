@@ -13,39 +13,58 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpSignInAppleButton()
     }
     
-    func setUpSignInAppleButton() {
-      let authorizationButton = ASAuthorizationAppleIDButton()
-      authorizationButton.addTarget(self, action: #selector(handleAppleIdRequest), for: .touchUpInside)
-      authorizationButton.cornerRadius = 10
-      //Add button on some view or stack
-      self.signInButtonStack.addArrangedSubview(authorizationButton)
+    /*
+     To be implemented in future
+     */
+    func setupProviderLoginView() {
+        let authorizationButton = ASAuthorizationAppleIDButton()
+        authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+        self.view.addSubview(authorizationButton)
+//        self.loginProviderStackView.addArrangedSubview(authorizationButton)
     }
     
-    @objc func handleAppleIdRequest() {
-    let appleIDProvider = ASAuthorizationAppleIDProvider()
-    let request = appleIDProvider.createRequest()
-    request.requestedScopes = [.fullName, .email]
-    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-    authorizationController.delegate = self
-    authorizationController.performRequests()
+    @objc
+    func handleAuthorizationAppleIDButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+        authorizationController.performRequests()
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
-    let userIdentifier = appleIDCredential.user
-    let fullName = appleIDCredential.fullName
-    let email = appleIDCredential.email
-        print("""
-            User id is \(userIdentifier)
-            \n Full Name is \(String(describing: fullName))
-            \n Email id is \(String(describing: email))
-            """)
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            
+            // Create an account in your system.
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            
+            // For the purpose of this demo app, store the `userIdentifier` in the keychain.
+//            self.saveUserInKeychain(userIdentifier)
+            
+            // For the purpose of this demo app, show the Apple ID credential information in the `ResultViewController`.
+//            self.showResultViewController(userIdentifier: userIdentifier, fullName: fullName, email: email)
+        
+        case let passwordCredential as ASPasswordCredential:
+        
+            // Sign in using an existing iCloud Keychain credential.
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+            
+            // For the purpose of this demo app, show the password credential as an alert.
+            DispatchQueue.main.async {
+//                self.showPasswordCredentialAlert(username: username, password: password)
+            }
+            
+        default:
+            break
+        }
     }
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    // Handle error.
-    }
-}
 }
