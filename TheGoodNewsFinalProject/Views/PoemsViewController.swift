@@ -19,13 +19,29 @@ class PoemsViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var poemLabel: UILabel!
     
+    var googleAdsManager = GoogleAdsManager()
+    var banner:GADBannerView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBanner()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        banner.frame = googleAdsManager.getBannerSize(size: view.frame.size).integral
     }
     
     @IBAction func saveFavourite(_ sender: UIButton) {
     }
     
     @IBAction func sharePoem(_ sender: Any) {
+    }
+    
+    func setBanner() {
+        self.banner = googleAdsManager.getBanner()
+        banner.rootViewController = self
+        view.addSubview(banner)
     }
 }

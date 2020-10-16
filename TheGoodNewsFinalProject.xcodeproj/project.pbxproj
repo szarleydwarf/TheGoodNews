@@ -24,6 +24,7 @@
 		D771B6492535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */; };
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
+		D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE02539A844004F2305 /* SigningViewController.swift */; };
 		D77486012536EA350040E2CF /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77486002536EA350040E2CF /* Quotes.swift */; };
 		D774860325371D350040E2CF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860225371D350040E2CF /* CoreDataController.swift */; };
 		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
@@ -92,6 +93,8 @@
 		D771B64A2535B6FC003E99A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		D7722FE02539A844004F2305 /* SigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
+		D7722FE22539AC81004F2305 /* TheGoodNewsFinalProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheGoodNewsFinalProject.entitlements; sourceTree = "<group>"; };
 		D77486002536EA350040E2CF /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		D774860225371D350040E2CF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		D771B62D2535B6FA003E99A9 /* TheGoodNewsFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				D7722FE22539AC81004F2305 /* TheGoodNewsFinalProject.entitlements */,
 				D771B6322535B6FA003E99A9 /* ViewController.swift */,
 				D771B6342535B6FA003E99A9 /* Main.storyboard */,
 				D771B6582535E19F003E99A9 /* Models */,
@@ -255,6 +259,7 @@
 			children = (
 				D7715E81253883630062B024 /* SettingsViewController.swift */,
 				D7715E832538BAD00062B024 /* PoemsViewController.swift */,
+				D7722FE02539A844004F2305 /* SigningViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,6 +578,7 @@
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
+				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
 				D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */,
 				D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */,
@@ -874,6 +880,7 @@
 			baseConfigurationReference = 846007B7B0F3528DF4104E34 /* Pods-TheGoodNewsFinalProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TheGoodNewsFinalProject/TheGoodNewsFinalProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
 				INFOPLIST_FILE = TheGoodNewsFinalProject/Info.plist;
@@ -893,6 +900,7 @@
 			baseConfigurationReference = 8F5EFC7245EB7BF40CE7EBD5 /* Pods-TheGoodNewsFinalProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TheGoodNewsFinalProject/TheGoodNewsFinalProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
 				INFOPLIST_FILE = TheGoodNewsFinalProject/Info.plist;
