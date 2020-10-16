@@ -6,7 +6,12 @@
 //  Copyright © 2020 The App Experts. All rights reserved.
 //
 
+import GoogleMobileAds
 import UIKit
+import CoreData
+import Kingfisher
+import ProgressHUD
+import Social
 
 class PoemsViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!

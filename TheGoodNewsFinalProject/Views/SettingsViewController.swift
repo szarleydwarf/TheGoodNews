@@ -10,6 +10,15 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var userImageView: UIImageView!
     
     
+    @IBAction func showFavourites(_ sender: UIButton) {
+    }
+    
+    @IBAction func signinOptions(_ sender: UIButton) {
+    }
+    
+    @IBAction func addQuoteOrPoem(_ sender: UIButton) {
+    }
 }

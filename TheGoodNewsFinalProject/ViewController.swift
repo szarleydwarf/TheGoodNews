@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
     
-    @IBOutlet weak var instagramShareButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var favouriteButton: UIButton!
     
     var googleAdsManager = GoogleAdsManager()
