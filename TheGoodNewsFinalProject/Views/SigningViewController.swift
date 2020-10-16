@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AuthenticationServices
+import CryptoSwift
 
 
 class SigningViewController: UIViewController, ASAuthorizationControllerDelegate {
@@ -17,10 +18,13 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     @IBOutlet weak var emailTextField: UITextField!
     
     var email:String?
+    let userDefaults = UserDefaults.standard
+    let stringEmail = "email"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.email = userDefaults.string(forKey: stringEmail)
+        print("SIGNING EMAIL > \(email) \(userDefaults.string(forKey: stringEmail))")
         if let email = self.email {
             do{
                 let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email)
@@ -35,26 +39,31 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     @IBAction func signIn(_ sender: UIButton) {
         guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {return}
+        let hashedPassword = passwordHash(from: newEmail, password: newPassword)
         
-        
-            Auth.auth().createUser(withEmail: newEmail, password: newPassword) { authResult, error in
-                Toast().showToast(message: "Hello \(newEmail)  \n \(authResult)", font: .systemFont(ofSize: 18), view: self.view)
-                
-            }
+        Auth.auth().createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
+            Toast().showToast(message: "Hello \(newEmail)  \n \(authResult)", font: .systemFont(ofSize: 18), view: self.view)
+            self.userDefaults.set(newEmail, forKey: self.stringEmail)
+            
+        }
         do {
             if let originalEmail = self.email {
                 var paswordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: originalEmail)
                 
                 try paswordItem.renameAccount(newEmail)
-                try paswordItem.savePassword(newPassword)
+                try paswordItem.savePassword(hashedPassword)
             } else {
                 let paswordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: newEmail)
-                try paswordItem.savePassword(newPassword)
+                try paswordItem.savePassword(hashedPassword)
             }
         } catch let error{
-           Toast().showToast(message: "Error creating account \(error)", font: .systemFont(ofSize: 16), view: self.view)
+            Toast().showToast(message: "Error creating account \(error)", font: .systemFont(ofSize: 16), view: self.view)
         }
-        
+    }
+    
+    func passwordHash(from email: String, password: String) -> String {
+        let salt = "x4vV8bGgqqmQw974yriksdbckbq9ipidk;jgCoyXFQj+(o.nP7ND"
+        return "\(password).\(email).\(salt)".sha256()
     }
     
     /*
