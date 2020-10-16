@@ -25,7 +25,7 @@
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
 		D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE02539A844004F2305 /* SigningViewController.swift */; };
-		D7722FE42539D65D004F2305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7722FE32539D65D004F2305 /* GoogleService-Info.plist */; };
+		D7722FE62539DE92004F2305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7722FE52539DE92004F2305 /* GoogleService-Info.plist */; };
 		D77486012536EA350040E2CF /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77486002536EA350040E2CF /* Quotes.swift */; };
 		D774860325371D350040E2CF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860225371D350040E2CF /* CoreDataController.swift */; };
 		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
@@ -96,7 +96,7 @@
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		D7722FE02539A844004F2305 /* SigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
 		D7722FE22539AC81004F2305 /* TheGoodNewsFinalProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheGoodNewsFinalProject.entitlements; sourceTree = "<group>"; };
-		D7722FE32539D65D004F2305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D7722FE52539DE92004F2305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D77486002536EA350040E2CF /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		D774860225371D350040E2CF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
@@ -221,6 +221,7 @@
 		D771B62D2535B6FA003E99A9 /* TheGoodNewsFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				D7722FE52539DE92004F2305 /* GoogleService-Info.plist */,
 				D7722FE22539AC81004F2305 /* TheGoodNewsFinalProject.entitlements */,
 				D771B6322535B6FA003E99A9 /* ViewController.swift */,
 				D771B6342535B6FA003E99A9 /* Main.storyboard */,
@@ -244,7 +245,6 @@
 			children = (
 				D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */,
 				D771B64A2535B6FC003E99A9 /* Info.plist */,
-				D7722FE32539D65D004F2305 /* GoogleService-Info.plist */,
 			);
 			path = TheGoodNewsFinalProjectTests;
 			sourceTree = "<group>";
@@ -468,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D771B63E2535B6FC003E99A9 /* LaunchScreen.storyboard in Resources */,
+				D7722FE62539DE92004F2305 /* GoogleService-Info.plist in Resources */,
 				D771B63B2535B6FC003E99A9 /* Assets.xcassets in Resources */,
 				D771B6362535B6FA003E99A9 /* Main.storyboard in Resources */,
 			);
@@ -477,7 +478,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7722FE42539D65D004F2305 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

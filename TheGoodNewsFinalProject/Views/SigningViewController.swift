@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import Firebase
 import AuthenticationServices
 
 class SigningViewController: UIViewController, ASAuthorizationControllerDelegate {
 
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+    }
+    
+    
+    @IBAction func signIn(_ sender: UIButton) {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                Toast().showToast(message: "Signed \(authResult)", font: .systemFont(ofSize: 18), view: self.view)
+            }
+        }
     }
     
     /*
