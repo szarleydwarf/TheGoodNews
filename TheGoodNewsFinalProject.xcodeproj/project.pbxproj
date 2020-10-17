@@ -32,6 +32,7 @@
 		D774860325371D350040E2CF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860225371D350040E2CF /* CoreDataController.swift */; };
 		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
 		D774860725373D280040E2CF /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860625373D280040E2CF /* Favourites.swift */; };
+		D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7753219253B3D430004FF0C /* AddUserTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		D774860225371D350040E2CF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
 		D774860625373D280040E2CF /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
+		D7753219253B3D430004FF0C /* AddUserTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserTextViewController.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				D7715E81253883630062B024 /* SettingsViewController.swift */,
 				D7715E832538BAD00062B024 /* PoemsViewController.swift */,
 				D7722FE02539A844004F2305 /* SigningViewController.swift */,
+				D7753219253B3D430004FF0C /* AddUserTextViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */,
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
+				D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
 				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
