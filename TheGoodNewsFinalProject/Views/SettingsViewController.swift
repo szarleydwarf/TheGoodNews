@@ -60,25 +60,21 @@ class SettingsViewController: UIViewController {
             do {
                 try Auth.auth().signOut()
                 self.isSigned = false
+                changeSignInButtonTitle()
+                displayUserNameLabel()
             } catch let err{
                 Toast().showToast(message: "could not sign out \(err)", font: .systemFont(ofSize: 16), view: self.view)
             }
         }
-        self.reloadData()
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
-        print("TO BE IMLEMENTED SOON")
         if self.isSigned {
+            print("TO BE IMLEMENTED SOON")
             //            self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
         } else{
             Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
         }
-    }
-    
-    func reloadData() {
-        self.view.setNeedsDisplay()
-        self.view.setNeedsLayout()
     }
     
     func changeSignInButtonTitle () {
