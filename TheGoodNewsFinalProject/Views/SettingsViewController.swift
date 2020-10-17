@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController {
     var isSigned:Bool = false
     let userDefaults = UserDefaults.standard
     let stringEmail = "email"
+    var userName:String = ""
     
     @IBOutlet weak var userImageView: UIImageView!
     /*
@@ -37,6 +38,9 @@ class SettingsViewController: UIViewController {
         print("SETTINGS EMAIL > \(email) \(userDefaults.string(forKey: stringEmail))")
         setBanner()
         isUserSigned()
+        if self.isSigned {
+            getUserName()
+        }
         displayUserNameLabel()
         changeSignInButtonTitle()
     }
@@ -77,6 +81,13 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    func getUserName() {
+        if let email = self.email {
+            let userNameArray = email.components(separatedBy: "@")
+            self.userName  = userNameArray[0]
+        }
+    }
+    
     func changeSignInButtonTitle () {
         let title =  self.isSigned ? "Sign Out" : "Sign In"
         self.signInButton.setTitle(title, for: .normal)
@@ -85,7 +96,7 @@ class SettingsViewController: UIViewController {
     func displayUserNameLabel() {
         if self.isSigned {
             self.usernameLabel.isHidden = false
-            self.usernameLabel.text = self.email
+            self.usernameLabel.text = self.userName
         } else {
             self.usernameLabel.isHidden = true
         }
