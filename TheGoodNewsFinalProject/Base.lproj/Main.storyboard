@@ -127,7 +127,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1U-9Z-XCC">
-                                <rect key="frame" x="60" y="498" width="70" height="70"/>
+                                <rect key="frame" x="60" y="522" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="HA5-oJ-deI"/>
                                     <constraint firstAttribute="width" secondItem="e1U-9Z-XCC" secondAttribute="height" multiplier="1:1" id="WH1-eP-raj"/>
@@ -136,14 +136,14 @@
                                 <state key="normal" title="FAVOURITES" image="star"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ln-z3-381">
-                                <rect key="frame" x="20" y="388" width="374" height="30"/>
+                                <rect key="frame" x="20" y="412" width="374" height="30"/>
                                 <state key="normal" title="SIGN IN"/>
                                 <connections>
                                     <action selector="signinOptions:" destination="VOf-ks-X9C" eventType="touchUpInside" id="CYs-5n-onj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUg-dz-IPM">
-                                <rect key="frame" x="284" y="498" width="70" height="70"/>
+                                <rect key="frame" x="284" y="522" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="6Ug-eq-Mtm"/>
                                     <constraint firstAttribute="width" constant="70" id="G3M-OZ-YJY"/>
@@ -154,16 +154,25 @@
                                     <action selector="addQuoteOrPoem:" destination="VOf-ks-X9C" eventType="touchUpInside" id="Elc-rr-dZ9"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbY-oh-Pmm">
+                                <rect key="frame" x="20" y="368" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mAE-bs-C2a" firstAttribute="top" secondItem="rnR-Xk-3dC" secondAttribute="top" constant="20" id="0UI-ve-c0f"/>
+                            <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="WbY-oh-Pmm" secondAttribute="trailing" constant="20" id="3CX-fe-VeO"/>
                             <constraint firstItem="KUg-dz-IPM" firstAttribute="top" secondItem="e1U-9Z-XCC" secondAttribute="top" id="7Q9-0o-iyG"/>
+                            <constraint firstItem="0ln-z3-381" firstAttribute="top" secondItem="WbY-oh-Pmm" secondAttribute="bottom" constant="20" id="8TS-l1-102"/>
                             <constraint firstItem="mAE-bs-C2a" firstAttribute="leading" secondItem="rnR-Xk-3dC" secondAttribute="leading" constant="87" id="FB4-Gl-hAp"/>
+                            <constraint firstItem="WbY-oh-Pmm" firstAttribute="top" secondItem="mAE-bs-C2a" secondAttribute="bottom" constant="20" id="SuA-SF-7TE"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="mAE-bs-C2a" secondAttribute="trailing" constant="87" id="VXf-dV-fC0"/>
                             <constraint firstItem="0ln-z3-381" firstAttribute="leading" secondItem="rnR-Xk-3dC" secondAttribute="leading" constant="20" id="YWO-Ez-k8T"/>
+                            <constraint firstItem="WbY-oh-Pmm" firstAttribute="leading" secondItem="rnR-Xk-3dC" secondAttribute="leading" constant="20" id="dUL-pc-Rec"/>
                             <constraint firstItem="e1U-9Z-XCC" firstAttribute="leading" secondItem="rnR-Xk-3dC" secondAttribute="leading" constant="60" id="kAL-46-BU4"/>
-                            <constraint firstItem="0ln-z3-381" firstAttribute="top" secondItem="mAE-bs-C2a" secondAttribute="bottom" constant="40" id="kL0-lo-HP7"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="KUg-dz-IPM" secondAttribute="trailing" constant="60" id="lxp-e2-qEw"/>
                             <constraint firstItem="e1U-9Z-XCC" firstAttribute="top" secondItem="0ln-z3-381" secondAttribute="bottom" constant="80" id="pXV-8o-smL"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="0ln-z3-381" secondAttribute="trailing" constant="20" id="s6y-E8-wwU"/>
@@ -172,7 +181,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="0tc-jx-dIs"/>
                     <connections>
+                        <outlet property="signInButton" destination="0ln-z3-381" id="4cG-cu-njG"/>
                         <outlet property="userImageView" destination="mAE-bs-C2a" id="gqG-zG-pMo"/>
+                        <outlet property="usernameLabel" destination="WbY-oh-Pmm" id="X1T-Bz-KHI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CMQ-kI-EpA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -379,7 +390,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bII-Uq-9RP">
                                         <rect key="frame" x="0.0" y="0.0" width="685.66666666666663" height="1336.6666666666667"/>
-                                        <mutableString key="text">somewhere i have never travelled,gladly beyond
+                                        <string key="text">somewhere i have never travelled,gladly beyond
 any experience,your eyes have their silence:
 in your most frail gesture are things which enclose me, 
 or which i cannot touch because they are too near
@@ -448,7 +459,7 @@ rendering death and forever with each breathing
 (i do not know what it is about you that closes
 and opens;only something in me understands
 the voice of your eyes is deeper than all roses)
-nobody,not even the rain,has such small hands</mutableString>
+nobody,not even the rain,has such small hands</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

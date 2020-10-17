@@ -24,11 +24,11 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.email = userDefaults.string(forKey: stringEmail)
-        print("SIGNING EMAIL > \(email) \(userDefaults.string(forKey: stringEmail))")
         if let email = self.email {
             do{
                 let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email)
                 emailTextField.text = passwordItem.account
+                // todo unhash pasword
                 passwordTextField.text = try passwordItem.readPassword()
             } catch let error {
                 Toast().showToast(message: "Error getting password \(error)", font: .systemFont(ofSize: 16), view: self.view)
@@ -42,9 +42,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         let hashedPassword = passwordHash(from: newEmail, password: newPassword)
         
         Auth.auth().createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
-            Toast().showToast(message: "Hello \(newEmail)  \n \(authResult)", font: .systemFont(ofSize: 18), view: self.view)
+            Toast().showToast(message: "Hello \(newEmail)", font: .systemFont(ofSize: 18), view: self.view)
             self.userDefaults.set(newEmail, forKey: self.stringEmail)
-            
         }
         do {
             if let originalEmail = self.email {
@@ -59,6 +58,13 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         } catch let error{
             Toast().showToast(message: "Error creating account \(error)", font: .systemFont(ofSize: 16), view: self.view)
         }
+        jumpToSettingsView()
+    }
+    
+    func jumpToSettingsView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+        self.navigationController?.pushViewController(settingsVC, animated: true)
     }
     
     func passwordHash(from email: String, password: String) -> String {
