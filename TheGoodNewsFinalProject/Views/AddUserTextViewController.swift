@@ -9,9 +9,15 @@
 import UIKit
 
 class AddUserTextViewController: UIViewController {
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var quotePoemTextView: UITextView!
+    @IBOutlet weak var quotePoemSwitch: UISwitch!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func saveText(_ sender: UIButton) {
     }
 }

@@ -25,14 +25,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         super.viewDidLoad()
         self.email = userDefaults.string(forKey: stringEmail)
         if let email = self.email {
-            do{
-                let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email)
-                emailTextField.text = passwordItem.account
-                // todo unhash pasword
-                passwordTextField.text = try passwordItem.readPassword()
-            } catch let error {
-                Toast().showToast(message: "Error getting password \(error)", font: .systemFont(ofSize: 16), view: self.view)
-            }
+            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email)
+            emailTextField.text = passwordItem.account
         }
     }
     

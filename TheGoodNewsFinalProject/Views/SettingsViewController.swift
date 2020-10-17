@@ -75,7 +75,9 @@ class SettingsViewController: UIViewController {
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
         if self.isSigned {
             print("TO BE IMLEMENTED SOON")
-            //            self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let addTextViewController = storyboard.instantiateViewController(identifier: "AddUserTextViewController") as! AddUserTextViewController
+            self.navigationController?.pushViewController(addTextViewController, animated: true)
         } else{
             Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
         }
