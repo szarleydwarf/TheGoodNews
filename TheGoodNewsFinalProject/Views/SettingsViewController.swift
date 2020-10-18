@@ -26,10 +26,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
     /*
-     - sign in with apple (fb?, google?)
      - choose user image
-     - save signing into keychain
-     - ads quote button check f signin to enable
      */
     
     override func viewDidLoad() {

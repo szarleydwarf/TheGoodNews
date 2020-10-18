@@ -20,6 +20,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     var email:String?
     let userDefaults = UserDefaults.standard
     let stringEmail = "email"
+    // - sign in with apple (fb?, google?)
     
     override func viewDidLoad() {
         super.viewDidLoad()

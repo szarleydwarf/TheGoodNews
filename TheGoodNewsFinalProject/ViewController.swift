@@ -7,7 +7,7 @@
 //
 import GoogleMobileAds
 import UIKit
-import CoreData
+//import CoreData
 import Kingfisher
 import ProgressHUD
 import Social
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     var banner:GADBannerView!
     var fetchedFavourites:[Favourite]=[]
     
-    let coreDataCtrl = CoreDataController.shared
+//    let coreDataCtrl = CoreDataController.shared
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

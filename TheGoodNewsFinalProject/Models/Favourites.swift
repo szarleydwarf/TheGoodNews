@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 class Favourites {
-    //    var fetchedFavourites:[Favourite]=[]
     let coreDataController = CoreDataController.shared
     
     func fetchFavourites(view:UIView) -> [Favourite] {
@@ -39,7 +38,7 @@ class Favourites {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
         request.predicate = NSPredicate(format: "author = %@ && quote = %@", author, quote)
-
+        
         do {
             let result = try mainCtx.fetch(request)
             if result.count > 0 {
@@ -59,7 +58,7 @@ class Favourites {
                         return true
                     }
                 }
-       }
+            }
         }
         return false
     }
