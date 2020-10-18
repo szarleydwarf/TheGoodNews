@@ -34,6 +34,7 @@
 		D774860725373D280040E2CF /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860625373D280040E2CF /* Favourites.swift */; };
 		D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7753219253B3D430004FF0C /* AddUserTextViewController.swift */; };
 		D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */; };
+		D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		D774860625373D280040E2CF /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		D7753219253B3D430004FF0C /* AddUserTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserTextViewController.swift; sourceTree = "<group>"; };
 		D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoemsAndQutes.swift; sourceTree = "<group>"; };
+		D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesListViewController.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -273,6 +275,7 @@
 				D7715E832538BAD00062B024 /* PoemsViewController.swift */,
 				D7722FE02539A844004F2305 /* SigningViewController.swift */,
 				D7753219253B3D430004FF0C /* AddUserTextViewController.swift */,
+				D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */,
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
+				D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */,
 				D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
 				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,

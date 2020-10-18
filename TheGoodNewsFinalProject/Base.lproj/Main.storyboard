@@ -197,6 +197,55 @@
             </objects>
             <point key="canvasLocation" x="1279.7101449275362" y="-1090.1785714285713"/>
         </scene>
+        <!--Favourites List View Controller-->
+        <scene sceneID="5Zd-Q2-4OB">
+            <objects>
+                <viewController storyboardIdentifier="FavouritesListViewController" id="IH9-z5-RRu" customClass="FavouritesListViewController" customModule="TheGoodNewsFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hAF-3B-asp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="bkN-Lh-Lah">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9k8-lj-2qz">
+                                <rect key="frame" x="20" y="64" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Favourite Qoutes"/>
+                                    <segment title="Favourite Poems"/>
+                                    <segment title="Your Writings"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-Z5-kTU">
+                                <rect key="frame" x="10" y="105" width="394" height="697"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OAt-Z5-kTU" firstAttribute="leading" secondItem="vDD-MK-ywT" secondAttribute="leading" constant="10" id="2Ny-sE-8Rl"/>
+                            <constraint firstItem="bkN-Lh-Lah" firstAttribute="leading" secondItem="vDD-MK-ywT" secondAttribute="leading" id="3dG-8V-9zr"/>
+                            <constraint firstItem="vDD-MK-ywT" firstAttribute="trailing" secondItem="9k8-lj-2qz" secondAttribute="trailing" constant="20" id="5ms-8W-E8L"/>
+                            <constraint firstItem="bkN-Lh-Lah" firstAttribute="top" secondItem="hAF-3B-asp" secondAttribute="top" id="7RY-dS-hc7"/>
+                            <constraint firstItem="vDD-MK-ywT" firstAttribute="trailing" secondItem="bkN-Lh-Lah" secondAttribute="trailing" id="8Mo-l1-GFq"/>
+                            <constraint firstItem="OAt-Z5-kTU" firstAttribute="top" secondItem="9k8-lj-2qz" secondAttribute="bottom" constant="10" id="BIF-PH-tKt"/>
+                            <constraint firstItem="vDD-MK-ywT" firstAttribute="trailing" secondItem="OAt-Z5-kTU" secondAttribute="trailing" constant="10" id="Hk4-uZ-yjK"/>
+                            <constraint firstItem="9k8-lj-2qz" firstAttribute="leading" secondItem="vDD-MK-ywT" secondAttribute="leading" constant="20" id="mAO-3Y-oSJ"/>
+                            <constraint firstItem="9k8-lj-2qz" firstAttribute="top" secondItem="vDD-MK-ywT" secondAttribute="top" constant="20" id="o7p-8U-Xor"/>
+                            <constraint firstItem="vDD-MK-ywT" firstAttribute="bottom" secondItem="OAt-Z5-kTU" secondAttribute="bottom" constant="60" id="y4Q-iT-AXw"/>
+                            <constraint firstItem="vDD-MK-ywT" firstAttribute="bottom" secondItem="bkN-Lh-Lah" secondAttribute="bottom" id="yTD-9J-V0s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vDD-MK-ywT"/>
+                    </view>
+                    <connections>
+                        <outlet property="segmentController" destination="9k8-lj-2qz" id="xTi-wv-lfB"/>
+                        <outlet property="table" destination="OAt-Z5-kTU" id="MqB-wr-lDk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jym-3f-R80" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2157" y="-1090"/>
+        </scene>
         <!--Signing View Controller-->
         <scene sceneID="Bad-VV-bqI">
             <objects>
@@ -402,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13y-ma-b0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3078" y="-769"/>
+            <point key="canvasLocation" x="4532" y="-815"/>
         </scene>
         <!--NewPostViewController-->
         <scene sceneID="1AW-hJ-hj2">
@@ -418,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e5-pR-wWO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3078" y="-1417"/>
+            <point key="canvasLocation" x="4532" y="-1463"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kHP-ul-aYw">
@@ -436,7 +485,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xl2-v0-kv8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2157" y="-1093"/>
+            <point key="canvasLocation" x="3612" y="-1139"/>
         </scene>
         <!--Qoutes-->
         <scene sceneID="49a-ky-zFF">
