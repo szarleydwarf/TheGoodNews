@@ -33,6 +33,7 @@
 		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
 		D774860725373D280040E2CF /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860625373D280040E2CF /* Favourites.swift */; };
 		D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7753219253B3D430004FF0C /* AddUserTextViewController.swift */; };
+		D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
 		D774860625373D280040E2CF /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		D7753219253B3D430004FF0C /* AddUserTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserTextViewController.swift; sourceTree = "<group>"; };
+		D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoemsAndQutes.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -289,6 +291,7 @@
 				D771B65A25360536003E99A9 /* BackgroundImage.swift */,
 				D77486002536EA350040E2CF /* Quotes.swift */,
 				D774860625373D280040E2CF /* Favourites.swift */,
+				D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
 				D7722FEB253A21D4004F2305 /* KeychainConfiguration.swift in Sources */,
+				D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */,
 				D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */,
 				D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */,
 				D771B6312535B6FA003E99A9 /* SceneDelegate.swift in Sources */,

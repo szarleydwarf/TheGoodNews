@@ -32,7 +32,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.email = userDefaults.string(forKey: stringEmail)
-        print("SETTINGS EMAIL > \(email) \(userDefaults.string(forKey: stringEmail))")
         setBanner()
         isUserSigned()
         if self.isSigned {
