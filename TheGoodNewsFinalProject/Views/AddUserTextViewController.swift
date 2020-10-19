@@ -24,7 +24,7 @@ class AddUserTextViewController: UIViewController {
         if UserPoemsAndQutes().saveUserQuoteOrPoem(title: titleToSave, text: textToSave, isQuote: self.quotePoemSwitch.isOn) {
             let quoteOrPoem = self.quotePoemSwitch.isOn ? "poem" : "quote"
             Toast().showToast(message: NSString(format: "Your %@ was saved", quoteOrPoem) as String , font: .systemFont(ofSize: 22.0), view: self.view)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Toast().animationDuration, execute: {
                 self.navigationController?.popViewController(animated: true)
             })
         }

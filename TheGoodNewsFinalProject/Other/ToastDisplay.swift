@@ -9,6 +9,7 @@
 import UIKit
 
 class Toast {
+    var animationDuration:TimeInterval = 4.0
     //function  showToast copied from
     //https://stackoverflow.com/questions/31540375/how-to-toast-message-in-swift
     func showToast(message : String, font: UIFont, view: UIView) {
@@ -26,7 +27,7 @@ class Toast {
         toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds  =  true
         view.addSubview(toastLabel)
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: animationDuration, delay: 0.1, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
