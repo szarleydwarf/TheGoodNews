@@ -6,14 +6,22 @@
 //  Copyright © 2020 The App Experts. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class UserPoemsAndQutes {
     let coreDataController = CoreDataController.shared
     
-    func fetchUserTexts () {
-        
+    func fetchUserTexts (view: UIView)->[UserQuotePoems] {
+        var userText:[UserQuotePoems] = []
+        let ctx = coreDataController.mainCtx
+        let request: NSFetchRequest<UserQuotePoems> = UserQuotePoems.fetchRequest()
+        do{
+            userText = try ctx.fetch(request)
+        } catch let err {
+            Toast().showToast(message: "Failed to fetch your texts \(err.localizedDescription)", font: .systemFont(ofSize: 15), view: view)
+        }
+        return userText
     }
     
     func saveUserQuoteOrPoem(title:String?, text:String, isQuote:Bool) -> Bool {

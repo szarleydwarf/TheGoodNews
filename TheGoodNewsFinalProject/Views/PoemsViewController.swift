@@ -18,6 +18,7 @@ class PoemsViewController: UIViewController {
     @IBOutlet weak var poemTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var poemLabel: UILabel!
+    @IBOutlet weak var poemsScrollView: UIScrollView!
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
