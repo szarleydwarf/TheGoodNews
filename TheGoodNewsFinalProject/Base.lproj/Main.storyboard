@@ -64,31 +64,33 @@
                                     <action selector="shareToSocialMedia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHu-Pq-hhy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All our dreams can come true, if we have the courage to pursue them.” " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iq-fE-6hc">
-                                <rect key="frame" x="10" y="108" width="394" height="548"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walt Disney" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjy-HN-Cjo">
-                                <rect key="frame" x="10" y="663.66666666666663" width="394" height="39.333333333333371"/>
+                                <rect key="frame" x="10" y="158" width="394" height="39.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qi5-hw-YIJ">
+                                <rect key="frame" x="10" y="207.33333333333331" width="394" height="545.66666666666674"/>
+                                <string key="text">The way to get started is to quit talking and begin doing.
+</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Upc-2C-vfz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2bd-h8-eWv"/>
-                            <constraint firstItem="8iq-fE-6hc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="78i-53-nU7"/>
                             <constraint firstItem="Odd-Rz-aXl" firstAttribute="leading" secondItem="Upc-2C-vfz" secondAttribute="leading" constant="20" id="8wj-Tc-RLb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8iq-fE-6hc" secondAttribute="trailing" constant="10" id="EFY-a6-o3t"/>
-                            <constraint firstItem="8iq-fE-6hc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="EIH-gL-my6"/>
-                            <constraint firstItem="Upc-2C-vfz" firstAttribute="bottom" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="60" id="N6e-W0-h2g"/>
+                            <constraint firstItem="Qi5-hw-YIJ" firstAttribute="top" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="10" id="DPa-0n-Rhz"/>
                             <constraint firstItem="Odd-Rz-aXl" firstAttribute="top" secondItem="Upc-2C-vfz" secondAttribute="top" constant="10" id="N91-Qh-eOi"/>
+                            <constraint firstItem="Qi5-hw-YIJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Oj0-en-0X4"/>
                             <constraint firstItem="pjy-HN-Cjo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Wpr-GF-4T1"/>
+                            <constraint firstItem="pjy-HN-Cjo" firstAttribute="top" secondItem="Odd-Rz-aXl" secondAttribute="bottom" constant="10" id="Yee-P6-Fgn"/>
                             <constraint firstItem="Upc-2C-vfz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aes-1M-aQR"/>
-                            <constraint firstItem="8iq-fE-6hc" firstAttribute="bottom" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="-47" id="cXH-b3-dlb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qi5-hw-YIJ" secondAttribute="bottom" constant="60" id="hDG-vT-7Nv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qi5-hw-YIJ" secondAttribute="trailing" constant="10" id="ilV-Yb-aWT"/>
                             <constraint firstItem="eSx-V6-Aev" firstAttribute="trailing" secondItem="Upc-2C-vfz" secondAttribute="trailing" constant="-20" id="l2W-Kn-uLn"/>
                             <constraint firstItem="eSx-V6-Aev" firstAttribute="top" secondItem="Odd-Rz-aXl" secondAttribute="top" id="lQE-sL-I8G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pjy-HN-Cjo" secondAttribute="trailing" constant="10" id="qma-56-ziZ"/>
@@ -102,7 +104,7 @@
                         <outlet property="authorNameLabel" destination="pjy-HN-Cjo" id="ytT-X8-1D4"/>
                         <outlet property="backgroundImageView" destination="Upc-2C-vfz" id="Bru-Fl-YgS"/>
                         <outlet property="favouriteButton" destination="Odd-Rz-aXl" id="qai-xa-ylG"/>
-                        <outlet property="quoteLabel" destination="8iq-fE-6hc" id="3yH-i3-nxQ"/>
+                        <outlet property="quoteTextView" destination="Qi5-hw-YIJ" id="093-bd-VyU"/>
                         <outlet property="shareButton" destination="eSx-V6-Aev" id="HdO-wC-VIv"/>
                     </connections>
                 </viewController>
@@ -559,109 +561,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfH-AA-wx3">
-                                <rect key="frame" x="10" y="181.33333333333331" width="394" height="600.66666666666674"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bII-Uq-9RP">
-                                        <rect key="frame" x="0.0" y="0.0" width="611.33333333333337" height="1169.6666666666667"/>
-                                        <mutableString key="text">somewhere i have never travelled,gladly beyond
-any experience,your eyes have their silence:
-in your most frail gesture are things which enclose me, 
-or which i cannot touch because they are too near
-
-your slightest look easily will unclose me
-though i have closed myself as fingers, 
-you open always petal by petal myself as Spring opens
-(touching skilfully,mysteriously)her first rose
-
-or if your wish be to close me,i and 
-my life will shut very beautifully,suddenly,
-as when the heart of this flower imagines
-the snow carefully everywhere descending;
-
-nothing which we are to perceive in this world equals 
-the power of your intense fragility:whose texture
-compels me with the colour of its countries,
-rendering death and forever with each breathing
-
-(i do not know what it is about you that closes
-and opens;only something in me understands
-the voice of your eyes is deeper than all roses)
-nobody,not even the rain,has such small handssomewhere i have never travelled,gladly beyond
-any experience,your eyes have their silence:
-in your most frail gesture are things which enclose me, 
-or which i cannot touch because they are too near
-
-your slightest look easily will unclose me
-though i have closed myself as fingers, 
-you open always petal by petal myself as Spring opens
-(touching skilfully,mysteriously)her first rose
-
-or if your wish be to close me,i and 
-my life will shut very beautifully,suddenly,
-as when the heart of this flower imagines
-the snow carefully everywhere descending;
-
-nothing which we are to perceive in this world equals 
-the power of your intense fragility:whose texture
-compels me with the colour of its countries,
-rendering death and forever with each breathing
-
-(i do not know what it is about you that closes
-and opens;only something in me understands
-the voice of your eyes is deeper than all roses)
-nobody,not even the rain,has such small handssomewhere i have never travelled,gladly beyond
-any experience,your eyes have their silence:
-in your most frail gesture are things which enclose me, 
-or which i cannot touch because they are too near
-
-your slightest look easily will unclose me
-though i have closed myself as fingers, 
-you open always petal by petal myself as Spring opens
-(touching skilfully,mysteriously)her first rose
-
-or if your wish be to close me,i and 
-my life will shut very beautifully,suddenly,
-as when the heart of this flower imagines
-the snow carefully everywhere descending;
-
-nothing which we are to perceive in this world equals 
-the power of your intense fragility:whose texture
-compels me with the colour of its countries,
-rendering death and forever with each breathing
-
-(i do not know what it is about you that closes
-and opens;only something in me understands
-the voice of your eyes is deeper than all roses)
-nobody,not even the rain,has such small hands</mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="bII-Uq-9RP" firstAttribute="leading" secondItem="tfH-AA-wx3" secondAttribute="leading" id="4MY-RH-CLh"/>
-                                    <constraint firstAttribute="bottom" secondItem="bII-Uq-9RP" secondAttribute="bottom" id="Pd2-MK-14D"/>
-                                    <constraint firstItem="bII-Uq-9RP" firstAttribute="top" secondItem="tfH-AA-wx3" secondAttribute="top" id="aYU-Cc-Iw8"/>
-                                    <constraint firstAttribute="trailing" secondItem="bII-Uq-9RP" secondAttribute="trailing" id="dKx-kG-Fx6"/>
-                                    <constraint firstItem="bII-Uq-9RP" firstAttribute="width" secondItem="tfH-AA-wx3" secondAttribute="width" priority="200" id="yFE-VF-crm"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="Gw8-IV-Nca"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="0JG-c6-XZc"/>
-                            </scrollView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRR-JD-ROp">
+                                <rect key="frame" x="10" y="183" width="394" height="580"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tfH-AA-wx3" firstAttribute="trailing" secondItem="oJh-PM-igV" secondAttribute="trailing" id="0ee-L1-eBb"/>
                             <constraint firstItem="oJh-PM-igV" firstAttribute="top" secondItem="CMu-b9-bTZ" secondAttribute="bottom" constant="5" id="1ed-4v-GS0"/>
-                            <constraint firstItem="tfH-AA-wx3" firstAttribute="top" secondItem="oJh-PM-igV" secondAttribute="bottom" constant="8.3333333333333428" id="40i-Af-bx4"/>
                             <constraint firstItem="hq1-MC-Evf" firstAttribute="leading" secondItem="rvc-Vk-caW" secondAttribute="leading" id="52q-er-Hrp"/>
-                            <constraint firstItem="tfH-AA-wx3" firstAttribute="leading" secondItem="oJh-PM-igV" secondAttribute="leading" id="AOC-rv-eM6"/>
+                            <constraint firstItem="qRR-JD-ROp" firstAttribute="leading" secondItem="rvc-Vk-caW" secondAttribute="leading" constant="10" id="5Lq-DU-Jdk"/>
                             <constraint firstItem="bU4-f1-qKx" firstAttribute="leading" secondItem="CMu-b9-bTZ" secondAttribute="trailing" constant="10" id="HbL-3K-vYi"/>
-                            <constraint firstItem="rvc-Vk-caW" firstAttribute="bottom" secondItem="tfH-AA-wx3" secondAttribute="bottom" constant="31" id="OBy-B6-azz"/>
                             <constraint firstItem="CMu-b9-bTZ" firstAttribute="leading" secondItem="7Ue-6M-h03" secondAttribute="trailing" constant="10" id="Ovh-bW-BJV"/>
                             <constraint firstItem="7Ue-6M-h03" firstAttribute="leading" secondItem="rvc-Vk-caW" secondAttribute="leading" constant="10" id="Qa0-dJ-8F0"/>
+                            <constraint firstItem="rvc-Vk-caW" firstAttribute="bottom" secondItem="qRR-JD-ROp" secondAttribute="bottom" constant="50" id="RKu-Xy-nFQ"/>
                             <constraint firstItem="rvc-Vk-caW" firstAttribute="trailing" secondItem="bU4-f1-qKx" secondAttribute="trailing" constant="10" id="Rht-NY-AnK"/>
+                            <constraint firstItem="rvc-Vk-caW" firstAttribute="trailing" secondItem="qRR-JD-ROp" secondAttribute="trailing" constant="10" id="RwB-la-6eD"/>
                             <constraint firstItem="7Ue-6M-h03" firstAttribute="top" secondItem="rvc-Vk-caW" secondAttribute="top" constant="10" id="fHH-Yu-KPP"/>
                             <constraint firstItem="bU4-f1-qKx" firstAttribute="top" secondItem="7Ue-6M-h03" secondAttribute="top" id="jsa-i0-Sub"/>
                             <constraint firstItem="oJh-PM-igV" firstAttribute="leading" secondItem="rvc-Vk-caW" secondAttribute="leading" constant="10" id="l0R-N8-Der"/>
@@ -670,6 +588,7 @@ nobody,not even the rain,has such small hands</mutableString>
                             <constraint firstItem="rvc-Vk-caW" firstAttribute="trailing" secondItem="hq1-MC-Evf" secondAttribute="trailing" id="w1V-gp-JmT"/>
                             <constraint firstItem="rvc-Vk-caW" firstAttribute="bottom" secondItem="hq1-MC-Evf" secondAttribute="bottom" id="w8x-1v-haX"/>
                             <constraint firstItem="rvc-Vk-caW" firstAttribute="trailing" secondItem="oJh-PM-igV" secondAttribute="trailing" constant="10" id="wsD-fh-DV0"/>
+                            <constraint firstItem="qRR-JD-ROp" firstAttribute="top" secondItem="oJh-PM-igV" secondAttribute="bottom" constant="10" id="zYD-23-lj1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rvc-Vk-caW"/>
                     </view>
@@ -678,7 +597,6 @@ nobody,not even the rain,has such small hands</mutableString>
                         <outlet property="authorLabel" destination="oJh-PM-igV" id="gnF-TB-wMV"/>
                         <outlet property="backgroundImageView" destination="hq1-MC-Evf" id="o5h-n4-BUg"/>
                         <outlet property="poemTitleLabel" destination="CMu-b9-bTZ" id="epy-YD-s6C"/>
-                        <outlet property="poemsScrollView" destination="tfH-AA-wx3" id="u6q-jd-ZqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meS-u3-Fgw" sceneMemberID="firstResponder"/>

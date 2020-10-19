@@ -15,7 +15,7 @@ import Social
 
 class ViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var quoteTextView: UITextView!
     @IBOutlet weak var authorNameLabel: UILabel!
     
     @IBOutlet weak var shareButton: UIButton!
@@ -24,8 +24,6 @@ class ViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var fetchedFavourites:[Favourite]=[]
-    
-//    let coreDataCtrl = CoreDataController.shared
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,10 +38,11 @@ class ViewController: UIViewController {
             self.backgroundImageView.alpha = 0.4
         }
         Quotes().getQuote{ (author, quote) in
-            self.quoteLabel.text = quote
+            self.quoteTextView.text = quote
+            self.alignTextVerticallyInContainer(textView: self.quoteTextView)
             self.authorNameLabel.text = author
             
-            if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
+            if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
                 self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: self.fetchedFavourites) ? .red : .lightGray
             }
         }
@@ -51,6 +50,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.alignTextVerticallyInContainer(textView: self.quoteTextView)
         ProgressHUD.dismiss()
     }
     
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addToFavourites(_ sender: UIButton) {
-        if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
+        if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
             var message:String=""
             if Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) {
                 favouriteButton.backgroundColor = .lightGray
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func shareToSocialMedia(_ sender: UIButton) {
-        if let quote = self.quoteLabel.text, let author = self.authorNameLabel.text {
+        if let quote = self.quoteTextView.text, let author = self.authorNameLabel.text {
             let objectToShare:[Any] = [quote, author]
             let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = sender
@@ -97,6 +97,13 @@ class ViewController: UIViewController {
         banner.rootViewController = self
         view.addSubview(banner)
     }
-
+    
+    // func copied from
+    // https://gist.github.com/illescasDaniel/c1a97d0fae8e6cd1ff127bd399671ecd
+    func alignTextVerticallyInContainer(textView:UITextView) {
+        var topCorrect = (textView.bounds.size.height - textView.contentSize.height * textView.zoomScale) / 2
+        topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect;
+        textView.contentInset.top = topCorrect
+    }
 }
 

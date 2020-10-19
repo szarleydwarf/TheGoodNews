@@ -53,8 +53,27 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func updateCell(cell:UITableViewCell, element:Any){
-        
-        
+        if !self.arrayToDisplayInTable.isEmpty {
+            switch typeToCompare {
+            case .quote:
+                let quote = element as! Favourite
+                print("QUOTES")
+                cell.textLabel?.text = quote.author
+                cell.detailTextLabel?.text = quote.quote
+                
+            case .poem:
+                let poem = element as! Poems
+                if let author = poem.author, let title = poem.title {
+                print("POEMS")
+                cell.textLabel?.text = author + " - " + title
+                }
+            case .userText:
+                print("USER TEXT")
+                
+            default:
+                print("QUOTES")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,25 +85,15 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
      - poem author and title (part of poem?) - sub
      - user text cell image of Q/P title or quote - regular
      */
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        if !self.arrayToDisplayInTable.isEmpty {
-            switch typeToCompare {
-            case .quote:
-                print("QUOTES")
-            case .poem:
-                print("POEMS")
-            case .userText:
-                print("USER TEXT")
-            default:
-                print("QUOTES")
-            }
-        }
         
         if cell.detailTextLabel == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: self.cellIdentifier)
         }
-        //        updateCell(cell, with: team)
+        
+        updateCell(cell: cell, element: self.arrayToDisplayInTable[0])
         
         return cell
     }
