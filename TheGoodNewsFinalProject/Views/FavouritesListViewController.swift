@@ -27,12 +27,14 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         self.table.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
         
         self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view)
-        print("viewDidLoad> \(self.arrayToDisplayInTable.count)")
+        print("viewDidLoad> \(self.arrayToDisplayInTable.count) ")
+        self.table.reloadData()
     }
     
     
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        self.arrayToDisplayInTable = []
         switch self.segmentController.selectedSegmentIndex {
         case 0:
             self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view)
@@ -49,6 +51,9 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         default:
             print("default")
         }
+        for el in self.arrayToDisplayInTable {
+            print("ELEMENT > \(el)")
+        }
         self.table.reloadData()
     }
     
@@ -57,19 +62,25 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             switch typeToCompare {
             case .quote:
                 let quote = element as! Favourite
-                print("QUOTES")
+                print("QUOTES \(quote.author); \(quote.quote)")
                 cell.textLabel?.text = quote.author
                 cell.detailTextLabel?.text = quote.quote
-                
+                 cell.imageView?.image = UIImage.init(named: "q")
+
             case .poem:
                 let poem = element as! Poems
                 if let author = poem.author, let title = poem.title {
-                print("POEMS")
+                    print("POEMS \(author)")
                 cell.textLabel?.text = author + " - " + title
                 }
+                cell.imageView?.image = UIImage.init(named: "p")
+
             case .userText:
+                let text = element as! UserQuotePoems
                 print("USER TEXT")
-                
+                cell.textLabel?.text = text.text
+                let imageName = (text.isQuote) ? "p" : "q"
+                cell.imageView?.image = UIImage.init(named: imageName)
             default:
                 print("QUOTES")
             }
@@ -93,7 +104,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: self.cellIdentifier)
         }
         
-        updateCell(cell: cell, element: self.arrayToDisplayInTable[0])
+        updateCell(cell: cell, element: self.arrayToDisplayInTable[indexPath.row])
         
         return cell
     }

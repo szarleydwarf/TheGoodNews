@@ -7,7 +7,6 @@
 //
 import GoogleMobileAds
 import UIKit
-//import CoreData
 import Kingfisher
 import ProgressHUD
 import Social
@@ -33,6 +32,9 @@ class ViewController: UIViewController {
         
         fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         
+//        Favourites().deleteAllCoreData("Favourite")
+//        Favourites().deleteAllCoreData("UserQuotePoems")
+        
         Backgrounds().getBackgroundImage{ url in
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
             self.backgroundImageView.alpha = 0.4
@@ -47,7 +49,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.alignTextVerticallyInContainer(textView: self.quoteTextView)
