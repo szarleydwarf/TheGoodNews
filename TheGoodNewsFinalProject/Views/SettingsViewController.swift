@@ -47,7 +47,10 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func showFavourites(_ sender: UIButton) {
-        print("TO BE IMLEMENTED SOON")
+        print("pressed...")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let favouritesViewController = storyboard.instantiateViewController(identifier: "FavouritesListViewController") as! FavouritesListViewController
+        self.navigationController?.pushViewController(favouritesViewController, animated: true)
     }
     
     @IBAction func signinOptions(_ sender: UIButton) {

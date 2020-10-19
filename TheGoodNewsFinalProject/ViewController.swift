@@ -42,8 +42,11 @@ class ViewController: UIViewController {
         Quotes().getQuote{ (author, quote) in
             self.quoteLabel.text = quote
             self.authorNameLabel.text = author
+            
+            if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
+                self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: self.fetchedFavourites) ? .red : .lightGray
+            }
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,10 +57,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBanner()
-        if let author = self.authorNameLabel.text, let quote = self.quoteLabel.text {
-            favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) ? .red : .lightGray
-        }
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,7 +89,6 @@ class ViewController: UIViewController {
             let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
-            print("SHARED")
         }
     }
     
