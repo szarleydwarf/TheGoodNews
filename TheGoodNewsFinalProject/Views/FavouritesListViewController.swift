@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 enum ElementType {
     case quote, poem, userText
@@ -18,6 +19,8 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     
     var arrayToDisplayInTable:[Any] = []
     var typeToCompare:ElementType?
+    var googleAdsManager = GoogleAdsManager()
+    var banner:GADBannerView!
     let cellIdentifier:String = "cell"
     
     override func viewDidLoad() {
@@ -27,8 +30,15 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         self.table.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
         
         self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view)
+        typeToCompare = .quote
         print("viewDidLoad> \(self.arrayToDisplayInTable.count) ")
         self.table.reloadData()
+        setBanner()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        banner.frame = googleAdsManager.getBannerSize(size: view.frame.size).integral
     }
     
     
@@ -39,20 +49,14 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         case 0:
             self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view)
             typeToCompare = ElementType.quote
-            print("case 0> \(self.arrayToDisplayInTable.count)")
         case 1:
             self.arrayToDisplayInTable = FavouritePoems().fetchPoems(view: self.view)
             typeToCompare = ElementType.poem
-            print("case 1> \(self.arrayToDisplayInTable.count)")
         case 2:
             self.arrayToDisplayInTable = UserPoemsAndQutes().fetchUserTexts(view: self.view)
             typeToCompare = ElementType.userText
-            print("case 2> \(self.arrayToDisplayInTable.count)")
         default:
             print("default")
-        }
-        for el in self.arrayToDisplayInTable {
-            print("ELEMENT > \(el)")
         }
         self.table.reloadData()
     }
@@ -62,22 +66,19 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             switch typeToCompare {
             case .quote:
                 let quote = element as! Favourite
-                print("QUOTES \(quote.author); \(quote.quote)")
                 cell.textLabel?.text = quote.author
                 cell.detailTextLabel?.text = quote.quote
-                 cell.imageView?.image = UIImage.init(named: "q")
-
+                cell.imageView?.image = UIImage.init(named: "q")
+                
             case .poem:
                 let poem = element as! Poems
                 if let author = poem.author, let title = poem.title {
-                    print("POEMS \(author)")
-                cell.textLabel?.text = author + " - " + title
+                    cell.textLabel?.text = author + " - " + title
                 }
                 cell.imageView?.image = UIImage.init(named: "p")
-
+                
             case .userText:
                 let text = element as! UserQuotePoems
-                print("USER TEXT")
                 cell.textLabel?.text = text.text
                 let imageName = (text.isQuote) ? "p" : "q"
                 cell.imageView?.image = UIImage.init(named: imageName)
@@ -107,5 +108,11 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         updateCell(cell: cell, element: self.arrayToDisplayInTable[indexPath.row])
         
         return cell
+    }
+    
+    func setBanner() {
+        self.banner = googleAdsManager.getBanner()
+        banner.rootViewController = self
+        view.addSubview(banner)
     }
 }

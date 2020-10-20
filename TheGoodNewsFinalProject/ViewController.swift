@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
         Backgrounds().getBackgroundImage{ url in
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
-            self.backgroundImageView.alpha = 0.4
+            self.backgroundImageView.alpha = 0.3
         }
         Quotes().getQuote{ (author, quote) in
             self.quoteTextView.text = quote
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
             } else {
                 favouriteButton.backgroundColor = .red
                 if Favourites().saveFavourite(authorName: author, quote: quote) {
-                    message = "SAVED 2 FAVOURITES"
+                    message = "SAVED TO FAVOURITES"
                 }
             }
             Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
