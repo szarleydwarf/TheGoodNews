@@ -8,7 +8,6 @@
 
 import GoogleMobileAds
 import UIKit
-import CoreData
 import Kingfisher
 import ProgressHUD
 import Social
@@ -22,7 +21,24 @@ class PoemsViewController: UIViewController {
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
+    var fetchedPoems:[Poems] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ProgressHUD.colorHUD = .red
+        ProgressHUD.animationType = .circleRotateChase
+        ProgressHUD.show()
+        
+        Backgrounds().getBackgroundImage{ url in
+            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
+            self.backgroundImageView.alpha = 0.4
+        }
+        
+        PoemModel().getPoem{author, title, poem in
+            print("Get poems called")
+        
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
