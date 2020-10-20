@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         }
         Quotes().getQuote{ (author, quote) in
             self.quoteTextView.text = quote
-            self.alignTextVerticallyInContainer(textView: self.quoteTextView)
+            ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
             self.authorNameLabel.text = author
             
             if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.alignTextVerticallyInContainer(textView: self.quoteTextView)
+        ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
         ProgressHUD.dismiss()
     }
     
@@ -100,12 +100,6 @@ class ViewController: UIViewController {
         view.addSubview(banner)
     }
     
-    // func copied from
-    // https://gist.github.com/illescasDaniel/c1a97d0fae8e6cd1ff127bd399671ecd
-    func alignTextVerticallyInContainer(textView:UITextView) {
-        var topCorrect = (textView.bounds.size.height - textView.contentSize.height * textView.zoomScale) / 2
-        topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect;
-        textView.contentInset.top = topCorrect
-    }
+
 }
 

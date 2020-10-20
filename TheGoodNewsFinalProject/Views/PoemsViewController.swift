@@ -16,8 +16,7 @@ class PoemsViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var poemTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var poemLabel: UILabel!
-    @IBOutlet weak var poemsScrollView: UIScrollView!
+    @IBOutlet weak var poemTextView: UITextView!
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
@@ -35,9 +34,18 @@ class PoemsViewController: UIViewController {
         }
         
         PoemModel().getPoem{author, title, poem in
-            print("Get poems called")
-        
+            print("Get poems called > \(author) < \n > \(title) < \n > \(poem) <")
+            self.authorLabel.text = author
+            self.poemTitleLabel.text = title
+            self.poemTextView.text = poem
+            
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ViewHelper().alignTextVerticallyInContainer(textView: self.poemTextView)
+        ProgressHUD.dismiss()
     }
     
     override func viewDidLoad() {
