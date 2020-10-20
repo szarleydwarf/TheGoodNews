@@ -63,8 +63,8 @@ class Favourites {
         return false
     }
     
-    func deleteAllCoreData(_ entity:String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+    func deleteAllCoreData(_ entityName:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fetchRequest.returnsObjectsAsFaults = false
         do {
             let results = try coreDataController.mainCtx.fetch(fetchRequest)
@@ -73,7 +73,7 @@ class Favourites {
                 coreDataController.mainCtx.delete(objectData)
             }
         } catch let error {
-            print("Detele all data in \(entity) error :", error)
+            print("Detele all data in \(entityName) error :", error)
         }
     }
 }
