@@ -37,7 +37,6 @@ class PoemsViewController: UIViewController {
         }
         
         PoemModel().getPoem{author, title, poem in
-            print("Get poems called > \(author) < \n > \(title) < \n > \(poem) <")
             self.authorLabel.text = author
             self.poemTitleLabel.text = title
             self.poemTextView.text = poem
@@ -49,7 +48,6 @@ class PoemsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //        ViewHelper().alignTextVerticallyInContainer(textView: self.poemTextView)
         ProgressHUD.dismiss()
     }
     

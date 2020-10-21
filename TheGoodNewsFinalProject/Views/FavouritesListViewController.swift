@@ -80,6 +80,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             case .userText:
                 let text = element as! UserQuotePoems
                 cell.textLabel?.text = text.text
+                cell.detailTextLabel?.text = getUserName()
                 let imageName = (text.isQuote) ? "p" : "q"
                 cell.imageView?.image = UIImage.init(named: imageName)
             default:
@@ -88,6 +89,12 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    func getUserName() ->String {
+        guard let email = UserDefaults.standard.string(forKey: "email") else {return "You"}
+        let userNameArray = email.components(separatedBy: "@")
+        return userNameArray[0]
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayToDisplayInTable.count
     }
