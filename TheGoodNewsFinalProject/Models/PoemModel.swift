@@ -13,21 +13,19 @@ struct PoemModel {
         guard let url = URL(string: "https://www.poemist.com/api/v1/randompoems") else {return}
         URLSession.shared.dataTask(with: url) {data, response, error in
             guard let data = data else {return}
-            do {
-                guard let json = try? JSONDecoder().decode([Poem].self, from: data) else {return}
-                
-                for poem in json {
-                    poems.append(poem)
-                }
-                DispatchQueue.main.async {
-                    let randomInt = Int.random(in: 1..<poems.count)
-                    completion((poems[randomInt].poet,
-                                poems[randomInt].title,
-                                poems[randomInt].content))
-                }
-            } catch {
-                print("error: ", error)
+            
+            guard let json = try? JSONDecoder().decode([Poem].self, from: data) else {return}
+            
+            for poem in json {
+                poems.append(poem)
             }
+            DispatchQueue.main.async {
+                let randomInt = Int.random(in: 1..<poems.count)
+                completion((poems[randomInt].poet,
+                            poems[randomInt].title,
+                            poems[randomInt].content))
+            }
+            
         }.resume()
     }
 }

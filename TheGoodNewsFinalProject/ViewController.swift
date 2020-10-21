@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var fetchedFavourites:[Favourite]=[]
+    let favImageStringTapped:String = "star_fav"
+    let favImageString:String = "star"
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,15 +41,17 @@ class ViewController: UIViewController {
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
             self.backgroundImageView.alpha = 0.3
         }
+        
         Quotes().getQuote{ (author, quote) in
             self.quoteTextView.text = quote
             ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
             self.authorNameLabel.text = author
             
             if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
-                self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: self.fetchedFavourites) ? .red : .lightGray
+                self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: self.fetchedFavourites) ? .red : .clear
             }
         }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +62,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.favouriteButton.layer.cornerRadius = 15
         setBanner()
     }
     
@@ -70,12 +75,12 @@ class ViewController: UIViewController {
         if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
             var message:String=""
             if Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) {
-                favouriteButton.backgroundColor = .lightGray
+                favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
                 if Favourites().deleteFavourite( author: author, quote: quote) {
                     message = "REMOVED FROM FAVOURITES"
                 }
             } else {
-                favouriteButton.backgroundColor = .red
+                favouriteButton.setImage(UIImage(named: favImageStringTapped), for: .normal)
                 if Favourites().saveFavourite(authorName: author, quote: quote) {
                     message = "SAVED TO FAVOURITES"
                 }

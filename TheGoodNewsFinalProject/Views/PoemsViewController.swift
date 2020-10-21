@@ -22,7 +22,9 @@ class PoemsViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var fetchedPoems:[Poems] = []
-    
+    let favImageStringTapped:String = "star_fav"
+    let favImageString:String = "star"
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ProgressHUD.colorHUD = .red
@@ -53,6 +55,7 @@ class PoemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.favouriteButton.layer.cornerRadius = 15
         setBanner()
     }
     
@@ -65,12 +68,12 @@ class PoemsViewController: UIViewController {
         if let author = self.authorLabel.text, let title = self.poemTitleLabel.text, let poemText = self.poemTextView.text {
             var message:String = ""
             if FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poemText) {
-                self.favouriteButton.backgroundColor = .lightGray
+                favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
                 if FavouritePoems().deletePoem(poetName: author, poemTitle: title, poemText: poemText) {
                     message = "REMOVED FROM FAVOURITES"
                 }
             } else {
-                self.favouriteButton.backgroundColor = .red
+                favouriteButton.setImage(UIImage(named: favImageStringTapped), for: .normal)
                 if FavouritePoems().savePoem(poetName: author, poemTitle: title, poemText: poemText){
                     message = "SAVED TO FAVOURITES"
                 }

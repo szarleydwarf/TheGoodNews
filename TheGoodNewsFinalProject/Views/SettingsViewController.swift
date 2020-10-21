@@ -25,9 +25,6 @@ class SettingsViewController: UIViewController {
     var userName:String = ""
     
     @IBOutlet weak var userImageView: UIImageView!
-    /*
-     - choose user image
-     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,18 +103,14 @@ class SettingsViewController: UIViewController {
     func isUserSigned() {
         if let email = self.email {
             do {
-                do {
-                    let password = try KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email).readPassword()
-                    self.isSigned =  password.count > 0 ? true : false
-                } catch {
-                    self.isSigned = false
-                }
-            }
-            catch {
-                fatalError("Error reading password from keychain - \(error)")
+                let password = try KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email).readPassword()
+                self.isSigned =  password.count > 0 ? true : false
+            } catch {
+                self.isSigned = false
             }
         }
     }
+    
     
     func setBanner() {
         self.banner = googleAdsManager.getBanner()
