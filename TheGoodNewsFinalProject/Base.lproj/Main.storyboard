@@ -53,7 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-V6-Aev">
-                                <rect key="frame" x="344" y="60" width="680" height="50"/>
+                                <rect key="frame" x="954" y="60" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eSx-V6-Aev" secondAttribute="height" multiplier="1:1" id="1t8-C1-4R8"/>
                                     <constraint firstAttribute="height" constant="50" id="uNe-4w-tJU"/>
@@ -85,14 +85,14 @@
                             <constraint firstItem="Odd-Rz-aXl" firstAttribute="leading" secondItem="Upc-2C-vfz" secondAttribute="leading" constant="20" id="8wj-Tc-RLb"/>
                             <constraint firstItem="Qi5-hw-YIJ" firstAttribute="top" secondItem="pjy-HN-Cjo" secondAttribute="bottom" constant="10" id="DPa-0n-Rhz"/>
                             <constraint firstItem="Odd-Rz-aXl" firstAttribute="top" secondItem="Upc-2C-vfz" secondAttribute="top" constant="10" id="N91-Qh-eOi"/>
-                            <constraint firstItem="eSx-V6-Aev" firstAttribute="leading" secondItem="Odd-Rz-aXl" secondAttribute="trailing" constant="274" id="NcK-Ms-pSd"/>
+                            <constraint firstItem="eSx-V6-Aev" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Odd-Rz-aXl" secondAttribute="trailing" constant="8" symbolic="YES" id="NcK-Ms-pSd"/>
                             <constraint firstItem="Qi5-hw-YIJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Oj0-en-0X4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eSx-V6-Aev" secondAttribute="trailing" constant="20" id="UmB-qK-k1Q"/>
                             <constraint firstItem="pjy-HN-Cjo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Wpr-GF-4T1"/>
                             <constraint firstItem="pjy-HN-Cjo" firstAttribute="top" secondItem="Odd-Rz-aXl" secondAttribute="bottom" constant="10" id="Yee-P6-Fgn"/>
                             <constraint firstItem="Upc-2C-vfz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aes-1M-aQR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qi5-hw-YIJ" secondAttribute="bottom" constant="60" id="hDG-vT-7Nv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qi5-hw-YIJ" secondAttribute="trailing" constant="10" id="ilV-Yb-aWT"/>
-                            <constraint firstItem="eSx-V6-Aev" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Upc-2C-vfz" secondAttribute="trailing" id="l2W-Kn-uLn"/>
                             <constraint firstItem="eSx-V6-Aev" firstAttribute="top" secondItem="Odd-Rz-aXl" secondAttribute="top" id="lQE-sL-I8G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pjy-HN-Cjo" secondAttribute="trailing" constant="10" id="qma-56-ziZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Upc-2C-vfz" secondAttribute="trailing" id="wF6-gH-zaJ"/>
@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="50" width="1024" height="1251"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-bs-C2a">
-                                <rect key="frame" x="86.999999999999943" y="70" width="850.00000000000011" height="240"/>
+                                <rect key="frame" x="391.99999999999994" y="70" width="240.00000000000017" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mAE-bs-C2a" secondAttribute="height" multiplier="1:1" id="PMi-7E-BX5"/>
                                     <constraint firstAttribute="width" constant="240" id="YPj-ie-nhf"/>
@@ -192,7 +192,6 @@
                             <constraint firstItem="0ln-z3-381" firstAttribute="top" secondItem="WbY-oh-Pmm" secondAttribute="bottom" constant="20" id="8TS-l1-102"/>
                             <constraint firstItem="WbY-oh-Pmm" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="Ble-EL-j8C"/>
                             <constraint firstItem="WbY-oh-Pmm" firstAttribute="top" secondItem="mAE-bs-C2a" secondAttribute="bottom" constant="20" id="SuA-SF-7TE"/>
-                            <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="mAE-bs-C2a" secondAttribute="trailing" constant="87" id="VXf-dV-fC0"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="bql-JL-fXz" secondAttribute="trailing" id="Y8Y-dy-KE0"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="bottom" secondItem="bql-JL-fXz" secondAttribute="bottom" id="aF2-TK-hLm"/>
                             <constraint firstItem="0ln-z3-381" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="bhC-fC-w2J"/>
@@ -546,7 +545,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="380" id="dVO-e0-4Ov"/>
                                 </constraints>
-                                <string key="text">You were given to us a little soon than we expected
+                                <mutableString key="text">You were given to us a little soon than we expected
  You were wanted and loved even before you arrived
  Ready to take on what ever came your way
  You're one of God's precious miracles.
@@ -574,7 +573,7 @@
  Seeing you improve with each passing day
  Knowing you're one step closer to coming home
  Never forgetting to thank God
- Because you're one of God's precious miracles.</string>
+ Because you're one of God's precious miracles.</mutableString>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
