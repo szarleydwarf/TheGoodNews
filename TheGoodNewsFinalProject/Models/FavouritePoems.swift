@@ -12,10 +12,11 @@ import CoreData
 class FavouritePoems {
     let coreDataController = CoreDataController.shared
     
-    func fetchPoems(view: UIView) -> [Poems] {
+    func fetchPoems(view: UIView, userEmail:String="Unknown@Unknown.org") -> [Poems] {
         var poems:[Poems] = []
         let ctx = coreDataController.mainCtx
         let request: NSFetchRequest<Poems> = Poems.fetchRequest()
+        request.predicate = NSPredicate(format: "userEmail = %@", userEmail)
         do {
             poems = try ctx.fetch(request)
         } catch let err {
@@ -24,21 +25,22 @@ class FavouritePoems {
         return poems
     }
     
-    func savePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String) -> Bool {
+    func savePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool {
         let ctx = self.coreDataController.mainCtx
         let poem = Poems(context: ctx)
         poem.author = poetName
         poem.title = poemTitle
         poem.poemText = poemText
         poem.isFavourite = true
+        poem.userEmail = userEmail
         
         return self.coreDataController.save()
     }
     
-    func deletePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String) -> Bool  {
+    func deletePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool  {
         let ctx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Poems> = Poems.fetchRequest()
-        request.predicate = NSPredicate(format: "author = %@ && title = %@ && poemText = %@", poetName, poemTitle, poemText)
+        request.predicate = NSPredicate(format: "author = %@ && title = %@ && poemText = %@ && userEmail = %@", poetName, poemTitle, poemText, userEmail)
         do {
             let result = try ctx.fetch(request)
             if result.count > 0 {
@@ -47,17 +49,19 @@ class FavouritePoems {
         } catch let err {
             print("deletion error in poems > \(err)")
         }
-
+        
         return self.coreDataController.save()
     }
     
-    func checkIfFavourite(poetName:String = "UNKNOWN", poemTitle:String, poemText:String) -> Bool {
+    func checkIfFavourite(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool {
         let poems = self.fetchPoems(view: UIView())
         for favPoem in poems {
-            if poetName == favPoem.author{
-                if poemTitle == favPoem.title{
-                    if poemText == favPoem.poemText {
-                        return true
+            if let email = favPoem.userEmail, email == userEmail{
+                if poetName == favPoem.author{
+                    if poemTitle == favPoem.title{
+                        if poemText == favPoem.poemText {
+                            return true
+                        }
                     }
                 }
             }
