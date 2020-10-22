@@ -21,10 +21,10 @@ class AddUserTextViewController: UIViewController {
     @IBAction func saveText(_ sender: UIButton) {
         guard let textToSave = self.quotePoemTextView.text, let titleToSave = self.titleTextField.text, !textToSave.isEmpty else {return}
         
-        if UserPoemsAndQutes().saveUserQuoteOrPoem(title: titleToSave, text: textToSave, isQuote: self.quotePoemSwitch.isOn) {
+        if UserPoemsAndQutes().saveUserQuoteOrPoem(title: titleToSave, text: textToSave, isQuote: self.quotePoemSwitch.isOn, userEmail: User().email) {
             let quoteOrPoem = self.quotePoemSwitch.isOn ? "poem" : "quote"
             Toast().showToast(message: NSString(format: "Your %@ was saved", quoteOrPoem) as String , font: .systemFont(ofSize: 22.0), view: self.view)
-            DispatchQueue.main.asyncAfter(deadline: .now() + Toast().animationDuration, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 1.0), execute: {
                 self.navigationController?.popViewController(animated: true)
             })
         }
