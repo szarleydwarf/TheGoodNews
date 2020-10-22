@@ -55,6 +55,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         default:
             print("default")
         }
+        print("LISTS > \(User().email) > \(typeToCompare) =  \(arrayToDisplayInTable.count)")
         self.table.reloadData()
     }
     

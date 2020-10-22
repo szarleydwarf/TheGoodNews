@@ -18,13 +18,14 @@ class SettingsViewController: UIViewController {
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
-    let user:User = User()
+    var user:User!
     var userName:String = ""
     
     @IBOutlet weak var userImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user = User()
         setBanner()
         changeSignInButtonTitle()
         displayUserNameLabel()
@@ -62,7 +63,6 @@ class SettingsViewController: UIViewController {
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
         if user.isSigned {
-            print("TO BE IMLEMENTED SOON")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let addTextViewController = storyboard.instantiateViewController(identifier: "AddUserTextViewController") as! AddUserTextViewController
             self.navigationController?.pushViewController(addTextViewController, animated: true)
