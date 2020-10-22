@@ -16,6 +16,10 @@ class User {
     var name:String?
     var isSigned:Bool = false
     
+    func setUserInUserDefaults(email: String) {
+        self.userDefaults.set(email, forKey: self.stringEmail)
+    }
+    
     func getUserEmail() -> String? {
         return userDefaults.string(forKey: stringEmail)
     }

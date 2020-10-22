@@ -18,17 +18,12 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     @IBOutlet weak var emailTextField: UITextField!
     
     var email:String?
-    let userDefaults = UserDefaults.standard
-    let stringEmail = "email"
-    // - sign in with apple (fb?, google?)
-    
+    let user:User = User()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.email = userDefaults.string(forKey: stringEmail)
-        if let email = self.email {
-            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email)
+        let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: user.email)
             emailTextField.text = passwordItem.account
-        }
     }
     
     
@@ -38,7 +33,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         
         Auth.auth().createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
             Toast().showToast(message: "Hello \(newEmail)", font: .systemFont(ofSize: 18), view: self.view)
-            self.userDefaults.set(newEmail, forKey: self.stringEmail)
+            self.user.setUserInUserDefaults(email: newEmail)
+
         }
         do {
             if let originalEmail = self.email {
