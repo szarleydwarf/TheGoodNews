@@ -37,9 +37,9 @@ class ViewController: UIViewController {
         self.email = user.email
         fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: email)
         
-        //        Favourites().deleteAllCoreData("Favourite")
-        //        Favourites().deleteAllCoreData("UserQuotePoems")
-        
+Favourites().deleteAllCoreData("Favourite")
+Favourites().deleteAllCoreData("UserQuotePoems")
+
         Backgrounds().getBackgroundImage{ url in
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
             self.backgroundImageView.alpha = 0.3

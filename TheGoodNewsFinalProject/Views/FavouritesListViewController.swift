@@ -23,15 +23,14 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     var banner:GADBannerView!
     let cellIdentifier:String = "cell"
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.table.dataSource = self
         self.table.delegate = self
         self.table.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
-        
-        self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view)
+        self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: User().email)
         typeToCompare = .quote
-        print("viewDidLoad> \(self.arrayToDisplayInTable.count) ")
         self.table.reloadData()
         setBanner()
     }
@@ -41,20 +40,18 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         banner.frame = googleAdsManager.getBannerSize(size: view.frame.size).integral
     }
     
-    
-    
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         self.arrayToDisplayInTable = []
         switch self.segmentController.selectedSegmentIndex {
         case 0:
-            self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view)
+            self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: User().email)
             typeToCompare = ElementType.quote
         case 1:
-            self.arrayToDisplayInTable = FavouritePoems().fetchPoems(view: self.view)
+            self.arrayToDisplayInTable = FavouritePoems().fetchPoems(view: self.view, userEmail: User().email)
             typeToCompare = ElementType.poem
         case 2:
-            self.arrayToDisplayInTable = UserPoemsAndQutes().fetchUserTexts(view: self.view)
-            typeToCompare = ElementType.userText
+            self.arrayToDisplayInTable = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: User().email)
+            typeToCompare = .userText
         default:
             print("default")
         }
@@ -80,7 +77,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             case .userText:
                 let text = element as! UserQuotePoems
                 cell.textLabel?.text = text.text
-                cell.detailTextLabel?.text = getUserName()
+                cell.detailTextLabel?.text = User().name
                 let imageName = (text.isQuote) ? "p" : "q"
                 cell.imageView?.image = UIImage.init(named: imageName)
             default:
@@ -89,21 +86,9 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    func getUserName() ->String {
-        guard let email = UserDefaults.standard.string(forKey: "email") else {return "You"}
-        let userNameArray = email.components(separatedBy: "@")
-        return userNameArray[0]
-        
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayToDisplayInTable.count
     }
-    
-    /*
-     - qoute cell just fragment of the qute plus author name - sub
-     - poem author and title (part of poem?) - sub
-     - user text cell image of Q/P title or quote - regular
-     */
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
