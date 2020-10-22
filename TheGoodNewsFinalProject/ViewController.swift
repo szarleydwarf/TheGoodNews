@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var banner:GADBannerView!
     var fetchedFavourites:[Favourite]=[]
     var user:User = User()
+    var email:String = ""
     let favImageStringTapped:String = "star_fav"
     let favImageString:String = "star"
     
@@ -32,11 +33,10 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        if let email = user.email {
-            fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: email)
-        } else {
-            fetchedFavourites = Favourites().fetchFavourites(view: self.view)
-        }
+        
+        self.email = user.email
+        fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: email)
+        
         //        Favourites().deleteAllCoreData("Favourite")
         //        Favourites().deleteAllCoreData("UserQuotePoems")
         
@@ -50,8 +50,9 @@ class ViewController: UIViewController {
             ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
             self.authorNameLabel.text = author
             
-            if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text, let email = self.user.email {
-                self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: email, favourites: self.fetchedFavourites) ? .red : .clear
+            if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text{
+                let imageString = Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email, favourites: self.fetchedFavourites) ? self.favImageStringTapped : self.favImageString
+                self.favouriteButton.setImage(UIImage(named: imageString), for: .normal)
             }
         }
         
@@ -65,7 +66,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.favouriteButton.layer.cornerRadius = 15
         setBanner()
     }
     
@@ -78,19 +78,20 @@ class ViewController: UIViewController {
         if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
             var message:String=""
             
-            if Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) {
+            if Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email , favourites: fetchedFavourites) {
                 favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
-                if Favourites().deleteFavourite( author: author, quote: quote) {
+                if Favourites().deleteFavourite( author: author, quote: quote, userEmail: self.email ) {
                     message = "REMOVED FROM FAVOURITES"
                 }
             } else {
                 favouriteButton.setImage(UIImage(named: favImageStringTapped), for: .normal)
-                if Favourites().saveFavourite(authorName: author, quote: quote) {
+                if Favourites().saveFavourite(authorName: author, quote: quote, userEmail: self.email ) {
                     message = "SAVED TO FAVOURITES"
                 }
             }
+        
             Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
-            self.fetchedFavourites = Favourites().fetchFavourites(view: self.view)
+            self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email )
         }
     }
     

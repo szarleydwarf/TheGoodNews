@@ -12,7 +12,7 @@ import CoreData
 class Favourites {
     let coreDataController = CoreDataController.shared
     // todo ad
-    func fetchFavourites(view:UIView, userEmail:String="Unknown") -> [Favourite] {
+    func fetchFavourites(view:UIView, userEmail:String="Unknown@Unknown.org") -> [Favourite] {
         var fetchedFavourites:[Favourite]=[]
         let ctx = coreDataController.mainCtx
         let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
@@ -25,7 +25,7 @@ class Favourites {
         return fetchedFavourites
     }
     
-    func saveFavourite(authorName:String, quote:String, userEmail:String="Unknown") -> Bool {
+    func saveFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let favourite = Favourite(context: mainCtx)
         favourite.author = authorName
@@ -36,7 +36,7 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func deleteFavourite(author: String, quote: String, userEmail:String="Unknown") -> Bool {
+    func deleteFavourite(author: String, quote: String, userEmail:String="Unknown@Unknown.org") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
         request.predicate = NSPredicate(format: "author = %@ && quote = %@ && userEmail = %@", author, quote, userEmail)
@@ -52,7 +52,7 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func checkIfFavourite(authorName:String, quote:String, userEmail:String="Unknown", favourites:[Favourite]) -> Bool{
+    func checkIfFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", favourites:[Favourite]) -> Bool{
         for favQuote in favourites {
             if let email = favQuote.userEmail, email == userEmail {
                 if let author = favQuote.author, let oneQoute = favQuote.quote {
