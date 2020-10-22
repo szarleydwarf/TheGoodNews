@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var fetchedFavourites:[Favourite]=[]
+    var user:User = User()
     let favImageStringTapped:String = "star_fav"
     let favImageString:String = "star"
     
@@ -31,11 +32,13 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        
-        fetchedFavourites = Favourites().fetchFavourites(view: self.view)
-        
-//        Favourites().deleteAllCoreData("Favourite")
-//        Favourites().deleteAllCoreData("UserQuotePoems")
+        if let email = user.email {
+            fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: email)
+        } else {
+            fetchedFavourites = Favourites().fetchFavourites(view: self.view)
+        }
+        //        Favourites().deleteAllCoreData("Favourite")
+        //        Favourites().deleteAllCoreData("UserQuotePoems")
         
         Backgrounds().getBackgroundImage{ url in
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
@@ -47,13 +50,13 @@ class ViewController: UIViewController {
             ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
             self.authorNameLabel.text = author
             
-            if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
-                self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: self.fetchedFavourites) ? .red : .clear
+            if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text, let email = self.user.email {
+                self.favouriteButton.backgroundColor = Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: email, favourites: self.fetchedFavourites) ? .red : .clear
             }
         }
         
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
@@ -74,6 +77,7 @@ class ViewController: UIViewController {
     @IBAction func addToFavourites(_ sender: UIButton) {
         if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
             var message:String=""
+            
             if Favourites().checkIfFavourite(authorName: author, quote: quote, favourites: fetchedFavourites) {
                 favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
                 if Favourites().deleteFavourite( author: author, quote: quote) {
@@ -89,7 +93,7 @@ class ViewController: UIViewController {
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view)
         }
     }
-
+    
     @IBAction func shareToSocialMedia(_ sender: UIButton) {
         if let quote = self.quoteTextView.text, let author = self.authorNameLabel.text {
             let objectToShare:[Any] = [quote, author]
@@ -105,6 +109,6 @@ class ViewController: UIViewController {
         view.addSubview(banner)
     }
     
-
+    
 }
 

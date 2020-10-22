@@ -18,24 +18,14 @@ class SettingsViewController: UIViewController {
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
-    var email:String?
-    var isSigned:Bool = false
-    let userDefaults = UserDefaults.standard
-    let stringEmail = "email"
+    let user:User = User()
     var userName:String = ""
     
     @IBOutlet weak var userImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.email = userDefaults.string(forKey: stringEmail)
         setBanner()
-        isUserSigned()
-        if self.isSigned {
-            getUserName()
-        }
-        displayUserNameLabel()
-        changeSignInButtonTitle()
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,14 +42,14 @@ class SettingsViewController: UIViewController {
     
     @IBAction func signinOptions(_ sender: UIButton) {
         //change sign in to sign off
-        if !self.isSigned {
+        if !user.isSigned {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             do {
                 try Auth.auth().signOut()
-                self.isSigned = false
+                user.isSigned = false
                 changeSignInButtonTitle()
                 displayUserNameLabel()
             } catch let err{
@@ -69,7 +59,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
-        if self.isSigned {
+        if user.isSigned {
             print("TO BE IMLEMENTED SOON")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let addTextViewController = storyboard.instantiateViewController(identifier: "AddUserTextViewController") as! AddUserTextViewController
@@ -79,35 +69,18 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func getUserName() {
-        if let email = self.email {
-            let userNameArray = email.components(separatedBy: "@")
-            self.userName  = userNameArray[0]
-        }
-    }
-    
+   
     func changeSignInButtonTitle () {
-        let title =  self.isSigned ? "Sign Out" : "Sign In"
+        let title =  user.isSigned ? "Sign Out" : "Sign In"
         self.signInButton.setTitle(title, for: .normal)
     }
     
     func displayUserNameLabel() {
-        if self.isSigned {
+        if user.isSigned, let name = user.name {
             self.usernameLabel.isHidden = false
-            self.usernameLabel.text = self.userName
+            self.usernameLabel.text = name
         } else {
             self.usernameLabel.isHidden = true
-        }
-    }
-    
-    func isUserSigned() {
-        if let email = self.email {
-            do {
-                let password = try KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email).readPassword()
-                self.isSigned =  password.count > 0 ? true : false
-            } catch {
-                self.isSigned = false
-            }
         }
     }
     
