@@ -78,9 +78,9 @@ class ViewController: UIViewController {
         if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text {
             var message:String=""
             
-            if Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email , favourites: fetchedFavourites) {
+            if Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email, favourites: fetchedFavourites) {
                 favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
-                if Favourites().deleteFavourite( author: author, quote: quote, userEmail: self.email ) {
+                if Favourites().deleteFavourite( author: author, quote: quote, userEmail: self.email) {
                     message = "REMOVED FROM FAVOURITES"
                 }
             } else {

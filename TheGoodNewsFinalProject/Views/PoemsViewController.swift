@@ -22,16 +22,19 @@ class PoemsViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var fetchedPoems:[Poems] = []
+    var user:User = User()
+    var email:String = ""
     let favImageStringTapped:String = "star_fav"
     let favImageString:String = "star"
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ProgressHUD.colorHUD = .red
         ProgressHUD.animationType = .circleRotateChase
         ProgressHUD.show()
         
-        fetchedPoems = FavouritePoems().fetchPoems(view: self.view)
+        self.email = user.email
+        fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
         
         Backgrounds().getBackgroundImage{ url in
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
@@ -43,8 +46,8 @@ class PoemsViewController: UIViewController {
             self.poemTitleLabel.text = title
             self.poemTextView.text = poem
             
-            self.favouriteButton.backgroundColor = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem) ? .red : .lightGray
-            
+            var imageName = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem, userEmail: self.email) ? self.favImageStringTapped : self.favImageString
+            self.favouriteButton.setImage(UIImage(named: imageName), for: .normal)
         }
     }
     
@@ -67,14 +70,14 @@ class PoemsViewController: UIViewController {
     @IBAction func saveFavourite(_ sender: UIButton) {
         if let author = self.authorLabel.text, let title = self.poemTitleLabel.text, let poemText = self.poemTextView.text {
             var message:String = ""
-            if FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poemText) {
+            if FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email) {
                 favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
-                if FavouritePoems().deletePoem(poetName: author, poemTitle: title, poemText: poemText) {
+                if FavouritePoems().deletePoem(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email) {
                     message = "REMOVED FROM FAVOURITES"
                 }
             } else {
                 favouriteButton.setImage(UIImage(named: favImageStringTapped), for: .normal)
-                if FavouritePoems().savePoem(poetName: author, poemTitle: title, poemText: poemText){
+                if FavouritePoems().savePoem(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email){
                     message = "SAVED TO FAVOURITES"
                 }
             }
