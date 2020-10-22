@@ -11,11 +11,12 @@ import CoreData
 
 class Favourites {
     let coreDataController = CoreDataController.shared
-    
-    func fetchFavourites(view:UIView) -> [Favourite] {
+    // todo ad
+    func fetchFavourites(view:UIView, userEmail:String="Unknown") -> [Favourite] {
         var fetchedFavourites:[Favourite]=[]
         let ctx = coreDataController.mainCtx
         let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "userEmail = %@", userEmail)
         do{
             fetchedFavourites = try ctx.fetch(fetchRequest)
         } catch let err {
@@ -24,20 +25,21 @@ class Favourites {
         return fetchedFavourites
     }
     
-    func saveFavourite(authorName:String, quote:String) -> Bool {
+    func saveFavourite(authorName:String, quote:String, userEmail:String="Unknown") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let favourite = Favourite(context: mainCtx)
         favourite.author = authorName
         favourite.quote = quote
         favourite.isFavourite = true
+        favourite.userEmail = userEmail
         
         return self.coreDataController.save()
     }
     
-    func deleteFavourite(author: String, quote: String) -> Bool {
+    func deleteFavourite(author: String, quote: String, userEmail:String="Unknown") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
-        request.predicate = NSPredicate(format: "author = %@ && quote = %@", author, quote)
+        request.predicate = NSPredicate(format: "author = %@ && quote = %@ && userEmail = %@", author, quote, userEmail)
         
         do {
             let result = try mainCtx.fetch(request)
@@ -50,12 +52,14 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func checkIfFavourite(authorName:String, quote:String, favourites:[Favourite]) -> Bool{
+    func checkIfFavourite(authorName:String, quote:String, userEmail:String="Unknown", favourites:[Favourite]) -> Bool{
         for favQuote in favourites {
-            if let author = favQuote.author, let oneQoute = favQuote.quote {
-                if author == authorName {
-                    if oneQoute == quote {
-                        return true
+            if let email = favQuote.userEmail, email == userEmail {
+                if let author = favQuote.author, let oneQoute = favQuote.quote {
+                    if author == authorName {
+                        if oneQoute == quote {
+                            return true
+                        }
                     }
                 }
             }
