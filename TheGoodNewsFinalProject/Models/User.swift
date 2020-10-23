@@ -43,4 +43,10 @@ class User {
         isUserSigned()
         getUserName()
     }
+    
+    init(email:String, isSigned:Bool) {
+        self.email = email
+        self.isSigned = isSigned
+        getUserName()
+    }
 }

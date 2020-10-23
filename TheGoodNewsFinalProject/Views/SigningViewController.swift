@@ -18,26 +18,33 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     @IBOutlet weak var emailTextField: UITextField!
     
     var email:String?
-    let user:User = User()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: user.email)
-            emailTextField.text = passwordItem.account
+        
     }
     
     
     @IBAction func signIn(_ sender: UIButton) {
+        var user:User?
         guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {return}
         let hashedPassword = passwordHash(from: newEmail, password: newPassword)
         
+        Auth.auth().signIn(withEmail: newEmail, password: hashedPassword) { [weak self] authResult, error in
+//            guard let strongSelf = self else { return }
+            
+            user = User(email: newEmail, isSigned: true)
+        }
+        
+        
         Auth.auth().createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
             Toast().showToast(message: "Hello \(newEmail)", font: .systemFont(ofSize: 18), view: self.view)
-            self.user.setUserInUserDefaults(email: newEmail)
-
+            
+            user = User(email: newEmail, isSigned: true)
         }
+        
         do {
-            if let originalEmail = self.email {
+            if let originalEmail = user?.email {
                 var paswordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: originalEmail)
                 
                 try paswordItem.renameAccount(newEmail)

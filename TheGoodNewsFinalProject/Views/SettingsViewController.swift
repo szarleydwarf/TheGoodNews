@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        user = User()
+//        user = User()
         setBanner()
         changeSignInButtonTitle()
         displayUserNameLabel()
@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func signinOptions(_ sender: UIButton) {
         //change sign in to sign off
-        if !user.isSigned {
+        if user == nil || !user.isSigned {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
             self.navigationController?.pushViewController(vc, animated: true)
@@ -62,23 +62,26 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
-        if user.isSigned {
+        if user != nil && user.isSigned {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let addTextViewController = storyboard.instantiateViewController(identifier: "AddUserTextViewController") as! AddUserTextViewController
             self.navigationController?.pushViewController(addTextViewController, animated: true)
-        } else{
+        } else {
             Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
         }
     }
     
    
     func changeSignInButtonTitle () {
-        let title =  user.isSigned ? "Sign Out" : "Sign In"
+        var title = "Sign In"
+        if user != nil {
+            title =  user.isSigned ? "Sign Out" : "Sign In"
+        }
         self.signInButton.setTitle(title, for: .normal)
     }
     
     func displayUserNameLabel() {
-        if user.isSigned, let name = user.name {
+        if user != nil &&  user.isSigned, let name = user.name {
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = name
         } else {
