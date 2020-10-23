@@ -21,48 +21,72 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
     @IBAction func signIn(_ sender: UIButton) {
-        var user:User?
-        guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {return}
-        let hashedPassword = passwordHash(from: newEmail, password: newPassword)
-        
-        Auth.auth().signIn(withEmail: newEmail, password: hashedPassword) { [weak self] authResult, error in
-//            guard let strongSelf = self else { return }
-            
-            user = User(email: newEmail, isSigned: true)
+        guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {
+            Toast().showToast(message: "Enter email and password to sign in", font: .systemFont(ofSize: 18), view: self.view)
+            return
         }
+        let hashedPassword = passwordHash(from: newEmail, password: newPassword)
         
         
         Auth.auth().createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
-            Toast().showToast(message: "Hello \(newEmail)", font: .systemFont(ofSize: 18), view: self.view)
-            
-            user = User(email: newEmail, isSigned: true)
+            if let error = error as NSError? {
+                switch AuthErrorCode(rawValue: error.code) {
+                case .emailAlreadyInUse:
+                    // Error: The email address is already in use by another account.
+                    self.signMeIn(email: newEmail, password: hashedPassword)
+                case .invalidEmail:
+                    // Error: The email address is badly formatted.
+                    Toast().showToast(message: "Bad email", font: .systemFont(ofSize: 18), view: self.view)
+                case .weakPassword:
+                    // Error: The password must be 6 characters long or more.
+                    Toast().showToast(message: "The password must be at least 6 characters long", font: .systemFont(ofSize: 18), view: self.view)
+                default:
+                    print("Error: \(error.localizedDescription)")
+                }
+            } else {
+                let newUserInfo = Auth.auth().currentUser
+                let email = newUserInfo?.email
+                print("User signs up successfully > \(email)")
+            }
         }
         
-        do {
-            if let originalEmail = user?.email {
-                var paswordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: originalEmail)
-                
-                try paswordItem.renameAccount(newEmail)
-                try paswordItem.savePassword(hashedPassword)
+        //        jumpToSettingsView()
+    }
+    
+    func signMeIn(email:String, password:String) {
+        print("User signs in func")
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let error = error as? NSError {
+                switch AuthErrorCode(rawValue: error.code) {
+                case .userDisabled:
+                    // Error: The user account has been disabled by an administrator.
+                    Toast().showToast(message: "Your account was blocked. Contact us for details", font: .systemFont(ofSize: 18), view: self.view)
+                case .wrongPassword:
+                    // Error: The password is invalid or the user does not have a password.
+                    Toast().showToast(message: "The password does not match the one we have saved", font: .systemFont(ofSize: 18), view: self.view)
+                case .invalidEmail:
+                    // Error: Indicates the email address is malformed.
+                    Toast().showToast(message: "Bad email", font: .systemFont(ofSize: 18), view: self.view)
+                default:
+                    print("Error: \(error.localizedDescription)")
+                }
             } else {
-                let paswordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: newEmail)
-                try paswordItem.savePassword(hashedPassword)
+                let userInfo = Auth.auth().currentUser
+                let email = userInfo?.email
+                print("User signs IN successfully > \(email)")
             }
-        } catch let error{
-            Toast().showToast(message: "Error creating account \(error)", font: .systemFont(ofSize: 16), view: self.view)
         }
-        jumpToSettingsView()
     }
     
     func jumpToSettingsView() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-        self.navigationController?.pushViewController(settingsVC, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 1.0), execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func passwordHash(from email: String, password: String) -> String {
