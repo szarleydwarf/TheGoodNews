@@ -29,9 +29,9 @@ class SettingsViewController: UIViewController {
             if let email = user?.email{
                 self.user = User(email: email, isSigned: true)
             }
+            self.changeSignInButtonTitle()
+            self.displayUserNameLabel()
         }
-        changeSignInButtonTitle()
-        displayUserNameLabel()
         
     }
     
@@ -39,6 +39,7 @@ class SettingsViewController: UIViewController {
         super.viewWillDisappear(animated)
         Auth.auth().removeStateDidChangeListener(handle!)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +72,7 @@ class SettingsViewController: UIViewController {
     func signOut() {
         do {
             try Auth.auth().signOut()
-            user.isSigned = false
+            user = nil
             changeSignInButtonTitle()
             displayUserNameLabel()
         } catch let err{
@@ -93,7 +94,16 @@ class SettingsViewController: UIViewController {
         self.signInButton.setTitle(title, for: .normal)    }
     
     func displayUserNameLabel() {
-        
+        if self.user != nil {
+            if self.user.isSigned, let name = self.user.name {
+                self.usernameLabel.isHidden = false
+                self.usernameLabel.text = name
+            } else if !self.user.isSigned {
+                self.usernameLabel.isHidden = true
+            }
+        } else {
+            self.usernameLabel.isHidden = true
+        }
     }
     
     

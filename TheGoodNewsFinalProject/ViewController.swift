@@ -6,6 +6,7 @@
 //  Copyright © 2020 The App Experts. All rights reserved.
 //
 import GoogleMobileAds
+import Firebase
 import UIKit
 import Kingfisher
 import ProgressHUD
@@ -22,8 +23,9 @@ class ViewController: UIViewController {
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
+    var handle:AuthStateDidChangeListenerHandle?
     var fetchedFavourites:[Favourite]=[]
-    var user:User = User()
+    var user:User!
     var email:String = ""
     let favImageStringTapped:String = "star_fav"
     let favImageString:String = "star"
@@ -33,9 +35,17 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        
-        self.email = user.email
-        fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: email)
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let email = user?.email{
+                self.user = User(email: email, isSigned: true)
+            }
+            if self.user != nil {
+                self.email = self.user.email
+            } else {
+                self.email = ""
+            }
+            self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
+        }
         
 //Favourites().deleteAllCoreData("Favourite")
 //Favourites().deleteAllCoreData("Poems")
@@ -59,6 +69,11 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ViewHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
