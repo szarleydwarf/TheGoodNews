@@ -51,10 +51,9 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                 let newUserInfo = Auth.auth().currentUser
                 let email = newUserInfo?.email
                 print("User signs up successfully > \(email)")
+                self.jumpToSettingsView()
             }
         }
-        
-        //        jumpToSettingsView()
     }
     
     func signMeIn(email:String, password:String) {
@@ -79,12 +78,13 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                 let userInfo = Auth.auth().currentUser
                 let email = userInfo?.email
                 print("User signs IN successfully > \(email)")
+                self.jumpToSettingsView()
             }
         }
     }
     
     func jumpToSettingsView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 1.0), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 1.5), execute: {
             self.navigationController?.popViewController(animated: true)
         })
     }

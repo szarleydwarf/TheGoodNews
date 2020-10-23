@@ -21,14 +21,28 @@ class SettingsViewController: UIViewController {
     var banner:GADBannerView!
     var user:User!
     var userName:String = ""
+    var handle:AuthStateDidChangeListenerHandle?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let email = user?.email{
+                self.user = User(email: email, isSigned: true)
+            }
+        }
+        changeSignInButtonTitle()
+        displayUserNameLabel()
+        
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setBanner()
-        changeSignInButtonTitle()
-        displayUserNameLabel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,22 +57,43 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func signinOptions(_ sender: UIButton) {
+        if self.user == nil || !self.user.isSigned {
+            goToSigningView()
+        } else {
+            signOut()
+        }
+    }
+    
+    @IBAction func addQuoteOrPoem(_ sender: UIButton) {
+        
+    }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            user.isSigned = false
+            changeSignInButtonTitle()
+            displayUserNameLabel()
+        } catch let err{
+            Toast().showToast(message: "could not sign out \(err)", font: .systemFont(ofSize: 16), view: self.view)
+        }
+    }
+    
+    func goToSigningView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func addQuoteOrPoem(_ sender: UIButton) {
-
-    }
-    
-   
     func changeSignInButtonTitle () {
-
-    }
+        var title = "Sign In"
+        if user != nil {
+            title =  user.isSigned ? "Sign Out" : "Sign In"
+        }
+        self.signInButton.setTitle(title, for: .normal)    }
     
     func displayUserNameLabel() {
- 
+        
     }
     
     
