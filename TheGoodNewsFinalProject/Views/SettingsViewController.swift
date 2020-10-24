@@ -66,7 +66,12 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
-        
+        if self.user == nil || !self.user.isSigned {
+            Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let addTextViewController = storyboard.instantiateViewController(identifier: "AddUserTextViewController") as! AddUserTextViewController
+            self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
     func signOut() {

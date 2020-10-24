@@ -88,7 +88,8 @@ class PoemsViewController: UIViewController {
     
     @IBAction func sharePoem(_ sender: UIButton) {
         if let author = self.authorLabel.text, let title = self.poemTitleLabel.text, let poemText = self.poemTextView.text {
-            let objectToShare:[Any] = [author, title, poemText]
+            let objectToSave:String = "\"\(title)\"\n\nBy  \(author)\n\n\(poemText)"
+            let objectToShare:[Any] = [objectToSave]
             let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
