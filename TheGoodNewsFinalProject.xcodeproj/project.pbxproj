@@ -32,6 +32,7 @@
 		D7722FE62539DE92004F2305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7722FE52539DE92004F2305 /* GoogleService-Info.plist */; };
 		D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE8253A21D4004F2305 /* KeychainPasswordItem.swift */; };
 		D7722FEB253A21D4004F2305 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE9253A21D4004F2305 /* KeychainConfiguration.swift */; };
+		D7746A48254490A50029E31B /* FireBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7746A47254490A50029E31B /* FireBaseController.swift */; };
 		D77486012536EA350040E2CF /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77486002536EA350040E2CF /* Quotes.swift */; };
 		D774860325371D350040E2CF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860225371D350040E2CF /* CoreDataController.swift */; };
 		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
@@ -112,6 +113,7 @@
 		D7722FE52539DE92004F2305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7722FE8253A21D4004F2305 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		D7722FE9253A21D4004F2305 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		D7746A47254490A50029E31B /* FireBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseController.swift; sourceTree = "<group>"; };
 		D77486002536EA350040E2CF /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		D774860225371D350040E2CF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				D774860225371D350040E2CF /* CoreDataController.swift */,
+				D7746A47254490A50029E31B /* FireBaseController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				D7715E82253883630062B024 /* SettingsViewController.swift in Sources */,
 				D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */,
 				D76F9525253EF1E000FAC477 /* PoemModel.swift in Sources */,
+				D7746A48254490A50029E31B /* FireBaseController.swift in Sources */,
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
 				D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */,

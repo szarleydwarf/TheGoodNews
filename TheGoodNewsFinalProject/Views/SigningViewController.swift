@@ -16,6 +16,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    let fbAuth = FireBaseController.shared
     
     var email:String?
     
@@ -32,7 +33,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         let hashedPassword = passwordHash(from: newEmail, password: newPassword)
         
         
-        Auth.auth().createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
+        fbAuth.fAuth.createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
             if let error = error as NSError? {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .emailAlreadyInUse:
@@ -48,7 +49,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let newUserInfo = Auth.auth().currentUser
+                let newUserInfo = self.fbAuth.fAuth.currentUser
                 let email = newUserInfo?.email
                 print("User signs up successfully > \(email)")
                 self.jumpToSettingsView()
@@ -59,7 +60,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     func signMeIn(email:String, password:String) {
         print("User signs in func")
         
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+        fbAuth.fAuth.signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error as? NSError {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .userDisabled:
@@ -75,7 +76,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let userInfo = Auth.auth().currentUser
+                let userInfo = self.fbAuth.fAuth.currentUser
                 let email = userInfo?.email
                 print("User signs IN successfully > \(email)")
                 self.jumpToSettingsView()

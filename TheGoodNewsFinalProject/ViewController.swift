@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     var fetchedFavourites:[Favourite]=[]
     var user:User!
     var email:String = ""
+    let fbAuth = FireBaseController.shared
     let favImageStringTapped:String = "star_fav"
     let favImageString:String = "star"
     
@@ -35,13 +36,16 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let email = user?.email{
+        print("viewWillAppear > \(user) \(fbAuth.fAuth.currentUser)")
+        handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
+            if self.user == nil ,let email = user?.email{
                 self.user = User(email: email, isSigned: true)
+            } else if user == nil {
+                self.user = nil
             }
-            if self.user != nil {
+            if self.email.isEmpty, self.user != nil {
                 self.email = self.user.email
-            } else {
+            } else if self.user == nil {
                 self.email = ""
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
@@ -71,7 +75,7 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        fbAuth.fAuth.removeStateDidChangeListener(handle!)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -113,7 +117,8 @@ class ViewController: UIViewController {
     
     @IBAction func shareToSocialMedia(_ sender: UIButton) {
         if let quote = self.quoteTextView.text, let author = self.authorNameLabel.text {
-            let objectToShare:[Any] = [quote, author]
+            let objectToSave:String = "\"\(quote)\"\n\nBy \(author)"
+            let objectToShare:[Any] = [objectToSave]
             let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
