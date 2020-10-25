@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMobileAds
+import Firebase
+import ProgressHUD
 
 enum ElementType {
     case quote, poem, userText
@@ -17,11 +19,47 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var table: UITableView!
     
+    let cellIdentifier:String = "cell"
+    let fbAuth = FireBaseController.shared
+    
     var arrayToDisplayInTable:[Any] = []
     var typeToCompare:ElementType?
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
-    let cellIdentifier:String = "cell"
+    var handle:AuthStateDidChangeListenerHandle?
+    var email:String = ""
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ProgressHUD.colorAnimation = .red
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.show()
+        print("viewWillAppear in Favourites list > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+        handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
+            if self.email.isEmpty, user != nil, let email = user?.email {
+                self.email = email
+                self.segmentController.setEnabled(true, forSegmentAt: 2)
+            } else if user == nil {
+                self.email = ""
+                self.segmentController.setEnabled(false, forSegmentAt: 2)
+            }
+            self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
+            self.typeToCompare = .quote
+            self.table.reloadData()
+            print("LISTS > \(self.email) > \(self.typeToCompare) =  \(self.arrayToDisplayInTable.count)")
+            
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        fbAuth.fAuth.removeStateDidChangeListener(handle!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ProgressHUD.dismiss()
+    }
     
     
     override func viewDidLoad() {
@@ -29,9 +67,6 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         self.table.dataSource = self
         self.table.delegate = self
         self.table.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
-        self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: User().email)
-        typeToCompare = .quote
-        self.table.reloadData()
         setBanner()
     }
     
@@ -44,18 +79,18 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         self.arrayToDisplayInTable = []
         switch self.segmentController.selectedSegmentIndex {
         case 0:
-            self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: User().email)
+            self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
             typeToCompare = ElementType.quote
         case 1:
-            self.arrayToDisplayInTable = FavouritePoems().fetchPoems(view: self.view, userEmail: User().email)
+            self.arrayToDisplayInTable = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
             typeToCompare = ElementType.poem
         case 2:
-            self.arrayToDisplayInTable = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: User().email)
+            self.arrayToDisplayInTable = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: self.email)
             typeToCompare = .userText
         default:
             print("default")
         }
-        print("LISTS > \(User().email) > \(typeToCompare) =  \(arrayToDisplayInTable.count)")
+        print("LISTS > \(self.email) > \(typeToCompare) =  \(arrayToDisplayInTable.count)")
         self.table.reloadData()
     }
     

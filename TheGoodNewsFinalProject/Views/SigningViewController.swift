@@ -58,7 +58,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     }
     
     func signMeIn(email:String, password:String) {
-        print("User signs in func")
+        print("User signsMEIN func")
         
         fbAuth.fAuth.signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error as? NSError {

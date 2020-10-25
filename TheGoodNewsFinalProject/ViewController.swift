@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     var banner:GADBannerView!
     var handle:AuthStateDidChangeListenerHandle?
     var fetchedFavourites:[Favourite]=[]
-    var user:User!
     var email:String = ""
     let fbAuth = FireBaseController.shared
     let favImageStringTapped:String = "star_fav"
@@ -36,16 +35,11 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        print("viewWillAppear > \(user) \(fbAuth.fAuth.currentUser)")
+        print("viewWillAppear > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
-            if self.user == nil ,let email = user?.email{
-                self.user = User(email: email, isSigned: true)
+            if self.email.isEmpty, let email = user?.email {
+                self.email = email
             } else if user == nil {
-                self.user = nil
-            }
-            if self.email.isEmpty, self.user != nil {
-                self.email = self.user.email
-            } else if self.user == nil {
                 self.email = ""
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
@@ -70,7 +64,6 @@ class ViewController: UIViewController {
                 self.favouriteButton.setImage(UIImage(named: imageString), for: .normal)
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
