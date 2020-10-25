@@ -20,6 +20,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     var email:String?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

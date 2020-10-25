@@ -21,20 +21,21 @@ class SettingsViewController: UIViewController {
     
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
-    var user:User!
-    var userName:String = ""
     var handle:AuthStateDidChangeListenerHandle?
+    var email:String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
-            if let email = user?.email{
-                self.user = User(email: email, isSigned: true)
+            if self.email.isEmpty, let email = user?.email {
+                self.email = email
+            } else if user == nil {
+                self.email = ""
             }
-            self.changeSignInButtonTitle()
-            self.displayUserNameLabel()
         }
-        
+        self.changeSignInButtonTitle()
+        self.displayUserNameLabel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,7 +61,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func signinOptions(_ sender: UIButton) {
-        if self.user == nil || !self.user.isSigned {
+        if self.email.isEmpty {
             goToSigningView()
         } else {
             signOut()
@@ -68,7 +69,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
-        if self.user == nil || !self.user.isSigned {
+        if self.email.isEmpty {
             Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -79,7 +80,7 @@ class SettingsViewController: UIViewController {
     func signOut() {
         do {
             try! fbAuth.fAuth.signOut()
-            user = nil
+            self.email = ""
             changeSignInButtonTitle()
             displayUserNameLabel()
         } catch let err{
@@ -94,20 +95,13 @@ class SettingsViewController: UIViewController {
     }
     
     func changeSignInButtonTitle () {
-        var title = "Sign In"
-        if user != nil {
-            title =  user.isSigned ? "Sign Out" : "Sign In"
-        }
+        let title =  !self.email.isEmpty ? "Sign Out" : "Sign In"
         self.signInButton.setTitle(title, for: .normal)    }
     
     func displayUserNameLabel() {
-        if self.user != nil {
-            if self.user.isSigned, let name = self.user.name {
-                self.usernameLabel.isHidden = false
-                self.usernameLabel.text = name
-            } else if !self.user.isSigned {
-                self.usernameLabel.isHidden = true
-            }
+        if !self.email.isEmpty {
+            self.usernameLabel.isHidden = false
+            self.usernameLabel.text = self.email
         } else {
             self.usernameLabel.isHidden = true
         }
