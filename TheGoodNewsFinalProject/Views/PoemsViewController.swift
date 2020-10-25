@@ -10,6 +10,7 @@ import GoogleMobileAds
 import UIKit
 import Kingfisher
 import ProgressHUD
+import Firebase
 import Social
 
 class PoemsViewController: UIViewController {
@@ -19,13 +20,14 @@ class PoemsViewController: UIViewController {
     @IBOutlet weak var poemTextView: UITextView!
     @IBOutlet weak var favouriteButton: UIButton!
     
+    let fbAuth = FireBaseController.shared
+    let favImageStringTapped:String = "star_fav"
+    let favImageString:String = "star"
+    var handle:AuthStateDidChangeListenerHandle?
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var fetchedPoems:[Poems] = []
-    var user:User = User()
     var email:String = ""
-    let favImageStringTapped:String = "star_fav"
-    let favImageString:String = "star"
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,9 +35,15 @@ class PoemsViewController: UIViewController {
         ProgressHUD.animationType = .circleRotateChase
         ProgressHUD.show()
         
-        self.email = user.email
-        fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
-        
+        print("viewWillAppear in Favourites list > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+        handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
+            if self.email.isEmpty, user != nil, let email = user?.email {
+                self.email = email
+            } else if user == nil {
+                self.email = ""
+            }
+            self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
+        }
         Backgrounds().getBackgroundImage{ url in
             self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
             self.backgroundImageView.alpha = 0.3
@@ -46,10 +54,16 @@ class PoemsViewController: UIViewController {
             self.poemTitleLabel.text = title
             self.poemTextView.text = poem
             
-            var imageName = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem, userEmail: self.email) ? self.favImageStringTapped : self.favImageString
+            let imageName = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem, userEmail: self.email) ? self.favImageStringTapped : self.favImageString
             self.favouriteButton.setImage(UIImage(named: imageName), for: .normal)
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        fbAuth.fAuth.removeStateDidChangeListener(handle!)
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -82,7 +96,7 @@ class PoemsViewController: UIViewController {
                 }
             }
             Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
-            self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view)
+            self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
         }
     }
     
