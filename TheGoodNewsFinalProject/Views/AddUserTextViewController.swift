@@ -20,7 +20,7 @@ class AddUserTextViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+        print("AddUserTextViewController > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
                 self.email = email

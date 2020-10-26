@@ -18,20 +18,16 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     @IBOutlet weak var emailTextField: UITextField!
     let fbAuth = FireBaseController.shared
     
-    var email:String?
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     
     @IBAction func signIn(_ sender: UIButton) {
         guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {
             Toast().showToast(message: "Enter email and password to sign in", font: .systemFont(ofSize: 18), view: self.view)
             return
         }
-        let hashedPassword = passwordHash(from: newEmail, password: newPassword)
+        let hashedPassword = UserHelper().hashThePassword(from: newEmail, password: newPassword)
         
         
         fbAuth.fAuth.createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
@@ -42,7 +38,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     self.signMeIn(email: newEmail, password: hashedPassword)
                 case .invalidEmail:
                     // Error: The email address is badly formatted.
-                    Toast().showToast(message: "Bad email", font: .systemFont(ofSize: 18), view: self.view)
+                    Toast().showToast(message: "Bad email format", font: .systemFont(ofSize: 18), view: self.view)
                 case .weakPassword:
                     // Error: The password must be 6 characters long or more.
                     Toast().showToast(message: "The password must be at least 6 characters long", font: .systemFont(ofSize: 18), view: self.view)
@@ -51,8 +47,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                 }
             } else {
                 let newUserInfo = self.fbAuth.fAuth.currentUser
-                let email = newUserInfo?.email
-                print("User signs up successfully > \(email)")
+                let name = UserHelper().getUserName(newUserInfo?.email)
+                Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
                 self.jumpToSettingsView()
             }
         }
@@ -62,7 +58,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         print("User signsMEIN func")
         
         fbAuth.fAuth.signIn(withEmail: email, password: password) { (authResult, error) in
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .userDisabled:
                     // Error: The user account has been disabled by an administrator.
@@ -78,8 +74,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                 }
             } else {
                 let userInfo = self.fbAuth.fAuth.currentUser
-                let email = userInfo?.email
-                print("User signs IN successfully > \(email)")
+                let name = UserHelper().getUserName(userInfo?.email)
+                Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
                 self.jumpToSettingsView()
             }
         }
@@ -91,10 +87,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         })
     }
     
-    func passwordHash(from email: String, password: String) -> String {
-        let salt = "x4vV8bGgqqmQw974yriksdbckbq9ipidk;jgCoyXFQj+(o.nP7ND"
-        return "\(password).\(email).\(salt)".sha256()
-    }
+
     
     /*
      To be implemented in future
