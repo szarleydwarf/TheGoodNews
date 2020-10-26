@@ -113,11 +113,11 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             case .userText:
                 let text = element as! UserQuotePoems
                 cell.textLabel?.text = text.text
-                cell.detailTextLabel?.text = UserHelper().name
+                cell.detailTextLabel?.text = UserHelper().getUserName(email: self.email)
                 let imageName = (text.isQuote) ? "p" : "q"
                 cell.imageView?.image = UIImage.init(named: imageName)
             default:
-                print("QUOTES")
+                print("DEFAULT")
             }
         }
     }

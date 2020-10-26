@@ -2,14 +2,13 @@
 //  UserHelper.swift
 //  TheGoodNewsFinalProject
 //
-//  Created by The App Experts on 22/10/2020.
+//  Created by The App Experts on 26/10/2020.
 //  Copyright © 2020 The App Experts. All rights reserved.
 //
 
 import UIKit
 
 class UserHelper {
-    var name:String?
     
     func userExistInKeyChain(email:String) -> Bool {
         do {
@@ -35,9 +34,9 @@ class UserHelper {
         return "\(password).\(email).\(salt)".sha256()
     }
     
-    func getUserName(email:String) {
+    func getUserName(email:String) ->String {
         let userNameArray = email.components(separatedBy: "@")
-        self.name  = userNameArray[0]
+        return userNameArray[0]
     }
     
 }

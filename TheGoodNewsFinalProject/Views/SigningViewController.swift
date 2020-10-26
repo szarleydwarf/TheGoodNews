@@ -29,13 +29,24 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         }
         let hashedPassword = UserHelper().hashThePassword(from: newEmail, password: newPassword)
         
+        //test connection
+        ConnectionHelper().connected{connected in
+            print("SigningViewController \(connected)")
+        }
+        //no connection try to login with keychain
+        //connection tryy connect with firebase
+        //in both cases try to update the other source
         
-        fbAuth.fAuth.createUser(withEmail: newEmail, password: hashedPassword) { authResult, error in
+        createNewUser(email:newEmail, password:hashedPassword)
+    }
+    
+    func createNewUser(email:String, password:String) {
+        fbAuth.fAuth.createUser(withEmail: email, password: password) { authResult, error in
             if let error = error as NSError? {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .emailAlreadyInUse:
                     // Error: The email address is already in use by another account.
-                    self.signMeIn(email: newEmail, password: hashedPassword)
+                    self.signMeIn(email: email, password: password)
                 case .invalidEmail:
                     // Error: The email address is badly formatted.
                     Toast().showToast(message: "Bad email format", font: .systemFont(ofSize: 18), view: self.view)
@@ -47,7 +58,10 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                 }
             } else {
                 let newUserInfo = self.fbAuth.fAuth.currentUser
-                let name = UserHelper().getUserName(newUserInfo?.email)
+                var name = ""
+                if let email = newUserInfo?.email {
+                    name = UserHelper().getUserName(email: email)
+                }
                 Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
                 self.jumpToSettingsView()
             }
@@ -73,8 +87,12 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let userInfo = self.fbAuth.fAuth.currentUser
-                let name = UserHelper().getUserName(userInfo?.email)
+                let userInfo =
+                    self.fbAuth.fAuth.currentUser
+                var name = ""
+                if let email = userInfo?.email {
+                    name = UserHelper().getUserName(email: email)
+                }
                 Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
                 self.jumpToSettingsView()
             }

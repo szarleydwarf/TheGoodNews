@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		54D611969E351D7FD1ABFA6F /* Pods_TheGoodNewsFinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */; };
 		9C4B82247E161A3C0CD1B12C /* Pods_TheGoodNewsFinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */; };
-		D76C98F02541AFCC009E01D3 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C98EF2541AFCC009E01D3 /* UserHelper.swift */; };
 		D76F9525253EF1E000FAC477 /* PoemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F9524253EF1E000FAC477 /* PoemModel.swift */; };
 		D76F9528253EF3B400FAC477 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F9527253EF3B400FAC477 /* ViewHelper.swift */; };
 		D7703F2E253D9E2C006D9A48 /* FavouritePoems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */; };
@@ -38,6 +37,8 @@
 		D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860425371EC80040E2CF /* ToastDisplay.swift */; };
 		D774860725373D280040E2CF /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774860625373D280040E2CF /* Favourites.swift */; };
 		D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7753219253B3D430004FF0C /* AddUserTextViewController.swift */; };
+		D77556642546FF8300998217 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77556632546FF8300998217 /* UserHelper.swift */; };
+		D7755666254702C700998217 /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7755665254702C700998217 /* ConnectionHelper.swift */; };
 		D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */; };
 		D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +80,6 @@
 		846007B7B0F3528DF4104E34 /* Pods-TheGoodNewsFinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.debug.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5EFC7245EB7BF40CE7EBD5 /* Pods-TheGoodNewsFinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.release.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D76C98EF2541AFCC009E01D3 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		D76F9524253EF1E000FAC477 /* PoemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemModel.swift; sourceTree = "<group>"; };
 		D76F9527253EF3B400FAC477 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePoems.swift; sourceTree = "<group>"; };
@@ -119,6 +119,8 @@
 		D774860425371EC80040E2CF /* ToastDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDisplay.swift; sourceTree = "<group>"; };
 		D774860625373D280040E2CF /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		D7753219253B3D430004FF0C /* AddUserTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserTextViewController.swift; sourceTree = "<group>"; };
+		D77556632546FF8300998217 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		D7755665254702C700998217 /* ConnectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHelper.swift; sourceTree = "<group>"; };
 		D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoemsAndQutes.swift; sourceTree = "<group>"; };
 		D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesListViewController.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,9 +317,10 @@
 		D771B6592535E1BC003E99A9 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				D76C98EF2541AFCC009E01D3 /* UserHelper.swift */,
 				D774860425371EC80040E2CF /* ToastDisplay.swift */,
 				D76F9527253EF3B400FAC477 /* ViewHelper.swift */,
+				D77556632546FF8300998217 /* UserHelper.swift */,
+				D7755665254702C700998217 /* ConnectionHelper.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -643,12 +646,13 @@
 				D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */,
 				D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
-				D76C98F02541AFCC009E01D3 /* UserHelper.swift in Sources */,
 				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
+				D77556642546FF8300998217 /* UserHelper.swift in Sources */,
 				D7722FEB253A21D4004F2305 /* KeychainConfiguration.swift in Sources */,
 				D76F9528253EF3B400FAC477 /* ViewHelper.swift in Sources */,
 				D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */,
+				D7755666254702C700998217 /* ConnectionHelper.swift in Sources */,
 				D7703F2E253D9E2C006D9A48 /* FavouritePoems.swift in Sources */,
 				D774860525371EC80040E2CF /* ToastDisplay.swift in Sources */,
 				D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */,
