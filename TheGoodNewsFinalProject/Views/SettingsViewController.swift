@@ -18,7 +18,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     
     let fbAuth = FireBaseController.shared
-    
+    let user = User.shared
+
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var handle:AuthStateDidChangeListenerHandle?
@@ -26,7 +27,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+        print("SettingsViewController > \(self.email) <> \(fbAuth.fAuth.currentUser)< > \(user.email)< > \(user.name)<<<")
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
                 self.email = email
@@ -81,6 +82,8 @@ class SettingsViewController: UIViewController {
         do {
             try! fbAuth.fAuth.signOut()
             self.email = ""
+            self.user.name = ""
+            self.user.email = ""
             changeSignInButtonTitle()
             displayUserNameLabel()
         } catch let err{

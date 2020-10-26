@@ -39,6 +39,7 @@
 		D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7753219253B3D430004FF0C /* AddUserTextViewController.swift */; };
 		D77556642546FF8300998217 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77556632546FF8300998217 /* UserHelper.swift */; };
 		D7755666254702C700998217 /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7755665254702C700998217 /* ConnectionHelper.swift */; };
+		D77556682547156A00998217 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77556672547156A00998217 /* User.swift */; };
 		D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */; };
 		D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		D7753219253B3D430004FF0C /* AddUserTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserTextViewController.swift; sourceTree = "<group>"; };
 		D77556632546FF8300998217 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		D7755665254702C700998217 /* ConnectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHelper.swift; sourceTree = "<group>"; };
+		D77556672547156A00998217 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoemsAndQutes.swift; sourceTree = "<group>"; };
 		D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesListViewController.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +312,7 @@
 				D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */,
 				D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */,
 				D76F9524253EF1E000FAC477 /* PoemModel.swift */,
+				D77556672547156A00998217 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				D77486012536EA350040E2CF /* Quotes.swift in Sources */,
 				D771B6392535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld in Sources */,
 				D7715E82253883630062B024 /* SettingsViewController.swift in Sources */,
+				D77556682547156A00998217 /* User.swift in Sources */,
 				D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */,
 				D76F9525253EF1E000FAC477 /* PoemModel.swift in Sources */,
 				D7746A48254490A50029E31B /* FireBaseController.swift in Sources */,

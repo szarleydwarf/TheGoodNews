@@ -17,6 +17,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     let fbAuth = FireBaseController.shared
+    let user = User.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +33,24 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         //test connection
         ConnectionHelper().connected{connected in
             print("SigningViewController \(connected)")
+            if connected {
+                self.createNewUser(email:newEmail, password:hashedPassword)
+            } else {
+                self.createLocalUser(email: newEmail, password: hashedPassword)
+            }
         }
         //no connection try to login with keychain
-        //connection tryy connect with firebase
+        //connection try connect with firebase
         //in both cases try to update the other source
         
-        createNewUser(email:newEmail, password:hashedPassword)
+    }
+    
+    func createLocalUser(email: String, password: String) {
+        if !UserHelper().userExistInKeyChain(email: email) {
+            UserHelper().saveUserToKeyChain(view: self.view, email: email, password: UserHelper().getUserName(email: email))
+        }
+        user.name = UserHelper().getUserName(email: email)
+        user.email = email
     }
     
     func createNewUser(email:String, password:String) {
@@ -57,11 +70,12 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let newUserInfo = self.fbAuth.fAuth.currentUser
-                var name = ""
-                if let email = newUserInfo?.email {
-                    name = UserHelper().getUserName(email: email)
-                }
+//                let newUserInfo = self.fbAuth.fAuth.currentUser
+//                var name = ""
+//                if let email = newUserInfo?.email {
+                let name = UserHelper().getUserName(email: email)
+//                }
+                self.createLocalUser(email: email, password: password)
                 Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
                 self.jumpToSettingsView()
             }
@@ -87,12 +101,14 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let userInfo =
-                    self.fbAuth.fAuth.currentUser
-                var name = ""
-                if let email = userInfo?.email {
-                    name = UserHelper().getUserName(email: email)
-                }
+//                let userInfo =
+//                    self.fbAuth.fAuth.currentUser
+//                var name = ""
+//                if let email = userInfo?.email {
+                  let  name = UserHelper().getUserName(email: email)
+//                }
+                self.createLocalUser(email: email, password: password)
+
                 Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
                 self.jumpToSettingsView()
             }
@@ -105,7 +121,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         })
     }
     
-
+    
     
     /*
      To be implemented in future
