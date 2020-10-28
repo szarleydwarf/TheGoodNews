@@ -22,31 +22,42 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     var user:User?
     var name:String?
+    var hashedPassword:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func signIn(_ sender: UIButton) {
+        fetchUserFromFields()
+        
+        
+        print("SIGNIN  >\(user?.email)")
+
+        //test connection
+        ConnectionHelper().connected{connected in
+            guard let email = self.user?.email else {return}
+            guard let password = self.hashedPassword else {return}
+            print("SIGNIN connection  >\(email)")
+            if connected {
+                //connection try connect with firebase
+                self.createNewUser(email:email, password:password)
+            } else {
+                //no connection try to login with keychain
+                self.createLocalUser(email: email, password: password)
+            }
+        }
+        //in both cases try to update the other source
+    }
+    
+    func fetchUserFromFields() {
         guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {
             Toast().showToast(message: "Enter email and password to sign in", font: .systemFont(ofSize: 18), view: self.view)
             return
         }
-        let hashedPassword = UserHelper().hashThePassword(from: newEmail, password: newPassword)
-        
-        self.user = User.init(email: newEmail, name: UserHelper().getUserName(email: newEmail))
+        self.hashedPassword = UserHelper().hashThePassword(from: newEmail, password: newPassword)
 
-        //test connection
-        ConnectionHelper().connected{connected in
-            if connected {
-                //connection try connect with firebase
-                self.createNewUser(email:newEmail, password:hashedPassword)
-            } else {
-                //no connection try to login with keychain
-                self.createLocalUser(email: newEmail, password: hashedPassword)
-            }
-        }
-        //in both cases try to update the other source
+        self.user = User.init(email: newEmail, name: UserHelper().getUserName(email: newEmail))
     }
     
     func createLocalUser(email: String, password: String) {
@@ -108,18 +119,19 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        fetchUserFromFields()
         print("SEGUE PREPARE >\(user?.email)")
 
-        segue.forward(user, to: segue.destination)
+        segue.forward(self.user, to: segue.destination)
     }
     
     func jumpToSettingsView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 1.5), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 2), execute: {
+//            self.performSegue(withIdentifier: "SettingsViewController", sender: self.user)
             self.navigationController?.popViewController(animated: true)
         })
     }
-    
-    
+
     
     /*
      To be implemented in future

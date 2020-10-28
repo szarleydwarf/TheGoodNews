@@ -78,6 +78,8 @@ class SettingsViewController: UIViewController {
             self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
+    @IBAction func unvindToSettings(_ sender: UIStoryboardSegue) {}
+    
     func signOut() {
         do {
             try? fbAuth.fAuth.signOut()
