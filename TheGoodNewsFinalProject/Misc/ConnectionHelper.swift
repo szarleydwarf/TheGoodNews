@@ -15,14 +15,11 @@ class ConnectionHelper {
     func connected(completion:@escaping(Bool)->Void) {
         monitor.pathUpdateHandler = { pathUpdateHandler in
             if pathUpdateHandler.status == .satisfied {
-                print("Internet connection is on.")
                 completion(true)
             } else {
-                print("There's no internet connection.")
                 completion(false)
             }
         }
-
         monitor.start(queue: queue)
     }
 }

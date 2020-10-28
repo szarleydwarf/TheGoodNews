@@ -9,9 +9,6 @@
 import Foundation
 
 class User {
-    private init(){}
-    static let shared = User()
-    
     var email:String = ""
     var name:String = ""
 }
