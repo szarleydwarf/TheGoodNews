@@ -23,6 +23,8 @@ class PoemsViewController: UIViewController {
     let fbAuth = FireBaseController.shared
     let favImageStringTapped:String = "star_fav"
     let favImageString:String = "star"
+    
+    var user:User?
     var handle:AuthStateDidChangeListenerHandle?
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!

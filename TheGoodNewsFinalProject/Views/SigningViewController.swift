@@ -16,7 +16,12 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    
     let fbAuth = FireBaseController.shared
+    let toastFontSize:CGFloat = 16.0
+    
+    var user:User?
+    var name:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +34,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         }
         let hashedPassword = UserHelper().hashThePassword(from: newEmail, password: newPassword)
         
+        self.user = User.init(email: newEmail, name: UserHelper().getUserName(email: newEmail))
+
         //test connection
         ConnectionHelper().connected{connected in
             if connected {
@@ -46,6 +53,7 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         if !UserHelper().userExistInKeyChain(email: email) {
             UserHelper().saveUserToKeyChain(view: self.view, email: email, password: UserHelper().getUserName(email: email))
         }
+        
     }
     
     func createNewUser(email:String, password:String) {
@@ -65,9 +73,8 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let name = UserHelper().getUserName(email: email)
                 self.createLocalUser(email: email, password: password)
-                Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
+                Toast().showToast(message: "Hello \(self.name). Thank you for signing in. You will be redirected in 4s.", font: .systemFont(ofSize: self.toastFontSize), view: self.view)
                 self.jumpToSettingsView()
             }
         }
@@ -92,13 +99,18 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                let  name = UserHelper().getUserName(email: email)
                 self.createLocalUser(email: email, password: password)
-                
-                Toast().showToast(message: "Hello \(name). Thank you for signing in", font: .systemFont(ofSize: 18), view: self.view)
+                let name = self.name
+                Toast().showToast(message: "Hello \(self.name). Thank you for signing in. You will be redirected in 4s.", font: .systemFont(ofSize: self.toastFontSize), view: self.view)
                 self.jumpToSettingsView()
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("SEGUE PREPARE >\(user?.email)")
+
+        segue.forward(user, to: segue.destination)
     }
     
     func jumpToSettingsView() {

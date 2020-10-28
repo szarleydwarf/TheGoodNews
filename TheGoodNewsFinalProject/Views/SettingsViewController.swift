@@ -23,10 +23,11 @@ class SettingsViewController: UIViewController {
     var banner:GADBannerView!
     var handle:AuthStateDidChangeListenerHandle?
     var email:String = ""
+    var user:User?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("SettingsViewController > \(self.email) <> \(fbAuth.fAuth.currentUser)< > <<<")
+        print("SettingsViewController > \(self.email) <> \(fbAuth.fAuth.currentUser)< \(user?.name)> \(user?.email) <<<")
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
                 self.email = email
@@ -79,8 +80,8 @@ class SettingsViewController: UIViewController {
     
     func signOut() {
         do {
-            try! fbAuth.fAuth.signOut()
-            self.email = ""
+            try? fbAuth.fAuth.signOut()
+            user = nil
             changeSignInButtonTitle()
             displayUserNameLabel()
         } catch let err{

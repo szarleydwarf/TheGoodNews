@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		54D611969E351D7FD1ABFA6F /* Pods_TheGoodNewsFinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */; };
 		9C4B82247E161A3C0CD1B12C /* Pods_TheGoodNewsFinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */; };
+		D76F24442549ED6A0010B327 /* SegueHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F24432549ED6A0010B327 /* SegueHelper.swift */; };
 		D76F9525253EF1E000FAC477 /* PoemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F9524253EF1E000FAC477 /* PoemModel.swift */; };
 		D76F9528253EF3B400FAC477 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F9527253EF3B400FAC477 /* ViewHelper.swift */; };
 		D7703F2E253D9E2C006D9A48 /* FavouritePoems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */; };
@@ -81,6 +82,7 @@
 		846007B7B0F3528DF4104E34 /* Pods-TheGoodNewsFinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.debug.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5EFC7245EB7BF40CE7EBD5 /* Pods-TheGoodNewsFinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.release.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D76F24432549ED6A0010B327 /* SegueHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHelper.swift; sourceTree = "<group>"; };
 		D76F9524253EF1E000FAC477 /* PoemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemModel.swift; sourceTree = "<group>"; };
 		D76F9527253EF3B400FAC477 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePoems.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				D76F9527253EF3B400FAC477 /* ViewHelper.swift */,
 				D77556632546FF8300998217 /* UserHelper.swift */,
 				D7755665254702C700998217 /* ConnectionHelper.swift */,
+				D76F24432549ED6A0010B327 /* SegueHelper.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				D7746A48254490A50029E31B /* FireBaseController.swift in Sources */,
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
 				D771B6332535B6FA003E99A9 /* ViewController.swift in Sources */,
+				D76F24442549ED6A0010B327 /* SegueHelper.swift in Sources */,
 				D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */,
 				D775321A253B3D430004FF0C /* AddUserTextViewController.swift in Sources */,
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
