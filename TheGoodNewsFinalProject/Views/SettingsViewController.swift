@@ -28,8 +28,13 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("SettingsViewController > \(self.email) <> \(fbAuth.fAuth.currentUser)< \(user?.name)> \(user?.email) <<<")
+        
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
-            if self.email.isEmpty, let email = user?.email {
+            if let user = self.user {
+                self.email = user.email
+                self.changeSignInButtonTitle()
+                self.displayUserNameLabel()
+            } else if self.email.isEmpty, let email = user?.email {
                 self.email = email
                 self.changeSignInButtonTitle()
                 self.displayUserNameLabel()
@@ -37,6 +42,7 @@ class SettingsViewController: UIViewController {
                 self.email = ""
             }
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,7 +68,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func signinOptions(_ sender: UIButton) {
-        if self.email.isEmpty {
+        if self.email.isEmpty  {
             goToSigningView()
         } else {
             signOut()
@@ -82,8 +88,9 @@ class SettingsViewController: UIViewController {
     
     func signOut() {
         do {
-            try? fbAuth.fAuth.signOut()
-            user = nil
+            try fbAuth.fAuth.signOut()
+            self.user = nil
+            self.email = ""
             changeSignInButtonTitle()
             displayUserNameLabel()
         } catch let err{
@@ -92,9 +99,10 @@ class SettingsViewController: UIViewController {
     }
     
     func goToSigningView() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "SigningViewController", sender: self)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func changeSignInButtonTitle () {
@@ -104,12 +112,11 @@ class SettingsViewController: UIViewController {
     func displayUserNameLabel() {
         if !self.email.isEmpty {
             self.usernameLabel.isHidden = false
-            self.usernameLabel.text = self.email
+            self.usernameLabel.text = UserHelper().getUserName(email: self.email)
         } else {
             self.usernameLabel.isHidden = true
         }
     }
-    
     
     func setBanner() {
         self.banner = googleAdsManager.getBanner()

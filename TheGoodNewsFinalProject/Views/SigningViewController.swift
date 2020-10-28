@@ -98,7 +98,6 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let userFetched = fetchUserFromFields()
-        print("SEGUE PREPARE >\(user?.email)")
         ConnectionHelper().connected{connected in
             guard let email = self.user?.email else {return}
             guard let password = self.hashedPassword else {return}
