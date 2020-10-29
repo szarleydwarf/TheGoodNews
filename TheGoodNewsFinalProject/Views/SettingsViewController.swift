@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var editUserImageButton: UIButton!
     
     let fbAuth = FireBaseController.shared
     
@@ -33,11 +34,11 @@ class SettingsViewController: UIViewController {
             if let user = self.user {
                 self.email = user.email
                 self.changeSignInButtonTitle()
-                self.displayUserNameLabel()
+                self.toggleElementsVisibility()
             } else if self.email.isEmpty, let email = user?.email {
                 self.email = email
                 self.changeSignInButtonTitle()
-                self.displayUserNameLabel()
+                self.toggleElementsVisibility()
             } else if user == nil {
                 self.email = ""
             }
@@ -75,6 +76,10 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func changeUserImage(_ sender: UIButton) {
+        print("CHANGING USER IMAGE")
+    }
+    
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
         if self.email.isEmpty {
             Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
@@ -92,7 +97,7 @@ class SettingsViewController: UIViewController {
             self.user = nil
             self.email = ""
             changeSignInButtonTitle()
-            displayUserNameLabel()
+            toggleElementsVisibility()
         } catch let err{
             Toast().showToast(message: "could not sign out \(err)", font: .systemFont(ofSize: 16), view: self.view)
         }
@@ -108,12 +113,16 @@ class SettingsViewController: UIViewController {
         let title =  !self.email.isEmpty ? "Sign Out" : "Sign In"
         self.signInButton.setTitle(title, for: .normal)    }
     
-    func displayUserNameLabel() {
+    func toggleElementsVisibility() {
         if !self.email.isEmpty {
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = UserHelper().getUserName(email: self.email)
+            self.editUserImageButton.isHidden = false
+            self.editUserImageButton.isEnabled = true
         } else {
             self.usernameLabel.isHidden = true
+            self.editUserImageButton.isHidden = true
+            self.editUserImageButton.isEnabled = false
         }
     }
     

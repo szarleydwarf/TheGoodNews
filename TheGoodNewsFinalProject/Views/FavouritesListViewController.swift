@@ -34,7 +34,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        print("viewWillAppear in Favourites list > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, user != nil, let email = user?.email {
                 self.email = email
@@ -46,8 +46,6 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             self.arrayToDisplayInTable = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
             self.typeToCompare = .quote
             self.table.reloadData()
-            print("LISTS > \(self.email) > \(self.typeToCompare) =  \(self.arrayToDisplayInTable.count)")
-            
         }
     }
     
@@ -90,7 +88,6 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         default:
             print("default")
         }
-        print("LISTS > \(self.email) > \(typeToCompare) =  \(arrayToDisplayInTable.count)")
         self.table.reloadData()
     }
     

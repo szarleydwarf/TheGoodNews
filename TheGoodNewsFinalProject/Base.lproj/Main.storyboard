@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-bs-C2a">
-                                <rect key="frame" x="87" y="108" width="240" height="240"/>
+                                <rect key="frame" x="87" y="108" width="240.00000000000011" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mAE-bs-C2a" secondAttribute="height" multiplier="1:1" id="PMi-7E-BX5"/>
                                     <constraint firstAttribute="width" constant="240" id="YPj-ie-nhf"/>
@@ -183,11 +183,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1U-HZ-Zz4">
+                                <rect key="frame" x="261" y="282" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="J9c-aU-BYM"/>
+                                    <constraint firstAttribute="width" secondItem="s1U-HZ-Zz4" secondAttribute="height" multiplier="39:39" id="nZl-o8-ddU"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="person.crop.circle.badge.plus" catalog="system"/>
+                                <connections>
+                                    <action selector="changeUserImage:" destination="VOf-ks-X9C" eventType="touchUpInside" id="VMn-iF-qI6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mAE-bs-C2a" firstAttribute="top" secondItem="rnR-Xk-3dC" secondAttribute="top" constant="20" id="0UI-ve-c0f"/>
                             <constraint firstItem="RWn-CY-FWB" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="149-hi-gaK"/>
+                            <constraint firstItem="s1U-HZ-Zz4" firstAttribute="bottom" secondItem="mAE-bs-C2a" secondAttribute="bottom" id="2Nk-9E-uQP"/>
+                            <constraint firstItem="s1U-HZ-Zz4" firstAttribute="trailing" secondItem="mAE-bs-C2a" secondAttribute="trailing" id="2mw-rz-Uzc"/>
                             <constraint firstItem="RWn-CY-FWB" firstAttribute="top" secondItem="0ln-z3-381" secondAttribute="bottom" constant="30" id="7fg-1G-7uV"/>
                             <constraint firstItem="0ln-z3-381" firstAttribute="top" secondItem="WbY-oh-Pmm" secondAttribute="bottom" constant="20" id="8TS-l1-102"/>
                             <constraint firstItem="WbY-oh-Pmm" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="Ble-EL-j8C"/>
@@ -203,6 +217,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0tc-jx-dIs"/>
                     <connections>
+                        <outlet property="editUserImageButton" destination="s1U-HZ-Zz4" id="vjn-2t-cfb"/>
                         <outlet property="signInButton" destination="0ln-z3-381" id="4cG-cu-njG"/>
                         <outlet property="userImageView" destination="mAE-bs-C2a" id="gqG-zG-pMo"/>
                         <outlet property="usernameLabel" destination="WbY-oh-Pmm" id="X1T-Bz-KHI"/>
@@ -281,7 +296,7 @@
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="myu-q0-hvD">
+                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="myu-q0-hvD">
                                 <rect key="frame" x="30" y="235.33333333333334" width="354" height="34.000000000000028"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -291,7 +306,7 @@
                                 <rect key="frame" x="30" y="333.33333333333331" width="354" height="34"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NJ-ZG-5mI">
                                 <rect key="frame" x="30" y="397.33333333333331" width="354" height="34"/>
@@ -655,6 +670,7 @@
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
         <image name="pencil.and.outline" catalog="system" width="64" height="58"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
+        <image name="person.crop.circle.badge.plus" catalog="system" width="64" height="50"/>
         <image name="profile" width="569" height="700"/>
         <image name="quill" width="652" height="631"/>
         <image name="share" width="329" height="338"/>
