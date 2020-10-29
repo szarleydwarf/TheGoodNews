@@ -43,6 +43,7 @@
 		D77556682547156A00998217 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77556672547156A00998217 /* User.swift */; };
 		D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */; };
 		D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */; };
+		D7A616FC254B03CD00A5DEAB /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		D77556672547156A00998217 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoemsAndQutes.swift; sourceTree = "<group>"; };
 		D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesListViewController.swift; sourceTree = "<group>"; };
+		D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -327,6 +329,7 @@
 				D77556632546FF8300998217 /* UserHelper.swift */,
 				D7755665254702C700998217 /* ConnectionHelper.swift */,
 				D76F24432549ED6A0010B327 /* SegueHelper.swift */,
+				D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
 				D77556642546FF8300998217 /* UserHelper.swift in Sources */,
+				D7A616FC254B03CD00A5DEAB /* ImagePickerHelper.swift in Sources */,
 				D7722FEB253A21D4004F2305 /* KeychainConfiguration.swift in Sources */,
 				D76F9528253EF3B400FAC477 /* ViewHelper.swift in Sources */,
 				D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */,

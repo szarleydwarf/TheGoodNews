@@ -12,7 +12,7 @@ import CoreData
 import Kingfisher
 import Firebase
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
@@ -23,6 +23,7 @@ class SettingsViewController: UIViewController {
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
     var handle:AuthStateDidChangeListenerHandle?
+    var imagePicker:ImagePickerHelper!
     var email:String = ""
     var user:User?
     
@@ -53,7 +54,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.imagePicker = ImagePickerHelper(presentationController: self, delegate: self)
         setBanner()
     }
     
@@ -78,6 +79,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func changeUserImage(_ sender: UIButton) {
         print("CHANGING USER IMAGE")
+        self.imagePicker.present(from: sender)
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
@@ -111,7 +113,8 @@ class SettingsViewController: UIViewController {
     
     func changeSignInButtonTitle () {
         let title =  !self.email.isEmpty ? "Sign Out" : "Sign In"
-        self.signInButton.setTitle(title, for: .normal)    }
+        self.signInButton.setTitle(title, for: .normal)
+    }
     
     func toggleElementsVisibility() {
         if !self.email.isEmpty {
@@ -130,5 +133,9 @@ class SettingsViewController: UIViewController {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self
         view.addSubview(banner)
+    }
+    
+    func didSelect(image: UIImage?) {
+        self.userImageView.image = image
     }
 }
