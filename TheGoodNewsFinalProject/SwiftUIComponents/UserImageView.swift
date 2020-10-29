@@ -8,17 +8,33 @@
 
 import SwiftUI
 
+struct UserImageViewModel: UIViewRepresentable {
+    @Binding var image: UIImage
+
+    func makeUIView(context: Context) -> UIImageView {
+        return UIImageView()
+    }
+
+    func updateUIView(_ uiView: UIImageView, context: Context) {
+        uiView.image = image
+    }
+}
+
 struct UserImageView: View {
-    var image:UIImage = UIImage(imageLiteralResourceName: "profile")
+    @State var image:UIImage = UIImage(imageLiteralResourceName: "profile")
+    
+    
     var body: some View {
-        Image(uiImage: image)
-        .resizable()
-        .frame(width: 240.0, height: 240.0, alignment: .center)
+        UserImageViewModel(image: $image)
         .clipShape(Circle())
         .shadow(radius: 10)
         .overlay(Circle()
             .stroke(Color.blue,
                     lineWidth: 5))
+    }
+
+    func changeImage() {
+        
     }
     
 }

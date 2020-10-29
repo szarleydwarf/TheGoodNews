@@ -143,7 +143,7 @@ class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
     func didSelect(image: UIImage?) {
 //        self.userImageView.image = image
         if let newImage = image {
-//            UserImageView().image = newImage
+            UserImageViewModel(image: newImage)
         }
     }
 }
