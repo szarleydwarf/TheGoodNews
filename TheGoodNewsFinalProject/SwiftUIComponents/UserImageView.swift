@@ -8,24 +8,14 @@
 
 import SwiftUI
 
-struct UserImageViewModel: UIViewRepresentable {
-    @Binding var image: UIImage
-
-    func makeUIView(context: Context) -> UIImageView {
-        return UIImageView()
-    }
-
-    func updateUIView(_ uiView: UIImageView, context: Context) {
-        uiView.image = image
-    }
-}
-
 struct UserImageView: View {
     @State var image:UIImage = UIImage(imageLiteralResourceName: "profile")
-    
+    @ObservedObject var viewController = SettingsViewController()
     
     var body: some View {
-        UserImageViewModel(image: $image)
+        Image(uiImage: viewController.userProfileImage)
+        .resizable()
+        .frame(width: 240.0, height: 240.0, alignment: .center)
         .clipShape(Circle())
         .shadow(radius: 10)
         .overlay(Circle()
@@ -37,4 +27,10 @@ struct UserImageView: View {
         
     }
     
+}
+
+struct UserImageView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserImageView(viewController: SettingsViewController())
+    }
 }

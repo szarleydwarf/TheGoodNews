@@ -13,7 +13,7 @@ import CoreData
 import Kingfisher
 import Firebase
 
-class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
+class SettingsViewController: UIViewController, ObservableObject, ImagePickerHelperDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
@@ -27,6 +27,8 @@ class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
     var imagePicker:ImagePickerHelper!
     var email:String = ""
     var user:User?
+    
+    @Published var userProfileImage = UIImage(imageLiteralResourceName: "profile")
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -143,7 +145,7 @@ class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
     func didSelect(image: UIImage?) {
 //        self.userImageView.image = image
         if let newImage = image {
-            UserImageViewModel(image: newImage)
+            self.userProfileImage = newImage
         }
     }
 }

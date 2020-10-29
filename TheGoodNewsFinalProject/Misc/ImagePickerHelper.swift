@@ -46,6 +46,7 @@ open class ImagePickerHelper: NSObject {
             self.presentationController?.present(self.pickerController, animated: true)
         }
     }
+    
 
     public func present(from sourceView: UIView) {
 
