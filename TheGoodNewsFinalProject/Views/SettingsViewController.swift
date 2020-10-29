@@ -8,6 +8,7 @@
 
 import GoogleMobileAds
 import UIKit
+import SwiftUI
 import CoreData
 import Kingfisher
 import Firebase
@@ -91,6 +92,10 @@ class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
             self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
+    @IBSegueAction func emebedUserImageSwiftUI(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: UserImageView())
+    }
+    
     @IBAction func unvindToSettings(_ sender: UIStoryboardSegue) {}
     
     func signOut() {
@@ -136,6 +141,9 @@ class SettingsViewController: UIViewController, ImagePickerHelperDelegate {
     }
     
     func didSelect(image: UIImage?) {
-        self.userImageView.image = image
+//        self.userImageView.image = image
+        if let newImage = image {
+//            UserImageView().image = newImage
+        }
     }
 }

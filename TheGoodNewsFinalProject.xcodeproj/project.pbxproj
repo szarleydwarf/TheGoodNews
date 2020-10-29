@@ -44,6 +44,7 @@
 		D7773255253C80F3009B29B9 /* UserPoemsAndQutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */; };
 		D7773257253C8A4A009B29B9 /* FavouritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */; };
 		D7A616FC254B03CD00A5DEAB /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */; };
+		D7A616FF254B0AB900A5DEAB /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A616FE254B0AB900A5DEAB /* UserImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		D7773254253C80F3009B29B9 /* UserPoemsAndQutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoemsAndQutes.swift; sourceTree = "<group>"; };
 		D7773256253C8A4A009B29B9 /* FavouritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesListViewController.swift; sourceTree = "<group>"; };
 		D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
+		D7A616FE254B0AB900A5DEAB /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -258,6 +260,7 @@
 				D771B6572535E18A003E99A9 /* Controllers */,
 				D7722FE7253A20F8004F2305 /* KeyChain */,
 				D771B6532535B742003E99A9 /* GoogleAds */,
+				D7A616FD254B0A8C00A5DEAB /* SwiftUIComponents */,
 				D771B6592535E1BC003E99A9 /* Misc */,
 				D771B62E2535B6FA003E99A9 /* AppDelegate.swift */,
 				D771B6302535B6FA003E99A9 /* SceneDelegate.swift */,
@@ -341,6 +344,14 @@
 				D7722FE8253A21D4004F2305 /* KeychainPasswordItem.swift */,
 			);
 			path = KeyChain;
+			sourceTree = "<group>";
+		};
+		D7A616FD254B0A8C00A5DEAB /* SwiftUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D7A616FE254B0AB900A5DEAB /* UserImageView.swift */,
+			);
+			path = SwiftUIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -659,6 +670,7 @@
 				D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */,
 				D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */,
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
+				D7A616FF254B0AB900A5DEAB /* UserImageView.swift in Sources */,
 				D77556642546FF8300998217 /* UserHelper.swift in Sources */,
 				D7A616FC254B03CD00A5DEAB /* ImagePickerHelper.swift in Sources */,
 				D7722FEB253A21D4004F2305 /* KeychainConfiguration.swift in Sources */,
