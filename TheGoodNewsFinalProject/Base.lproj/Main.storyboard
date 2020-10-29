@@ -171,7 +171,6 @@
                                 <state key="normal" title="SIGN IN"/>
                                 <connections>
                                     <action selector="signinOptions:" destination="VOf-ks-X9C" eventType="touchUpInside" id="CYs-5n-onj"/>
-                                    <segue destination="7WE-9u-2Jc" kind="custom" identifier="SigningViewController" id="eXO-4u-Kh6"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbY-oh-Pmm">

@@ -99,10 +99,9 @@ class SettingsViewController: UIViewController {
     }
     
     func goToSigningView() {
-        performSegue(withIdentifier: "SigningViewController", sender: self)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func changeSignInButtonTitle () {
