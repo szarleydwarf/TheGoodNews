@@ -127,7 +127,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-bs-C2a">
-                                <rect key="frame" x="87" y="108" width="240" height="240"/>
+                                <rect key="frame" x="87" y="108" width="240.00000000000011" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mAE-bs-C2a" secondAttribute="height" multiplier="1:1" id="PMi-7E-BX5"/>
                                     <constraint firstAttribute="width" constant="240" id="YPj-ie-nhf"/>
@@ -221,6 +221,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0tc-jx-dIs"/>
                     <connections>
+                        <outlet property="addingUserTextButton" destination="KUg-dz-IPM" id="qao-fy-Whc"/>
                         <outlet property="editUserImageButton" destination="s1U-HZ-Zz4" id="vjn-2t-cfb"/>
                         <outlet property="signInButton" destination="0ln-z3-381" id="4cG-cu-njG"/>
                         <outlet property="userImageView" destination="mAE-bs-C2a" id="gqG-zG-pMo"/>
@@ -452,7 +453,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="tp9-1X-EPz"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button" backgroundImage="pencil.and.outline" catalog="system"/>
+                                        <state key="normal" backgroundImage="pencil.and.outline" catalog="system"/>
                                         <connections>
                                             <action selector="saveText:" destination="vXx-wT-l25" eventType="touchUpInside" id="ral-2a-UGB"/>
                                         </connections>

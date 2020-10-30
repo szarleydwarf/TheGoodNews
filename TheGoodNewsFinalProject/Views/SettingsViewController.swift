@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var editUserImageButton: UIButton!
+    @IBOutlet weak var addingUserTextButton: UIButton!
     
     let fbAuth = FireBaseController.shared
     
@@ -128,10 +129,13 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = UserHelper().getUserName(email: self.email)
             self.editUserImageButton.isHidden = false
+            self.addingUserTextButton.tintColor = .systemOrange
+            
         } else {
             self.usernameLabel.isHidden = true
             self.editUserImageButton.isHidden = true
             self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
+            self.addingUserTextButton.tintColor = .systemGray
         }
     }
     
