@@ -27,8 +27,9 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     var imagePicker:ImagePickerHelper!
     var email:String = ""
     var user:User?
+    var userProfilImage:UserProfileImage?
     
-    @Published var userProfileImage = UIImage(imageLiteralResourceName: "profile")
+//    @Published var userProfileImage = UIImage(imageLiteralResourceName: "profile")
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -94,9 +95,9 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
-    @IBSegueAction func emebedUserImageSwiftUI(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: UserImageView())
-    }
+//    @IBSegueAction func emebedUserImageSwiftUI(_ coder: NSCoder) -> UIViewController? {
+//        return UIHostingController(coder: coder, rootView: UserImageView())
+//    }
     
     @IBAction func unvindToSettings(_ sender: UIStoryboardSegue) {}
     
@@ -144,8 +145,15 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     func didSelect(image: UIImage?) {
 //        self.userImageView.image = image
-        if let newImage = image {
-            self.userProfileImage = newImage
+        if let newImage = image, var userProfileImg = self.userProfilImage{
+            userProfileImg.image = newImage
+            let userImage = UserImageView(image: userProfileImg){[weak self] newProfilImage in
+                self?.userProfilImage = newProfilImage
+                
+            }
+            let ctrl = UIHostingController(rootView: userImage)
+            self.present(ctrl, animated: true)
+//            self.userProfileImage = newImage
         }
     }
 }
