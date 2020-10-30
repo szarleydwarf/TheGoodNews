@@ -5,13 +5,17 @@
 //  Created by The App Experts on 14/10/2020.
 //  Copyright © 2020 The App Experts. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import CoreData
-
+/*
+ Class to maintain CRUD actions in CoreData
+ for user favourite qoutes
+ **/
 class Favourites {
     let coreDataController = CoreDataController.shared
-    // todo ad
+    
+    // CoreData func
     func fetchFavourites(view:UIView, userEmail:String="Unknown@Unknown.org") -> [Favourite] {
         var fetchedFavourites:[Favourite]=[]
         let ctx = coreDataController.mainCtx
@@ -67,6 +71,36 @@ class Favourites {
         return false
     }
     
+    // Firebase Database func
+    let firebaseController = FireBaseController.shared
+    private struct FavQuote {
+        var qid:String
+        var author:String
+        var quote:String
+        
+        
+        var dictionary:[String:Any]{
+            return ["qid":qid,
+                    "author":author,
+                    "quote":quote
+                    ]
+        }
+        
+
+    }
+    
+    func saveIntoFireDatabase(uid:String, authorName:String, quoteText:String) {
+        let qid = firebaseController.refFavQuotes.child(uid).childByAutoId().key
+        if let qID = qid{
+            let quote = FavQuote(qid: qID, author: authorName, quote: quoteText)
+            print("SAVING ON FIREBASE DB \(qID)>>\(uid)<<\(quote.dictionary) >>")
+            firebaseController.refFavQuotes.child(uid).setValue(quote.dictionary)
+        }
+        
+    }
+    
+    
+    //to be removed before submission
     func deleteAllCoreData(_ entityName:String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fetchRequest.returnsObjectsAsFaults = false

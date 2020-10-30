@@ -18,7 +18,20 @@ class FireBaseController{
         return Auth.auth()
     }
     
-    var ref: DatabaseReference {
+    var refRoot: DatabaseReference {
         return Database.database().reference()
+    }
+    
+    var refUsers:DatabaseReference {
+        return Database.database().reference(withPath: "users")
+    }
+    var refFavQuotes:DatabaseReference {
+        return Database.database().reference(withPath: "favQoutes")
+    }
+    var refFavPoems:DatabaseReference {
+        return Database.database().reference(withPath: "favPoems")
+    }
+    var refuserTexts:DatabaseReference {
+        return Database.database().reference(withPath: "userTexts")
     }
 }

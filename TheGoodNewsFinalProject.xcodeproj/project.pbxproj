@@ -29,6 +29,7 @@
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
 		D7720EE2254C4A46002DA8FF /* FileStoringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */; };
+		D7720EE5254CBC3C002DA8FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7720EE4254CBC3C002DA8FF /* Constants.swift */; };
 		D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE02539A844004F2305 /* SigningViewController.swift */; };
 		D7722FE62539DE92004F2305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7722FE52539DE92004F2305 /* GoogleService-Info.plist */; };
 		D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE8253A21D4004F2305 /* KeychainPasswordItem.swift */; };
@@ -115,6 +116,7 @@
 		D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStoringHelper.swift; sourceTree = "<group>"; };
+		D7720EE4254CBC3C002DA8FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7722FE02539A844004F2305 /* SigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
 		D7722FE22539AC81004F2305 /* TheGoodNewsFinalProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheGoodNewsFinalProject.entitlements; sourceTree = "<group>"; };
 		D7722FE52539DE92004F2305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				D7722FE7253A20F8004F2305 /* KeyChain */,
 				D771B6532535B742003E99A9 /* GoogleAds */,
 				D7A616FD254B0A8C00A5DEAB /* SwiftUIComponents */,
+				D7720EE3254CBC10002DA8FF /* Helpers */,
 				D771B6592535E1BC003E99A9 /* Misc */,
 				D771B62E2535B6FA003E99A9 /* AppDelegate.swift */,
 				D771B6302535B6FA003E99A9 /* SceneDelegate.swift */,
@@ -330,6 +333,14 @@
 			isa = PBXGroup;
 			children = (
 				D774860425371EC80040E2CF /* ToastDisplay.swift */,
+				D7720EE4254CBC3C002DA8FF /* Constants.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		D7720EE3254CBC10002DA8FF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				D76F9527253EF3B400FAC477 /* ViewHelper.swift */,
 				D77556632546FF8300998217 /* UserHelper.swift */,
 				D7755665254702C700998217 /* ConnectionHelper.swift */,
@@ -337,7 +348,7 @@
 				D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */,
 				D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */,
 			);
-			path = Misc;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D7722FE7253A20F8004F2305 /* KeyChain */ = {
@@ -663,6 +674,7 @@
 				D7715E82253883630062B024 /* SettingsViewController.swift in Sources */,
 				D77556682547156A00998217 /* User.swift in Sources */,
 				D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */,
+				D7720EE5254CBC3C002DA8FF /* Constants.swift in Sources */,
 				D76F9525253EF1E000FAC477 /* PoemModel.swift in Sources */,
 				D7746A48254490A50029E31B /* FireBaseController.swift in Sources */,
 				D774860325371D350040E2CF /* CoreDataController.swift in Sources */,
