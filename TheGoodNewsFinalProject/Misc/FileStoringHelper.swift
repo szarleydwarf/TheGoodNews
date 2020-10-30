@@ -11,16 +11,25 @@ import UIKit
 class FileStoringHelper {
     
     func imagePath(name:String) -> URL? {
-        let fileManager = FileManager.default
-        guard let imageURL = fileManager.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first else {return nil}
+        guard let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
         return imageURL.appendingPathComponent(name + ".png")
+    }
+    
+    func imageExists(name:String) ->Bool{
+        if let imageURL = imagePath(name: name) {
+            if FileManager.default.fileExists(atPath: imageURL.path) {
+                return true
+            }
+        }
+        return false
     }
     
     func saveImage(image:UIImage, name:String) -> Bool {
         if let pngData = image.pngData() {
             if let imagePathOnDisc = imagePath(name: name) {
                 do {
-                    try pngData.write(to: imagePathOnDisc, options: .atomic)
+                    try pngData.write(to: imagePathOnDisc)
+                    return true
                 } catch let err {
                     print("Saving faild with error: "+err.localizedDescription)
                 }
@@ -30,7 +39,7 @@ class FileStoringHelper {
         return false
     }
     
-    func fetchImage(name:String, url:URL) -> UIImage? {
+    func fetchImage(name:String) -> UIImage? {
         if let imagePathOnDisc = imagePath(name: name) {
             guard let imageData = FileManager.default.contents(atPath: imagePathOnDisc.path) else{return nil}
             return UIImage(data: imageData)

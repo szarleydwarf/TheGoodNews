@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="mAE-bs-C2a">
-                                <rect key="frame" x="87" y="108" width="240" height="240"/>
+                                <rect key="frame" x="87" y="108" width="240.00000000000011" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mAE-bs-C2a" secondAttribute="height" multiplier="1:1" id="PMi-7E-BX5"/>
                                     <constraint firstAttribute="width" constant="240" id="YPj-ie-nhf"/>
@@ -136,23 +136,26 @@
                                 <rect key="frame" x="60" y="484" width="294" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1U-9Z-XCC">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.3333333333333357" width="90" height="89.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="e1U-9Z-XCC" secondAttribute="height" multiplier="1:1" id="WH1-eP-raj"/>
                                             <constraint firstAttribute="height" constant="90" id="tTM-Hs-2RQ"/>
                                         </constraints>
-                                        <state key="normal" title="FAVOURITES" image="star"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="star" catalog="system"/>
                                         <connections>
                                             <action selector="showFavourites:" destination="VOf-ks-X9C" eventType="touchUpInside" id="jgS-I7-AC0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUg-dz-IPM">
-                                        <rect key="frame" x="204" y="0.0" width="90" height="90"/>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUg-dz-IPM">
+                                        <rect key="frame" x="204" y="-0.3333333333333286" width="90" height="90"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="6Ug-eq-Mtm"/>
                                             <constraint firstAttribute="width" secondItem="KUg-dz-IPM" secondAttribute="height" multiplier="1:1" id="I5d-mf-Dsm"/>
                                         </constraints>
-                                        <state key="normal" title="ADD TEXT" image="quill"/>
+                                        <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="pencil.and.outline" catalog="system"/>
                                         <connections>
                                             <action selector="addQuoteOrPoem:" destination="VOf-ks-X9C" eventType="touchUpInside" id="Elc-rr-dZ9"/>
                                         </connections>
@@ -183,14 +186,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1U-HZ-Zz4">
-                                <rect key="frame" x="261" y="282" width="66" height="66"/>
+                            <button hidden="YES" opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1U-HZ-Zz4">
+                                <rect key="frame" x="281" y="303" width="46" height="44.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="J9c-aU-BYM"/>
-                                    <constraint firstAttribute="width" secondItem="s1U-HZ-Zz4" secondAttribute="height" multiplier="39:39" id="nZl-o8-ddU"/>
+                                    <constraint firstAttribute="height" constant="46" id="J9c-aU-BYM"/>
+                                    <constraint firstAttribute="width" secondItem="s1U-HZ-Zz4" secondAttribute="height" multiplier="1:1" id="nZl-o8-ddU"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="person.crop.circle.badge.plus" catalog="system"/>
+                                <state key="normal" backgroundImage="person.crop.circle.badge.plus" catalog="system"/>
                                 <connections>
                                     <action selector="changeUserImage:" destination="VOf-ks-X9C" eventType="touchUpInside" id="VMn-iF-qI6"/>
                                 </connections>
@@ -674,6 +677,7 @@
         <image name="profile" width="569" height="700"/>
         <image name="quill" width="652" height="631"/>
         <image name="share" width="329" height="338"/>
+        <image name="star" catalog="system" width="64" height="58"/>
         <image name="star" width="183" height="177"/>
     </resources>
 </document>

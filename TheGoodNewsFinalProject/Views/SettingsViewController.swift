@@ -38,10 +38,12 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
                 self.email = user.email
                 self.changeSignInButtonTitle()
                 self.toggleElementsVisibility()
+                self.setUserProfileImageInImageView()
             } else if self.email.isEmpty, let email = user?.email {
                 self.email = email
                 self.changeSignInButtonTitle()
                 self.toggleElementsVisibility()
+                self.setUserProfileImageInImageView()
             } else if user == nil {
                 self.email = ""
             }
@@ -126,11 +128,21 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = UserHelper().getUserName(email: self.email)
             self.editUserImageButton.isHidden = false
-            self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
         } else {
             self.usernameLabel.isHidden = true
             self.editUserImageButton.isHidden = true
+            self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
         }
+    }
+    
+    func setUserProfileImageInImageView() {
+        var profileImage:UIImage?
+        if FileStoringHelper().imageExists(name: self.email){
+            profileImage = FileStoringHelper().fetchImage(name: self.email)
+        } else {
+            profileImage = UIImage(named: "profile")
+        }
+        self.userImageView.image = profileImage
     }
     
     func setBanner() {
