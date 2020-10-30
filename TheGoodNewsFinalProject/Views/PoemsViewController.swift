@@ -21,9 +21,10 @@ class PoemsViewController: UIViewController {
     @IBOutlet weak var favouriteButton: UIButton!
     
     let fbAuth = FireBaseController.shared
-    let favImageStringTapped:String = "star_fav"
-    let favImageString:String = "star"
-    
+    let tappedTintColor:UIColor = .systemOrange
+    let defaultTintColor:UIColor = .systemGray
+    let favouriteImageName:String = "star.circle"
+
     var user:User?
     var handle:AuthStateDidChangeListenerHandle?
     var googleAdsManager = GoogleAdsManager()
@@ -46,19 +47,8 @@ class PoemsViewController: UIViewController {
             }
             self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
         }
-        Backgrounds().getBackgroundImage{ url in
-            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
-            self.backgroundImageView.alpha = 0.3
-        }
-        
-        PoemModel().getPoem{author, title, poem in
-            self.authorLabel.text = author
-            self.poemTitleLabel.text = title
-            self.poemTextView.text = poem
-            
-            let imageName = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem, userEmail: self.email) ? self.favImageStringTapped : self.favImageString
-            self.favouriteButton.setImage(UIImage(named: imageName), for: .normal)
-        }
+        setBackground()
+        setPoemInView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,7 +64,6 @@ class PoemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.favouriteButton.layer.cornerRadius = 15
         setBanner()
     }
     
@@ -86,17 +75,21 @@ class PoemsViewController: UIViewController {
     @IBAction func saveFavourite(_ sender: UIButton) {
         if let author = self.authorLabel.text, let title = self.poemTitleLabel.text, let poemText = self.poemTextView.text {
             var message:String = ""
+            var tintColor:UIColor?
+
             if FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email) {
-                favouriteButton.setImage(UIImage(named: favImageString), for: .normal)
+                tintColor = self.defaultTintColor
+                
                 if FavouritePoems().deletePoem(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email) {
                     message = "REMOVED FROM FAVOURITES"
                 }
             } else {
-                favouriteButton.setImage(UIImage(named: favImageStringTapped), for: .normal)
+                tintColor = self.tappedTintColor
                 if FavouritePoems().savePoem(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email){
                     message = "SAVED TO FAVOURITES"
                 }
             }
+            self.favouriteButton.tintColor = tintColor
             Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
             self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
         }
@@ -117,5 +110,23 @@ class PoemsViewController: UIViewController {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self
         view.addSubview(banner)
+    }
+    
+   func setBackground() {
+       Backgrounds().getBackgroundImage{ url in
+           self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
+           self.backgroundImageView.alpha = 0.3
+       }
+   }
+   
+    func setPoemInView() {
+        PoemModel().getPoem{author, title, poem in
+            self.authorLabel.text = author
+            self.poemTitleLabel.text = title
+            self.poemTextView.text = poem
+            
+            let tintColor = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem, userEmail: self.email) ? self.tappedTintColor : self.defaultTintColor
+            self.favouriteButton.tintColor = tintColor
+        }
     }
 }

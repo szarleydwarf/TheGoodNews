@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewHelper {
+class UIElementsHelper {
     // func copied from
     // https://gist.github.com/illescasDaniel/c1a97d0fae8e6cd1ff127bd399671ecd
     func alignTextVerticallyInContainer(textView:UITextView) {
@@ -16,4 +16,22 @@ class ViewHelper {
         topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect;
         textView.contentInset.top = topCorrect
     }
+    
+    
+    func prepareImage(name:String) -> UIImage? {
+        var image = UIImage(named: name)
+        if let tintedImage = image {
+            image = tintedImage.withTintColor (.systemOrange,renderingMode:.alwaysOriginal )
+        }
+        return image
+    }
+    
+    func prepareImageWithTint(name:String, with tint:UIColor) -> UIImage? {
+        var image = UIImage(named: name)
+        if let tintedImage = image {
+            image = tintedImage.withTintColor (tint, renderingMode:.alwaysOriginal )
+        }
+        return image
+    }
+    
 }
