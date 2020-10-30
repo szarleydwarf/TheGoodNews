@@ -98,21 +98,21 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
                 let quote = element as! Favourite
                 cell.textLabel?.text = quote.author
                 cell.detailTextLabel?.text = quote.quote
-                cell.imageView?.image = UIImage.init(named: "q")
+                cell.imageView?.image = prepareImage(name: "quote.bubble")
                 
             case .poem:
                 let poem = element as! Poems
                 if let author = poem.author, let title = poem.title {
                     cell.textLabel?.text = author + " - " + title
                 }
-                cell.imageView?.image = UIImage.init(named: "p")
-                
+                let image = prepareImage(name: "heart.text.square")
+                cell.imageView?.image = image
             case .userText:
                 let text = element as! UserQuotePoems
                 cell.textLabel?.text = text.text
                 cell.detailTextLabel?.text = UserHelper().getUserName(email: self.email)
-                let imageName = (text.isQuote) ? "p" : "q"
-                cell.imageView?.image = UIImage.init(named: imageName)
+                let imageName = (text.isQuote) ? "heart.text.square" : "quote.bubble"
+                cell.imageView?.image = prepareImage(name: imageName)
             default:
                 print("DEFAULT")
             }
@@ -135,6 +135,13 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
+    func prepareImage(name:String) -> UIImage? {
+        var image = UIImage(named: name)
+        if let tintedImage = image {
+            image = tintedImage.withTintColor (.systemOrange,renderingMode:.alwaysOriginal )
+        }
+        return image
+    }
     func setBanner() {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self

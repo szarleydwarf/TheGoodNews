@@ -41,13 +41,13 @@
                                 </accessibility>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-Rz-aXl">
-                                <rect key="frame" x="20" y="98" width="50" height="50"/>
+                                <rect key="frame" x="20" y="99" width="50" height="48.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="92y-ak-W9u"/>
                                     <constraint firstAttribute="width" secondItem="Odd-Rz-aXl" secondAttribute="height" multiplier="1:1" id="jr6-na-xz2"/>
                                     <constraint firstAttribute="height" constant="50" id="zVV-kb-CZ0"/>
                                 </constraints>
-                                <state key="normal" title="Favourite" image="star"/>
+                                <state key="normal" title="Favourite" backgroundImage="star.circle" catalog="system"/>
                                 <connections>
                                     <action selector="addToFavourites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4S-og-ppk"/>
                                 </connections>
@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="height" constant="50" id="uNe-4w-tJU"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="y5z-ze-SoV"/>
                                 </constraints>
-                                <state key="normal" title="Instagram" image="share"/>
+                                <state key="normal" title="Instagram" backgroundImage="arrowshape.zigzag.right"/>
                                 <connections>
                                     <action selector="shareToSocialMedia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHu-Pq-hhy"/>
                                 </connections>
@@ -444,13 +444,14 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-pz-sHp">
-                                        <rect key="frame" x="96" y="67" width="60" height="60"/>
+                                        <rect key="frame" x="96" y="66.666666666666671" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6Sb-pz-sHp" secondAttribute="height" multiplier="1:1" id="4Pi-1J-md5"/>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="gij-2q-sqp"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="tp9-1X-EPz"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="quill"/>
+                                        <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button" backgroundImage="pencil.and.outline" catalog="system"/>
                                         <connections>
                                             <action selector="saveText:" destination="vXx-wT-l25" eventType="touchUpInside" id="ral-2a-UGB"/>
                                         </connections>
@@ -520,12 +521,12 @@
                                 <rect key="frame" x="27" y="98" width="360" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ue-6M-h03">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="1" width="50" height="48.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7Ue-6M-h03" secondAttribute="height" multiplier="1:1" id="3qR-Cd-E49"/>
                                             <constraint firstAttribute="height" constant="50" id="zxJ-2l-BHW"/>
                                         </constraints>
-                                        <state key="normal" title="Favourite" image="star"/>
+                                        <state key="normal" title="Favourite" backgroundImage="star.circle" catalog="system"/>
                                         <connections>
                                             <action selector="saveFavourite:" destination="53k-fu-0zz" eventType="touchUpInside" id="f7f-u7-eze"/>
                                         </connections>
@@ -542,7 +543,7 @@
                                             <constraint firstAttribute="width" secondItem="bU4-f1-qKx" secondAttribute="height" multiplier="1:1" id="511-Ym-9WI"/>
                                             <constraint firstAttribute="height" constant="50" id="f0v-7t-zcM"/>
                                         </constraints>
-                                        <state key="normal" title="share" image="share"/>
+                                        <state key="normal" backgroundImage="arrowshape.zigzag.right"/>
                                         <connections>
                                             <action selector="sharePoem:" destination="53k-fu-0zz" eventType="touchUpInside" id="9uW-rX-vr8"/>
                                         </connections>
@@ -669,15 +670,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.zigzag.right" width="21" height="16"/>
         <image name="landscape" width="1024" height="683"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
         <image name="pencil.and.outline" catalog="system" width="64" height="58"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="64" height="50"/>
         <image name="profile" width="569" height="700"/>
-        <image name="quill" width="652" height="631"/>
-        <image name="share" width="329" height="338"/>
         <image name="star" catalog="system" width="64" height="58"/>
-        <image name="star" width="183" height="177"/>
+        <image name="star.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>
