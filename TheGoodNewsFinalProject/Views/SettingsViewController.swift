@@ -27,9 +27,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     var imagePicker:ImagePickerHelper!
     var email:String = ""
     var user:User?
-    var userProfilImage:UserProfileImage?
-    
-//    @Published var userProfileImage = UIImage(imageLiteralResourceName: "profile")
+  
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,6 +57,8 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePicker = ImagePickerHelper(presentationController: self, delegate: self)
+        
+        setUserProfileImageView()
         setBanner()
     }
     
@@ -95,10 +95,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
-//    @IBSegueAction func emebedUserImageSwiftUI(_ coder: NSCoder) -> UIViewController? {
-//        return UIHostingController(coder: coder, rootView: UserImageView())
-//    }
-    
+
     @IBAction func unvindToSettings(_ sender: UIStoryboardSegue) {}
     
     func signOut() {
@@ -129,11 +126,10 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = UserHelper().getUserName(email: self.email)
             self.editUserImageButton.isHidden = false
-            self.editUserImageButton.isEnabled = true
+            self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
         } else {
             self.usernameLabel.isHidden = true
             self.editUserImageButton.isHidden = true
-            self.editUserImageButton.isEnabled = false
         }
     }
     
@@ -143,17 +139,23 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         view.addSubview(banner)
     }
     
+    func setUserProfileImageView() {
+        self.userImageView.layer.borderWidth = 1.0
+               self.userImageView.layer.masksToBounds = false
+               self.userImageView.layer.borderColor = UIColor.white.cgColor
+               self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height/2
+               self.userImageView.clipsToBounds = true
+               self.userImageView.frame = CGRect(x: 0,y: 0,width: 100,height: 100)
+               self.userImageView.contentMode = UIView.ContentMode.scaleAspectFill
+              
+    }
+    
     func didSelect(image: UIImage?) {
-//        self.userImageView.image = image
-        if let newImage = image, var userProfileImg = self.userProfilImage{
-            userProfileImg.image = newImage
-            let userImage = UserImageView(image: userProfileImg){[weak self] newProfilImage in
-                self?.userProfilImage = newProfilImage
-                
+        if let imageToDisplay = image{
+        self.userImageView.image = imageToDisplay
+            if FileStoringHelper().saveImage(image: imageToDisplay, name: self.email) {
+                Toast().showToast(message: "Image Saved", font: .systemFont(ofSize: 18.0), view: self.view)
             }
-            let ctrl = UIHostingController(rootView: userImage)
-            self.present(ctrl, animated: true)
-//            self.userProfileImage = newImage
         }
     }
 }

@@ -28,6 +28,7 @@
 		D771B6492535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */; };
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
+		D7720EE2254C4A46002DA8FF /* FileStoringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */; };
 		D7722FE12539A844004F2305 /* SigningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE02539A844004F2305 /* SigningViewController.swift */; };
 		D7722FE62539DE92004F2305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7722FE52539DE92004F2305 /* GoogleService-Info.plist */; };
 		D7722FEA253A21D4004F2305 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7722FE8253A21D4004F2305 /* KeychainPasswordItem.swift */; };
@@ -113,6 +114,7 @@
 		D771B64A2535B6FC003E99A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStoringHelper.swift; sourceTree = "<group>"; };
 		D7722FE02539A844004F2305 /* SigningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningViewController.swift; sourceTree = "<group>"; };
 		D7722FE22539AC81004F2305 /* TheGoodNewsFinalProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheGoodNewsFinalProject.entitlements; sourceTree = "<group>"; };
 		D7722FE52539DE92004F2305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				D7755665254702C700998217 /* ConnectionHelper.swift */,
 				D76F24432549ED6A0010B327 /* SegueHelper.swift */,
 				D7A616FB254B03CD00A5DEAB /* ImagePickerHelper.swift */,
+				D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				D774860725373D280040E2CF /* Favourites.swift in Sources */,
 				D7A616FF254B0AB900A5DEAB /* UserImageView.swift in Sources */,
 				D77556642546FF8300998217 /* UserHelper.swift in Sources */,
+				D7720EE2254C4A46002DA8FF /* FileStoringHelper.swift in Sources */,
 				D7A616FC254B03CD00A5DEAB /* ImagePickerHelper.swift in Sources */,
 				D7722FEB253A21D4004F2305 /* KeychainConfiguration.swift in Sources */,
 				D76F9528253EF3B400FAC477 /* ViewHelper.swift in Sources */,
