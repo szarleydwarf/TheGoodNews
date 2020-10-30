@@ -17,4 +17,8 @@ class FireBaseController{
     var fAuth: Auth{
         return Auth.auth()
     }
+    
+    var ref: DatabaseReference {
+        return Database.database().reference()
+    }
 }
