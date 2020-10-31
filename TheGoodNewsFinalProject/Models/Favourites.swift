@@ -48,7 +48,8 @@ class Favourites {
         do {
             let result = try ctx.fetch(request)
             if result.count > 0 {
-                ctx.setValue(fireDataBaseID, forKey: "fireDataBaseID")
+                result[0].fireDataBaseID = fireDataBaseID
+//                ctx.setValue(fireDataBaseID, forKey: "fireDataBaseID")
             }
         } catch let err {
             print("Update error \(err)")
@@ -113,6 +114,17 @@ class Favourites {
         }
     }
     
+    func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, quoteText:String) -> String {
+        if let quoteID = firebaseController.refFavQuotes.child(userID).childByAutoId().key{
+            
+            let quote = FavQuote(qid: quoteID, author: authorName, quote: quoteText)
+            firebaseController.refFavQuotes.child(userID).child(quoteID)
+                .setValue(quote.dictionary)
+            return quoteID
+        }
+        return ""
+    }
+
     func fetchFromFireDatabase(userID: String, completion:@escaping(([FavQuote])) -> Void) {
         let ref = firebaseController.refFavQuotes.child(userID)
         ref.observe(.value, with: { snapshot in

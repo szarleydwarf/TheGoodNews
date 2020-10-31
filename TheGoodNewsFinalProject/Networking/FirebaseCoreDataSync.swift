@@ -9,12 +9,26 @@
 import Foundation
 
 class FirebaseCoreDataSync {
-    func syncQoutesToFireDataBase(favouriteQoutesList:[Favourite]) {
+    let firebaseController = FireBaseController.shared
+    
+    func syncQuotesToFireDataBase(favouriteQuotesList:[Favourite]) -> Bool {
         // get firebase qoute list
-        
-        // check if core data list has uid
-        
-        //if not update id and update firedatabase
-        
+        var saved:Bool = false
+        if let userID = firebaseController.fAuth.currentUser?.uid {
+            Favourites().fetchFromFireDatabase(userID: userID) { firebaseQouteList in
+                // check if core data list has uid
+                for favQuote in favouriteQuotesList {
+                    //if not update id and update firedatabase
+                    if favQuote.fireDataBaseID == nil {
+                        if let author = favQuote.author,let quote = favQuote.quote, let email = favQuote.userEmail {
+                            let quoteID = Favourites().saveIntoFireDatabaseReturnQouteID(userID: userID, authorName: author, quoteText: quote)
+                            saved = Favourites().updateFavourite(authorName: author, quote: quote, userEmail: email, fireDataBaseID: quoteID)
+                            print("2. SYNC >> \(saved)<< \(quoteID)>>")
+                        }
+                    }
+                }
+            }
+        }
+        return saved
     }
 }

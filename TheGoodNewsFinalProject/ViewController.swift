@@ -45,8 +45,9 @@ class ViewController: UIViewController {
                 self.email = ""
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
+            
+            self.performSync()
         }
-        
         //Favourites().deleteAllCoreData("Favourite")
         //Favourites().deleteAllCoreData("Poems")
         //Favourites().deleteAllCoreData("UserQuotePoems")
@@ -111,14 +112,10 @@ class ViewController: UIViewController {
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
         }
-        if let key = fbAuth.fAuth.currentUser?.uid{
-            Favourites().fetchFromFireDatabase(userID: key) {dict in
-                for d in dict {
-                    print("D IN FIREBASE >>\(d)<<")
-                }
-            }
-                
-        }
+    }
+    
+    func performSync() {
+        FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: self.fetchedFavourites)
     }
     
     func setBanner() {
