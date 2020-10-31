@@ -41,6 +41,21 @@ class Favourites {
         return self.coreDataController.save()
     }
     
+    func updateFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool {
+        let ctx = self.coreDataController.mainCtx
+        let request:NSFetchRequest<Favourite> = Favourite.fetchRequest()
+        request.predicate = NSPredicate(format: "author = %@ && quote = %@ && userEmail = %@", authorName, quote, userEmail)
+        do {
+            let result = try ctx.fetch(request)
+            if result.count > 0 {
+                ctx.setValue(fireDataBaseID, forKey: "fireDataBaseID")
+            }
+        } catch let err {
+            print("Update error \(err)")
+        }
+        return self.coreDataController.save()
+    }
+    
     func deleteFavourite(author: String, quote: String, userEmail:String="Unknown@Unknown.org") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
@@ -72,7 +87,7 @@ class Favourites {
         return false
     }
     
-    // Firebase Database func
+    // Firebase Database func's
     let firebaseController = FireBaseController.shared
     
     struct FavQuote {
@@ -99,21 +114,16 @@ class Favourites {
     }
     
     func fetchFromFireDatabase(userID: String, completion:@escaping(([FavQuote])) -> Void) {
-        var listOfQuotes:[FavQuote]=[]
-
         let ref = firebaseController.refFavQuotes.child(userID)
         ref.observe(.value, with: { snapshot in
             if snapshot.childrenCount > 0{
+                var listOfQuotes:[FavQuote]=[]
                 for quote in snapshot.children.allObjects as! [DataSnapshot] {
-                    print("3. FIREBASE \(quote)")
                     let qouteObject = quote.value as? [String:String]
                     if let qObj = qouteObject {
                         if let quoteID = qObj["qid"], let qouteAuthor = qObj["author"], let quoteText = qObj["quote"] {
-                            
                             let favQuote = FavQuote(qid: quoteID, author: qouteAuthor, quote: quoteText)
-                            print("4. Fetching data fro FIREBASE \(favQuote)")
                             listOfQuotes.append(favQuote)
-                            
                         }
                     }
                 }

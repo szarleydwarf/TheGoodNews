@@ -2,26 +2,29 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Favourite" representedClassName="Favourite" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="fireDataBaseID" optional="YES" attributeType="String"/>
         <attribute name="isFavourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="quote" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Poems" representedClassName="Poems" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="fireDataBaseID" optional="YES" attributeType="String"/>
         <attribute name="isFavourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="poemText" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
     </entity>
     <entity name="UserQuotePoems" representedClassName="UserQuotePoems" syncable="YES" codeGenerationType="class">
+        <attribute name="fireDataBaseID" optional="YES" attributeType="String"/>
         <attribute name="isQuote" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Favourite" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Poems" positionX="-63" positionY="9" width="128" height="118"/>
-        <element name="UserQuotePoems" positionX="-54" positionY="36" width="128" height="103"/>
+        <element name="Favourite" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Poems" positionX="-63" positionY="9" width="128" height="133"/>
+        <element name="UserQuotePoems" positionX="-54" positionY="36" width="128" height="118"/>
     </elements>
 </model>

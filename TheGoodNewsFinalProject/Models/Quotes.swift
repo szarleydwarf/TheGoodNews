@@ -24,6 +24,7 @@ struct Quotes {
 }
 
 struct Quote:Decodable {
+    let quoteFireDataBaseID:String?
     let quoteText:String
     let quoteAuthor:String
 }
