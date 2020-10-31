@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import FirebaseDatabase
 /*
  Class to maintain CRUD actions in CoreData
  for user favourite qoutes
@@ -74,7 +75,7 @@ class Favourites {
     // Firebase Database func
     let firebaseController = FireBaseController.shared
     
-    private struct FavQuote {
+    struct FavQuote {
         var qid:String
         var author:String
         var quote:String
@@ -97,6 +98,28 @@ class Favourites {
         }
     }
     
+    func fetchFromFireDatabase(userID: String) -> [FavQuote] {
+        var listOfQuotes:[FavQuote]=[]
+
+        let ref = firebaseController.refFavQuotes.child(userID)
+        ref.observe(.value, with: { snapshot in
+            if snapshot.childrenCount > 0{
+                for quote in snapshot.children.allObjects as! [DataSnapshot] {
+                    print("3. FIREBASE \(quote)")
+                    let qouteObject = quote.value as? [String:String]
+                    if let qObj = qouteObject {
+                        if let quoteID = qObj["qid"], let qouteAuthor = qObj["author"], let quoteText = qObj["quote"] {
+                            print("4. Fetching data fro FIREBASE")
+                            let favQuote = FavQuote(qid: quoteID, author: qouteAuthor, quote: quoteText)
+                            listOfQuotes.append(favQuote)
+                        }
+                    }
+                }
+            }
+        })
+
+        return listOfQuotes
+    }
     
     //to be removed before submission
     func deleteAllCoreData(_ entityName:String) {

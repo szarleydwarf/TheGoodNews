@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     let tappedTintColor:UIColor = .systemOrange
     let defaultTintColor:UIColor = .systemGray
     let favouriteImageName:String = "star.circle"
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,9 +47,9 @@ class ViewController: UIViewController {
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
         }
         
-//Favourites().deleteAllCoreData("Favourite")
-//Favourites().deleteAllCoreData("Poems")
-//Favourites().deleteAllCoreData("UserQuotePoems")
+        //Favourites().deleteAllCoreData("Favourite")
+        //Favourites().deleteAllCoreData("Poems")
+        //Favourites().deleteAllCoreData("UserQuotePoems")
         
         setBackground()
         setQuote()
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
         fbAuth.fAuth.removeStateDidChangeListener(handle!)
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIElementsHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
                 }
             }
             favouriteButton.tintColor = tintColor
-                    
+            
             Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email )
         }
@@ -110,6 +110,12 @@ class ViewController: UIViewController {
             let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
+        }
+        if let key = fbAuth.fAuth.currentUser?.uid{
+            let dict = Favourites().fetchFromFireDatabase(userID: key)
+            for d in dict {
+                print("D IN FIREBASE >>\(d)<<")
+            }
         }
     }
     
@@ -133,7 +139,7 @@ class ViewController: UIViewController {
             self.authorNameLabel.text = author
             if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text{
                 let tintColor = Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email, favourites: self.fetchedFavourites) ? self.tappedTintColor : self.defaultTintColor
-
+                
                 self.favouriteButton.tintColor = tintColor
             }
         }
