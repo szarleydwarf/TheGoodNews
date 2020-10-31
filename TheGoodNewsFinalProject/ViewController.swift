@@ -90,7 +90,7 @@ class ViewController: UIViewController {
                 tintColor = self.tappedTintColor
                 if Favourites().saveFavourite(authorName: author, quote: quote, userEmail: self.email ) {
                     if let key = fbAuth.fAuth.currentUser?.uid{
-                        Favourites().saveIntoFireDatabase(uid: key, authorName: author, quoteText: quote)
+                        Favourites().saveIntoFireDatabase(userID: key, authorName: author, quoteText: quote)
                         print("SAVING INTO FIREBASE")
                     }
                     message = "SAVED TO FAVOURITES"

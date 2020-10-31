@@ -73,6 +73,7 @@ class Favourites {
     
     // Firebase Database func
     let firebaseController = FireBaseController.shared
+    
     private struct FavQuote {
         var qid:String
         var author:String
@@ -83,20 +84,17 @@ class Favourites {
             return ["qid":qid,
                     "author":author,
                     "quote":quote
-                    ]
+            ]
         }
-        
-
     }
     
-    func saveIntoFireDatabase(uid:String, authorName:String, quoteText:String) {
-        let qid = firebaseController.refFavQuotes.child(uid).childByAutoId().key
-        if let qID = qid{
-            let quote = FavQuote(qid: qID, author: authorName, quote: quoteText)
-            print("SAVING ON FIREBASE DB \(qID)>>\(uid)<<\(quote.dictionary) >>")
-            firebaseController.refFavQuotes.child(uid).setValue(quote.dictionary)
+    func saveIntoFireDatabase(userID:String, authorName:String, quoteText:String) {
+        if let quoteID = firebaseController.refFavQuotes.child(userID).childByAutoId().key{
+            
+            let quote = FavQuote(qid: quoteID, author: authorName, quote: quoteText)
+            firebaseController.refFavQuotes.child(userID).child(quoteID)
+                .setValue(quote.dictionary)
         }
-        
     }
     
     
