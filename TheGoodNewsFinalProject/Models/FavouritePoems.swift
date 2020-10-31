@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FirebaseDatabase
 
 class FavouritePoems {
     let coreDataController = CoreDataController.shared
@@ -35,6 +36,11 @@ class FavouritePoems {
         poem.userEmail = userEmail
         
         return self.coreDataController.save()
+    }
+    
+    func updatePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool{
+        
+        return false
     }
     
     func deletePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool  {
@@ -68,4 +74,64 @@ class FavouritePoems {
         }
         return false
     }
+  
+    // Firebase Database func's
+    let firebaseController = FireBaseController.shared
+
+    struct FavPoem {
+        var poemID:String
+        var author:String
+        var title:String
+        var poemText:String
+        
+        var favoritePoem:[String:String] {
+            return ["poemID": poemID,
+                    "author": author,
+                    "title": title,
+                    "poemText":poemText
+            ]
+        }
+    }
+    
+    func saveIntoFireDatabase(userID:String, authorName:String, poemText:String, poemTitle:String) {
+         if let poemID = firebaseController.refFavPoems.child(userID).childByAutoId().key{
+             
+             let poem = FavPoem(poemID: poemID, author: authorName, title: poemTitle, poemText: poemText)
+             firebaseController.refFavPoems.child(userID).child(poemID)
+                 .setValue(poem.favoritePoem)
+         }
+     }
+     
+     func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, poemText:String, poemTitle:String) -> String {
+         if let poemID = firebaseController.refFavPoems.child(userID).childByAutoId().key{
+             
+             let poem = FavPoem(poemID: poemID, author: authorName, title: poemTitle, poemText: poemText)
+             firebaseController.refFavPoems.child(userID).child(poemID)
+                 .setValue(poem.favoritePoem)
+             return poemID
+         }
+         return ""
+     }
+
+     func fetchFromFireDatabase(userID: String, completion:@escaping(([FavPoem])) -> Void) {
+         let ref = firebaseController.refFavPoems.child(userID)
+         ref.observe(.value, with: { snapshot in
+             if snapshot.childrenCount > 0{
+                 var listOfPoems:[FavPoem]=[]
+                 for poem in snapshot.children.allObjects as! [DataSnapshot] {
+                     let poemObject = poem.value as? [String:String]
+                     if let pObj = poemObject {
+                         if let poemID = pObj["poemID"], let poemAuthor = pObj["author"], let poemText = pObj["poemText"], let poemTitle = pObj["title"] {
+                             let favPoem = FavPoem(poemID: poemID, author: poemAuthor, title: poemTitle, poemText: poemText)
+                             listOfPoems.append(favPoem)
+                         }
+                     }
+                 }
+                 DispatchQueue.main.async {
+                     completion(listOfPoems)
+                 }
+             }
+         })
+     }
+
 }

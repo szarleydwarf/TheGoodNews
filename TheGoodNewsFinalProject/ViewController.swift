@@ -115,7 +115,9 @@ class ViewController: UIViewController {
     }
     
     func performSync() {
-        FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: self.fetchedFavourites)
+        if FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: self.fetchedFavourites) {
+            Toast().showToast(message: "Data synced", font: .systemFont(ofSize: 16), view: self.view)
+        }
     }
     
     func setBanner() {

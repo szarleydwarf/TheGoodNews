@@ -49,7 +49,6 @@ class Favourites {
             let result = try ctx.fetch(request)
             if result.count > 0 {
                 result[0].fireDataBaseID = fireDataBaseID
-//                ctx.setValue(fireDataBaseID, forKey: "fireDataBaseID")
             }
         } catch let err {
             print("Update error \(err)")
