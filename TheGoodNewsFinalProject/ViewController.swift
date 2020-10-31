@@ -112,10 +112,12 @@ class ViewController: UIViewController {
             self.present(activity, animated: true, completion: nil)
         }
         if let key = fbAuth.fAuth.currentUser?.uid{
-            let dict = Favourites().fetchFromFireDatabase(userID: key)
-            for d in dict {
-                print("D IN FIREBASE >>\(d)<<")
+            Favourites().fetchFromFireDatabase(userID: key) {dict in
+                for d in dict {
+                    print("D IN FIREBASE >>\(d)<<")
+                }
             }
+                
         }
     }
     

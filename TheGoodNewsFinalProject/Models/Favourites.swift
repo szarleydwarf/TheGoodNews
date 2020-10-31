@@ -98,7 +98,7 @@ class Favourites {
         }
     }
     
-    func fetchFromFireDatabase(userID: String) -> [FavQuote] {
+    func fetchFromFireDatabase(userID: String, completion:@escaping(([FavQuote])) -> Void) {
         var listOfQuotes:[FavQuote]=[]
 
         let ref = firebaseController.refFavQuotes.child(userID)
@@ -109,16 +109,19 @@ class Favourites {
                     let qouteObject = quote.value as? [String:String]
                     if let qObj = qouteObject {
                         if let quoteID = qObj["qid"], let qouteAuthor = qObj["author"], let quoteText = qObj["quote"] {
-                            print("4. Fetching data fro FIREBASE")
+                            
                             let favQuote = FavQuote(qid: quoteID, author: qouteAuthor, quote: quoteText)
+                            print("4. Fetching data fro FIREBASE \(favQuote)")
                             listOfQuotes.append(favQuote)
+                            
                         }
                     }
                 }
+                DispatchQueue.main.async {
+                    completion(listOfQuotes)
+                }
             }
         })
-
-        return listOfQuotes
     }
     
     //to be removed before submission
