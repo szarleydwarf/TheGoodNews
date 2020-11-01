@@ -31,4 +31,22 @@ class FirebaseCoreDataSync {
         }
         return saved
     }
+    
+    func syncPoemsToFireDataBase(favouritePoemsList:[Poems]) -> Bool {
+        var saved:Bool = false
+        if let userID = firebaseController.fAuth.currentUser?.uid {
+            FavouritePoems().fetchFromFireDatabase(userID: userID) { firebaseList in
+                for favPoem in favouritePoemsList {
+                    if favPoem.fireDataBaseID == nil {
+                        if let author = favPoem.author, let title = favPoem.title, let text = favPoem.poemText, let email = favPoem.userEmail {
+                            let poemID = FavouritePoems().saveIntoFireDatabaseReturnQouteID(userID: userID, authorName: author, poemText: text, poemTitle: title)
+                            saved = FavouritePoems().updatePoem(poetName: author, poemTitle: title, poemText: text, userEmail: email, fireDataBaseID: poemID)
+                            print("SYNC POEMS >> \(saved) <<>> \(poemID)")
+                        }
+                    }
+                }
+            }
+        }
+        return saved
+    }
 }

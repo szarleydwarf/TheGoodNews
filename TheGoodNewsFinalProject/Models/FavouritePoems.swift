@@ -39,8 +39,18 @@ class FavouritePoems {
     }
     
     func updatePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool{
-        
-        return false
+        let ctx = self.coreDataController.mainCtx
+        let request:NSFetchRequest<Poems> = Poems.fetchRequest()
+        request.predicate = NSPredicate(format: "author = %@ && title = %@ && poemText = %@ && userEmail = %@", poetName, poemTitle, poemText, userEmail)
+        do {
+            let result = try ctx.fetch(request)
+            if result.count > 0{
+                result[0].fireDataBaseID = fireDataBaseID
+            }
+        } catch let err {
+            print("Poem update error >> \(err.localizedDescription)")
+        }
+        return self.coreDataController.save()
     }
     
     func deletePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool  {

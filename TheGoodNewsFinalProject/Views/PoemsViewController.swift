@@ -24,7 +24,7 @@ class PoemsViewController: UIViewController {
     let tappedTintColor:UIColor = .systemOrange
     let defaultTintColor:UIColor = .systemGray
     let favouriteImageName:String = "star.circle"
-
+    
     var user:User?
     var handle:AuthStateDidChangeListenerHandle?
     var googleAdsManager = GoogleAdsManager()
@@ -46,6 +46,7 @@ class PoemsViewController: UIViewController {
                 self.email = ""
             }
             self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
+            self.performSync()
         }
         setBackground()
         setPoemInView()
@@ -55,7 +56,7 @@ class PoemsViewController: UIViewController {
         super.viewWillDisappear(animated)
         fbAuth.fAuth.removeStateDidChangeListener(handle!)
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -76,7 +77,7 @@ class PoemsViewController: UIViewController {
         if let author = self.authorLabel.text, let title = self.poemTitleLabel.text, let poemText = self.poemTextView.text {
             var message:String = ""
             var tintColor:UIColor?
-
+            
             if FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email) {
                 tintColor = self.defaultTintColor
                 
@@ -112,13 +113,13 @@ class PoemsViewController: UIViewController {
         view.addSubview(banner)
     }
     
-   func setBackground() {
-       Backgrounds().getBackgroundImage{ url in
-           self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
-           self.backgroundImageView.alpha = 0.3
-       }
-   }
-   
+    func setBackground() {
+        Backgrounds().getBackgroundImage{ url in
+            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
+            self.backgroundImageView.alpha = 0.3
+        }
+    }
+    
     func setPoemInView() {
         PoemModel().getPoem{author, title, poem in
             self.authorLabel.text = author
@@ -127,6 +128,12 @@ class PoemsViewController: UIViewController {
             
             let tintColor = FavouritePoems().checkIfFavourite(poetName: author, poemTitle: title, poemText: poem, userEmail: self.email) ? self.tappedTintColor : self.defaultTintColor
             self.favouriteButton.tintColor = tintColor
+        }
+    }
+    
+    func performSync()  {
+        if FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: self.fetchedPoems) {
+            Toast().showToast(message: "POEMS SYNCED", font: .systemFont(ofSize: 16), view: self.view)
         }
     }
 }
