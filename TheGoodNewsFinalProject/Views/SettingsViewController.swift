@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     var imagePicker:ImagePickerHelper!
     var email:String = ""
     var user:User?
-  
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,11 +41,13 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
                 self.email = user.email
                 self.changeSignInButtonTitle()
                 self.toggleElementsVisibility()
+                self.toggleElementTint()
                 self.setUserProfileImageInImageView()
             } else if self.email.isEmpty, let email = user?.email {
                 self.email = email
                 self.changeSignInButtonTitle()
                 self.toggleElementsVisibility()
+                self.toggleElementTint()
                 self.setUserProfileImageInImageView()
             } else if user == nil {
                 self.email = ""
@@ -102,13 +104,35 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     @IBAction func syncToFireDataBase(_ sender: UIButton) {
         if self.email.isEmpty {
-            Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: "You need to sign in to Sync your data", font: .systemFont(ofSize: 22.0), view: self.view)
+        } else {
+            Toast().showToast(message: "Starting to syncing your favourites to cloud allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
+            let quotesToSync = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
+            if quotesToSync.count > 0 {
+                if FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: quotesToSync) {
+                    Toast().showToast(message: "QUOTES SYNCED", font: .systemFont(ofSize: 16), view: self.view)
+                }
+            }
+            let poemsToSync = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
+            if poemsToSync.count > 0 {
+                if FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: poemsToSync) {
+                    Toast().showToast(message: "POEMS SYNCED", font: .systemFont(ofSize: 16), view: self.view)
+                }
+            }
+            let userTextToSync = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: self.email)
+            if userTextToSync.count > 0 {
+                if FirebaseCoreDataSync().syncUserTextToFireDataBase(userTextList: userTextToSync){
+                    Toast().showToast(message: "\(user?.name), Your texts are updated", font: .systemFont(ofSize: 16), view: self.view)
+                }
+            }
         }
     }
     
     @IBAction func syncToCoreData(_ sender: UIButton) {
         if self.email.isEmpty {
-            Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: "You need to sign in to sync your data", font: .systemFont(ofSize: 22.0), view: self.view)
+        } else {
+            Toast().showToast(message: "Starting to syncing your favourites to device allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
         }
     }
     
@@ -119,8 +143,9 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             try fbAuth.fAuth.signOut()
             self.user = nil
             self.email = ""
-            changeSignInButtonTitle()
-            toggleElementsVisibility()
+            self.changeSignInButtonTitle()
+            self.toggleElementsVisibility()
+            self.toggleElementTint()
         } catch let err{
             Toast().showToast(message: "could not sign out \(err)", font: .systemFont(ofSize: 16), view: self.view)
         }
@@ -142,13 +167,19 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = UserHelper().getUserName(email: self.email)
             self.editUserImageButton.isHidden = false
-            self.syncFromFirebaseButton.tintColor = .systemOrange
-            self.syncIntoFireBaseButton.tintColor = .systemOrange
-            self.addingUserTextButton.tintColor = .systemOrange
         } else {
             self.usernameLabel.isHidden = true
             self.editUserImageButton.isHidden = true
             self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
+        }
+    }
+    
+    func toggleElementTint () {
+        if !self.email.isEmpty {
+            self.syncFromFirebaseButton.tintColor = .systemOrange
+            self.syncIntoFireBaseButton.tintColor = .systemOrange
+            self.addingUserTextButton.tintColor = .systemOrange
+        } else {
             self.syncFromFirebaseButton.tintColor = .systemGray
             self.syncIntoFireBaseButton.tintColor = .systemGray
             self.addingUserTextButton.tintColor = .systemGray
@@ -173,18 +204,18 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     func setUserProfileImageView() {
         self.userImageView.layer.borderWidth = 1.0
-               self.userImageView.layer.masksToBounds = false
-               self.userImageView.layer.borderColor = UIColor.white.cgColor
-               self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height/2
-               self.userImageView.clipsToBounds = true
-               self.userImageView.frame = CGRect(x: 0,y: 0,width: 100,height: 100)
-               self.userImageView.contentMode = UIView.ContentMode.scaleAspectFill
-              
+        self.userImageView.layer.masksToBounds = false
+        self.userImageView.layer.borderColor = UIColor.white.cgColor
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.size.height/2
+        self.userImageView.clipsToBounds = true
+        self.userImageView.frame = CGRect(x: 0,y: 0,width: 100,height: 100)
+        self.userImageView.contentMode = UIView.ContentMode.scaleAspectFill
+        
     }
     
     func didSelect(image: UIImage?) {
         if let imageToDisplay = image{
-        self.userImageView.image = imageToDisplay
+            self.userImageView.image = imageToDisplay
             if FileStoringHelper().saveImage(image: imageToDisplay, name: self.email) {
                 Toast().showToast(message: "Image Saved", font: .systemFont(ofSize: 18.0), view: self.view)
             }

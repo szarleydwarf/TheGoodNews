@@ -46,7 +46,7 @@ class PoemsViewController: UIViewController {
                 self.email = ""
             }
             self.fetchedPoems = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
-            self.performSync()
+            
         }
         setBackground()
         setPoemInView()
@@ -131,9 +131,4 @@ class PoemsViewController: UIViewController {
         }
     }
     
-    func performSync()  {
-        if FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: self.fetchedPoems) {
-            Toast().showToast(message: "POEMS SYNCED", font: .systemFont(ofSize: 16), view: self.view)
-        }
-    }
 }

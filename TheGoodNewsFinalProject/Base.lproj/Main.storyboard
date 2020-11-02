@@ -202,7 +202,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="97" translatesAutoresizingMaskIntoConstraints="NO" id="dI1-dG-jbC">
                                 <rect key="frame" x="68.666666666666686" y="641" width="277" height="90"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqE-zs-awn" userLabel="Favourite Lists">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqE-zs-awn" userLabel="Favourite Lists">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="aqE-zs-awn" secondAttribute="height" multiplier="1:1" id="OKF-3l-t8M"/>
@@ -211,11 +211,10 @@
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="arrow.down.heart"/>
                                         <connections>
-                                            <action selector="showFavourites:" destination="VOf-ks-X9C" eventType="touchUpInside" id="Ame-f3-66j"/>
                                             <action selector="syncToCoreData:" destination="VOf-ks-X9C" eventType="touchUpInside" id="zXo-nv-xwF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFh-NE-4Td" userLabel="Favourite Lists">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFh-NE-4Td" userLabel="Favourite Lists">
                                         <rect key="frame" x="187" y="0.0" width="90" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mFh-NE-4Td" secondAttribute="height" multiplier="1:1" id="Kf5-Gv-cEv"/>
@@ -224,7 +223,6 @@
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="arrow.up.heart"/>
                                         <connections>
-                                            <action selector="showFavourites:" destination="VOf-ks-X9C" eventType="touchUpInside" id="O1d-3h-fnv"/>
                                             <action selector="syncToFireDataBase:" destination="VOf-ks-X9C" eventType="touchUpInside" id="rm2-JD-Mys"/>
                                         </connections>
                                     </button>

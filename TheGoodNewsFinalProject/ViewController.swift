@@ -45,8 +45,6 @@ class ViewController: UIViewController {
                 self.email = ""
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
-            
-            self.performSync()
         }
         //Favourites().deleteAllCoreData("Favourite")
         //Favourites().deleteAllCoreData("Poems")
@@ -111,12 +109,6 @@ class ViewController: UIViewController {
             let activity = UIActivityViewController(activityItems: objectToShare, applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
-        }
-    }
-    
-    func performSync() {
-        if FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: self.fetchedFavourites) {
-            Toast().showToast(message: "Data synced", font: .systemFont(ofSize: 16), view: self.view)
         }
     }
     
