@@ -49,4 +49,22 @@ class FirebaseCoreDataSync {
         }
         return saved
     }
+    
+    func syncUserTextToFireDataBase(userTextList:[UserQuotePoems]) -> Bool {
+        var saved:Bool = false
+        if let userID = firebaseController.fAuth.currentUser?.uid {
+            UserPoemsAndQutes().fetchFromFireDataBase(userID: userID, completion: { firebaseList in
+                for userText in userTextList {
+                    if userText.fireDataBaseID == nil {
+                        if let email = userText.userEmail, let text = userText.text, let title = userText.title {
+                            let userTextID = UserPoemsAndQutes().saveIntoFireDataBaseReturnID(userID: userID, userEmail: email, title: title, text: text, isQoute: userText.isQuote)
+                            saved = UserPoemsAndQutes.updateUserText(userID: userID, userEmail: email, title: title, text: text, isQoute: userText.isQuote, fireDataBaseID: userTextID)
+                            print("SYNC USERTEXT >> \(saved) <<>> \(userTextID)")
+                        }
+                    }
+                }
+            })
+        }
+        return saved
+    }
 }

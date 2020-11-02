@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FirebaseDatabase
 
 class UserPoemsAndQutes {
     let coreDataController = CoreDataController.shared
@@ -56,4 +57,79 @@ class UserPoemsAndQutes {
         }
         return self.coreDataController.save()
     }
+    
+    // Firebase Database func's
+    let firebaseController = FireBaseController.shared
+    
+    struct UserText {
+        var userTextID:String
+        var userEmail:String
+        var title:String
+        var text:String
+        var isQoute:String
+        
+        var dictionary:[String:Any]{
+            return ["userTextID":userTextID,
+                    "userEmail":userEmail,
+                    "title":title,
+                    "text":text,
+                    "isQuote":isQoute
+            ]
+        }
+    }
+    
+    func boolToString(isQoute:Bool) -> String{
+        if isQoute {
+            return "yes"
+        }
+        return "no"
+    }
+    
+    func stringToBool(isQoute:String) -> Bool {
+        if isQoute == "yes" {
+            return true
+        }
+        return false
+    }
+    
+    func saveIntoFireDataBase(userID:String, userEmail:String, title:String, text:String, isQoute:Bool) {
+        if let textID = firebaseController.refuserTexts.child(userID).childByAutoId().key {
+            let isQ = boolToString(isQoute: isQoute)
+            let text = UserText(userTextID: textID, userEmail: userEmail, title: title, text: text, isQoute: isQ)
+            firebaseController.refuserTexts.child(userID).child(textID).setValue(text.dictionary)
+        }
+    }
+    
+    func saveIntoFireDataBaseReturnID(userID:String, userEmail:String, title: String, text:String, isQoute:Bool) -> String {
+        if let textID = firebaseController.refuserTexts.child(userID).childByAutoId().key {
+            let isQ = self.boolToString(isQoute: isQoute)
+            let text = UserText(userTextID: textID, userEmail: userEmail, title: title, text: text, isQoute: isQ)
+            firebaseController.refuserTexts.child(userID).child(textID).setValue(text.dictionary)
+            return textID
+        }
+        return ""
+    }
+    
+    func fetchFromFireDataBase (userID:String, completion:@escaping(([UserText]))-> Void) {
+        let ref = firebaseController.refuserTexts.child(userID)
+        ref.observe(.value, with: { snapshot in
+            if snapshot.childrenCount > 0 {
+                var userTextList:[UserText] = []
+                for text in snapshot.children.allObjects as! [DataSnapshot] {
+                    let textObject = text.value as? [String:String]
+                    if let textObj = textObject {
+                        if let textID = textObj["userTextID"], let userEmail = textObj["userEmail"], let text = textObj["text"], let isQuote = textObj["isQuote"], let title = textObj["title"] {
+
+                            let userText = UserText(userTextID: textID, userEmail: userEmail, title: title, text: text, isQoute: isQuote)
+                            userTextList.append(userText)
+                        }
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(userTextList)
+                }
+            }
+        })
+    }
+
 }
