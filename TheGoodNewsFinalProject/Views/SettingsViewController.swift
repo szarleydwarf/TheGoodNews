@@ -109,20 +109,26 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             Toast().showToast(message: "Starting to syncing your favourites to cloud allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
             let quotesToSync = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
             if quotesToSync.count > 0 {
-                if FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: quotesToSync) {
-                    Toast().showToast(message: "QUOTES SYNCED", font: .systemFont(ofSize: 16), view: self.view)
+                FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: quotesToSync) { completed in
+                    if completed {
+                        Toast().showToast(message: "QUOTES SYNCED", font: .systemFont(ofSize: 16), view: self.view)
+                    }
                 }
             }
             let poemsToSync = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
             if poemsToSync.count > 0 {
-                if FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: poemsToSync) {
-                    Toast().showToast(message: "POEMS SYNCED", font: .systemFont(ofSize: 16), view: self.view)
+                FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: poemsToSync) { completed in
+                    if completed {
+                        Toast().showToast(message: "POEMS SYNCED", font: .systemFont(ofSize: 16), view: self.view)
+                    }
                 }
             }
             let userTextToSync = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: self.email)
             if userTextToSync.count > 0 {
-                if FirebaseCoreDataSync().syncUserTextToFireDataBase(userTextList: userTextToSync){
-                    Toast().showToast(message: "\(user?.name), Your texts are updated", font: .systemFont(ofSize: 16), view: self.view)
+                FirebaseCoreDataSync().syncUserTextToFireDataBase(userTextList: userTextToSync){ completed in
+                    if completed {
+                        Toast().showToast(message: "\(self.user?.name ?? ""), Your texts are updated", font: .systemFont(ofSize: 16), view: self.view)
+                    }
                 }
             }
         }

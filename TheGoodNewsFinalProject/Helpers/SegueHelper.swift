@@ -10,7 +10,6 @@ import UIKit
 
 extension UIStoryboardSegue {
     func forward(_ user: User?, to destination: UIViewController) {
-        print("UIStoryboardSegue >\(user?.email)")
         if let navigationController = destination as? UINavigationController {
             let root = navigationController.viewControllers[0]
             forward(user, to: root)
