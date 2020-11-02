@@ -137,7 +137,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="114" translatesAutoresizingMaskIntoConstraints="NO" id="RWn-CY-FWB">
                                 <rect key="frame" x="60" y="484" width="294" height="90"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1U-9Z-XCC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1U-9Z-XCC" userLabel="Favourite Lists">
                                         <rect key="frame" x="0.0" y="0.3333333333333357" width="90" height="89.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="e1U-9Z-XCC" secondAttribute="height" multiplier="1:1" id="WH1-eP-raj"/>
@@ -199,6 +199,41 @@
                                     <action selector="changeUserImage:" destination="VOf-ks-X9C" eventType="touchUpInside" id="VMn-iF-qI6"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="97" translatesAutoresizingMaskIntoConstraints="NO" id="dI1-dG-jbC">
+                                <rect key="frame" x="68.666666666666686" y="641" width="277" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqE-zs-awn" userLabel="Favourite Lists">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aqE-zs-awn" secondAttribute="height" multiplier="1:1" id="OKF-3l-t8M"/>
+                                            <constraint firstAttribute="height" constant="90" id="iL2-RS-LZF"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="arrow.down.heart"/>
+                                        <connections>
+                                            <action selector="showFavourites:" destination="VOf-ks-X9C" eventType="touchUpInside" id="Ame-f3-66j"/>
+                                            <action selector="syncToCoreData:" destination="VOf-ks-X9C" eventType="touchUpInside" id="zXo-nv-xwF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFh-NE-4Td" userLabel="Favourite Lists">
+                                        <rect key="frame" x="187" y="0.0" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mFh-NE-4Td" secondAttribute="height" multiplier="1:1" id="Kf5-Gv-cEv"/>
+                                            <constraint firstAttribute="height" constant="90" id="zoL-iy-Igr"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="arrow.up.heart"/>
+                                        <connections>
+                                            <action selector="showFavourites:" destination="VOf-ks-X9C" eventType="touchUpInside" id="O1d-3h-fnv"/>
+                                            <action selector="syncToFireDataBase:" destination="VOf-ks-X9C" eventType="touchUpInside" id="rm2-JD-Mys"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mFh-NE-4Td" firstAttribute="width" secondItem="mFh-NE-4Td" secondAttribute="height" multiplier="1:1" id="9qX-tm-5fV"/>
+                                    <constraint firstItem="aqE-zs-awn" firstAttribute="width" secondItem="aqE-zs-awn" secondAttribute="height" multiplier="1:1" id="pfQ-J1-659"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -209,7 +244,9 @@
                             <constraint firstItem="RWn-CY-FWB" firstAttribute="top" secondItem="0ln-z3-381" secondAttribute="bottom" constant="30" id="7fg-1G-7uV"/>
                             <constraint firstItem="0ln-z3-381" firstAttribute="top" secondItem="WbY-oh-Pmm" secondAttribute="bottom" constant="20" id="8TS-l1-102"/>
                             <constraint firstItem="WbY-oh-Pmm" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="Ble-EL-j8C"/>
+                            <constraint firstItem="dI1-dG-jbC" firstAttribute="top" secondItem="RWn-CY-FWB" secondAttribute="bottom" constant="67" id="MoZ-k5-qCW"/>
                             <constraint firstItem="WbY-oh-Pmm" firstAttribute="top" secondItem="mAE-bs-C2a" secondAttribute="bottom" constant="20" id="SuA-SF-7TE"/>
+                            <constraint firstItem="dI1-dG-jbC" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="WMS-19-Dza"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="trailing" secondItem="bql-JL-fXz" secondAttribute="trailing" id="Y8Y-dy-KE0"/>
                             <constraint firstItem="rnR-Xk-3dC" firstAttribute="bottom" secondItem="bql-JL-fXz" secondAttribute="bottom" id="aF2-TK-hLm"/>
                             <constraint firstItem="0ln-z3-381" firstAttribute="centerX" secondItem="rnR-Xk-3dC" secondAttribute="centerX" id="bhC-fC-w2J"/>
@@ -224,6 +261,8 @@
                         <outlet property="addingUserTextButton" destination="KUg-dz-IPM" id="qao-fy-Whc"/>
                         <outlet property="editUserImageButton" destination="s1U-HZ-Zz4" id="vjn-2t-cfb"/>
                         <outlet property="signInButton" destination="0ln-z3-381" id="4cG-cu-njG"/>
+                        <outlet property="syncFromFirebaseButton" destination="aqE-zs-awn" id="XyW-0O-FWE"/>
+                        <outlet property="syncIntoFireBaseButton" destination="mFh-NE-4Td" id="xY9-pr-7GS"/>
                         <outlet property="userImageView" destination="mAE-bs-C2a" id="gqG-zG-pMo"/>
                         <outlet property="usernameLabel" destination="WbY-oh-Pmm" id="X1T-Bz-KHI"/>
                     </connections>
@@ -674,6 +713,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.down.heart" width="17" height="16"/>
+        <image name="arrow.up.heart" width="17" height="16"/>
         <image name="arrowshape.zigzag.right" width="21" height="16"/>
         <image name="landscape" width="1024" height="683"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>

@@ -19,6 +19,8 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var editUserImageButton: UIButton!
     @IBOutlet weak var addingUserTextButton: UIButton!
+    @IBOutlet weak var syncFromFirebaseButton: UIButton!
+    @IBOutlet weak var syncIntoFireBaseButton: UIButton!
     
     let fbAuth = FireBaseController.shared
     
@@ -98,7 +100,18 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
-
+    @IBAction func syncToFireDataBase(_ sender: UIButton) {
+        if self.email.isEmpty {
+            Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+        }
+    }
+    
+    @IBAction func syncToCoreData(_ sender: UIButton) {
+        if self.email.isEmpty {
+            Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+        }
+    }
+    
     @IBAction func unvindToSettings(_ sender: UIStoryboardSegue) {}
     
     func signOut() {
@@ -129,12 +142,15 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.usernameLabel.isHidden = false
             self.usernameLabel.text = UserHelper().getUserName(email: self.email)
             self.editUserImageButton.isHidden = false
+            self.syncFromFirebaseButton.tintColor = .systemOrange
+            self.syncIntoFireBaseButton.tintColor = .systemOrange
             self.addingUserTextButton.tintColor = .systemOrange
-            
         } else {
             self.usernameLabel.isHidden = true
             self.editUserImageButton.isHidden = true
             self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
+            self.syncFromFirebaseButton.tintColor = .systemGray
+            self.syncIntoFireBaseButton.tintColor = .systemGray
             self.addingUserTextButton.tintColor = .systemGray
         }
     }

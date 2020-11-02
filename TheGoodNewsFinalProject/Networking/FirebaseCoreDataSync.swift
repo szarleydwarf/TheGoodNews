@@ -58,7 +58,7 @@ class FirebaseCoreDataSync {
                     if userText.fireDataBaseID == nil {
                         if let email = userText.userEmail, let text = userText.text, let title = userText.title {
                             let userTextID = UserPoemsAndQutes().saveIntoFireDataBaseReturnID(userID: userID, userEmail: email, title: title, text: text, isQoute: userText.isQuote)
-                            saved = UserPoemsAndQutes.updateUserText(userID: userID, userEmail: email, title: title, text: text, isQoute: userText.isQuote, fireDataBaseID: userTextID)
+                            saved = UserPoemsAndQutes().updateUserText( userEmail: email, title: title, text: text, isQoute: userText.isQuote, fireDataBaseID: userTextID)
                             print("SYNC USERTEXT >> \(saved) <<>> \(userTextID)")
                         }
                     }
