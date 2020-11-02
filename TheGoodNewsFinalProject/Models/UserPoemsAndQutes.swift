@@ -38,6 +38,21 @@ class UserPoemsAndQutes {
         return self.coreDataController.save()
     }
     
+    func updateUserText(userEmail: String, title: String, text: String, isQoute: Bool, fireDataBaseID: String) -> Bool {
+        let ctx = self.coreDataController.mainCtx
+        let request:NSFetchRequest<UserQuotePoems> = UserQuotePoems.fetchRequest()
+        request.predicate = NSPredicate(format: "userEmail = %@ && title = %@ && text = %@", userEmail, title, text)
+        do {
+            let result = try ctx.fetch(request)
+            if result.count > 0 {
+                result[0].fireDataBaseID = fireDataBaseID
+            }
+        } catch let err {
+            print("User update error \(err)")
+        }
+        return self.coreDataController.save()
+    }
+    
     func deleteUserText(title:String?, text:String, isQuote:Bool, userEmail:String="Unknown@Unknown.org") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
