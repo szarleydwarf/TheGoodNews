@@ -139,6 +139,13 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             Toast().showToast(message: "You need to sign in to sync your data", font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
             Toast().showToast(message: "Starting to syncing your favourites to device allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
+            let quotesList = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
+            FirebaseCoreDataSync().syncQuotesIntoCoreData(favouriteQuotesList: quotesList) {
+                completed in
+                if completed {
+                    Toast().showToast(message: "Qoutes syncet to local drive", font: .systemFont(ofSize: 16), view: self.view)
+                }
+            }
         }
     }
     

@@ -88,7 +88,7 @@ class FirebaseCoreDataSync {
                             }
                         } else {
                             guard let favQuote = Favourites().getFavouriteQoute(fireDataBaseObject: fireQuote, favourites: favouriteQuotesList) else {return}
-                            if fireQuote.qid != favQuote.fireDataBaseID {
+                            if favQuote.fireDataBaseID == nil || fireQuote.qid != favQuote.fireDataBaseID {
                                 if Favourites().updateFavourite(authorName: fireQuote.author, quote: fireQuote.quote, userEmail: userEmail, fireDataBaseID: fireQuote.qid) {
                                     print("syncQuotesIntoCoreData sync id update")
                                 }
