@@ -6,6 +6,13 @@
         <attribute name="isFavourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="quote" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="userEmail"/>
+                <constraint value="author"/>
+                <constraint value="quote"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Poems" representedClassName="Poems" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
@@ -14,6 +21,14 @@
         <attribute name="poemText" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="userEmail"/>
+                <constraint value="author"/>
+                <constraint value="title"/>
+                <constraint value="poemText"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="UserQuotePoems" representedClassName="UserQuotePoems" syncable="YES" codeGenerationType="class">
         <attribute name="fireDataBaseID" optional="YES" attributeType="String"/>
@@ -21,6 +36,13 @@
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="userEmail" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="userEmail"/>
+                <constraint value="title"/>
+                <constraint value="text"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Favourite" positionX="-63" positionY="-18" width="128" height="118"/>

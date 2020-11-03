@@ -38,6 +38,19 @@ class FavouritePoems {
         return self.coreDataController.save()
     }
     
+    func savePoemWithFireDataBaseID(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID:String) -> Bool {
+        let ctx = self.coreDataController.mainCtx
+        let poem = Poems(context: ctx)
+        poem.author = poetName
+        poem.title = poemTitle
+        poem.poemText = poemText
+        poem.isFavourite = true
+        poem.userEmail = userEmail
+        poem.fireDataBaseID = fireDataBaseID
+        
+        return self.coreDataController.save()
+    }
+    
     func updatePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool{
         let ctx = self.coreDataController.mainCtx
         let request:NSFetchRequest<Poems> = Poems.fetchRequest()
@@ -73,11 +86,18 @@ class FavouritePoems {
         let poems = self.fetchPoems(view: UIView())
         return poems.contains(where: {($0.userEmail == userEmail) && ($0.author == poetName) && ($0.title == poemTitle) && $0.poemText == poemText})
     }
+    
+    func getFavouritePoem(fireDataBaseObject:FavPoem, favouriteList: [Poems]) -> Poems? {
+        if let userEmail = firebaseController.fAuth.currentUser?.email {
+            return favouriteList.first(where: {($0 == fireDataBaseObject) && ($0.userEmail == userEmail)})
+        }
+        return nil
+    }
   
     // Firebase Database func's
     let firebaseController = FireBaseController.shared
 
-    struct FavPoem {
+    struct FavPoem: Equatable {
         var poemID:String
         var author:String
         var title:String
@@ -89,6 +109,10 @@ class FavouritePoems {
                     "title": title,
                     "poemText":poemText
             ]
+        }
+        
+        static func == (lh:Poems, rh: FavPoem) -> Bool{
+            return lh.author == rh.author && lh.title == rh.title && lh.poemText == rh.poemText
         }
     }
     

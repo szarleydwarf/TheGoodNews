@@ -108,7 +108,20 @@ class FirebaseCoreDataSync {
             FavouritePoems().fetchFromFireDatabase(userID: userId) {
                 fireBasePoemsList in
                 if let userEmail = self.firebaseController.fAuth.currentUser?.email {
-                    
+                    for firePoem in fireBasePoemsList{
+                        if !FavouritePoems().checkIfFavourite(poetName: firePoem.author, poemTitle: firePoem.title, poemText: firePoem.poemText, userEmail: userEmail){
+                            if FavouritePoems().savePoemWithFireDataBaseID(poetName: firePoem.author, poemTitle: firePoem.title, poemText: firePoem.poemText, userEmail: userEmail, fireDataBaseID: firePoem.poemID) {
+                                  print("syncPoemsIntoCoreData Saved new poem")
+                            }
+                        } else {
+                            guard let favPoem = FavouritePoems().getFavouritePoem(fireDataBaseObject:firePoem, favouriteList: favouritePoemsList) else {return}
+                            if favPoem.fireDataBaseID == nil || favPoem.fireDataBaseID != firePoem.poemID {
+                                if FavouritePoems().updatePoem(poetName: firePoem.author, poemTitle: firePoem.title, poemText: firePoem.poemText, userEmail: userEmail, fireDataBaseID: firePoem.poemID) {
+                                     print("syncPoemsIntoCoreData sync id update")
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

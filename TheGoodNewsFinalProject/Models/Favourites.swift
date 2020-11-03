@@ -119,6 +119,7 @@ class Favourites {
         static func == (lhFav:Favourite, rhFav:FavQuote) -> Bool{
             return lhFav.author == rhFav.author && lhFav.quote == rhFav.quote
         }
+       
     }
     
     func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, quoteText:String) -> String {
