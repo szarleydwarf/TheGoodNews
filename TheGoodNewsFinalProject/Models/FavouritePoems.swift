@@ -70,7 +70,7 @@ class FavouritePoems {
     }
     
     func checkIfFavourite(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool {
-        let poems = self.fetchPoems(view: UIView())        
+        let poems = self.fetchPoems(view: UIView())
         return poems.contains(where: {($0.userEmail == userEmail) && ($0.author == poetName) && ($0.title == poemTitle) && $0.poemText == poemText})
     }
   
