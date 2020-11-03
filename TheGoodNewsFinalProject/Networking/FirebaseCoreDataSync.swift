@@ -102,4 +102,15 @@ class FirebaseCoreDataSync {
             }
         }
     }
+    
+    func syncPoemsIntoCoreData(favouritePoemsList:[Poems], completion:@escaping(Bool) -> Void) {
+        if let userId = firebaseController.fAuth.currentUser?.uid {
+            FavouritePoems().fetchFromFireDatabase(userID: userId) {
+                fireBasePoemsList in
+                if let userEmail = self.firebaseController.fAuth.currentUser?.email {
+                    
+                }
+            }
+        }
+    }
 }

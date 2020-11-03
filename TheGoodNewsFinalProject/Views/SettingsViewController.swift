@@ -143,7 +143,13 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             FirebaseCoreDataSync().syncQuotesIntoCoreData(favouriteQuotesList: quotesList) {
                 completed in
                 if completed {
-                    Toast().showToast(message: "Qoutes syncet to local drive", font: .systemFont(ofSize: 16), view: self.view)
+                    Toast().showToast(message: "Qoutes synced to local drive", font: .systemFont(ofSize: 16), view: self.view)
+                }
+            }
+            let poemList = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
+            FirebaseCoreDataSync().syncPoemsIntoCoreData(favouritePoemsList: poemList) { completed in
+                if completed {
+                    Toast().showToast(message: "Poems sync completed", font: .systemFont(ofSize: 16), view: self.view)
                 }
             }
         }
