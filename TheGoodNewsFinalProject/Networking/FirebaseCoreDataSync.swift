@@ -80,12 +80,17 @@ class FirebaseCoreDataSync {
                 // itereate over lists to check if they containe the same quotes&authors
                 // Skip checking ids as those my be different, compare by other elements
                 // assumption that both list contain one copy of a qoute&author combination per user
-                for favQuote in favouriteQuotesList {
+                if let userEmail = self.firebaseController.fAuth.currentUser?.email{
                     for fireQuote in firebaseQouteList {
-                        if favQuote.author == fireQuote.author && favQuote.quote == fireQuote.quote {
-                            if let favID = favQuote.fireDataBaseID {
-                                if favID.isEmpty || favQuote.fireDataBaseID != fireQuote.qid {
-                                    favQuote.fireDataBaseID = fireQuote.qid
+                        if !Favourites().checkIfFavourite(authorName: fireQuote.author, quote: fireQuote.quote, userEmail: userEmail, favourites: favouriteQuotesList) {
+                            if Favourites().saveFavouriteWithFireDataBaseID(authorName: fireQuote.author, quote: fireQuote.quote, userEmail: userEmail, fireDataBaseID: fireQuote.qid) {
+                                print("syncQuotesIntoCoreData Saved new quote")
+                            }
+                        } else {
+                            guard let favQuote = Favourites().getFavouriteQoute(fireDataBaseObject: fireQuote, favourites: favouriteQuotesList) else {return}
+                            if fireQuote.qid != favQuote.fireDataBaseID {
+                                if Favourites().updateFavourite(authorName: fireQuote.author, quote: fireQuote.quote, userEmail: userEmail, fireDataBaseID: fireQuote.qid) {
+                                    print("syncQuotesIntoCoreData sync id update")
                                 }
                             }
                         }

@@ -41,6 +41,18 @@ class Favourites {
         return self.coreDataController.save()
     }
     
+    func saveFavouriteWithFireDataBaseID(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool {
+        let mainCtx = self.coreDataController.mainCtx
+        let favourite = Favourite(context: mainCtx)
+        favourite.author = authorName
+        favourite.quote = quote
+        favourite.isFavourite = true
+        favourite.userEmail = userEmail
+        favourite.fireDataBaseID = fireDataBaseID
+        
+        return self.coreDataController.save()
+    }
+    
     func updateFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let request:NSFetchRequest<Favourite> = Favourite.fetchRequest()
@@ -76,10 +88,22 @@ class Favourites {
         return favourites.contains(where: {($0.userEmail == userEmail) && ($0.author == authorName) && ($0.quote == quote)})
     }
     
+    func getFavouriteQoute(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", favourites:[Favourite]) -> Favourite? {
+        return favourites.first(where: {($0.author == authorName) && ($0.quote == quote) && ($0.userEmail == userEmail)})
+    }
+    
+    
+    func getFavouriteQoute(fireDataBaseObject: FavQuote, favourites:[Favourite]) -> Favourite? {
+        if let userEmail = firebaseController.fAuth.currentUser?.email {
+            return favourites.first(where: {($0 == fireDataBaseObject) && ($0.userEmail == userEmail)})
+        }
+        return nil
+    }
+    
     // Firebase Database func's
     let firebaseController = FireBaseController.shared
     
-    struct FavQuote {
+    struct FavQuote : Equatable{
         var qid:String
         var author:String
         var quote:String
@@ -90,6 +114,10 @@ class Favourites {
                     "author":author,
                     "quote":quote
             ]
+        }
+        
+        static func == (lhFav:Favourite, rhFav:FavQuote) -> Bool{
+            return lhFav.author == rhFav.author && lhFav.quote == rhFav.quote
         }
     }
     
