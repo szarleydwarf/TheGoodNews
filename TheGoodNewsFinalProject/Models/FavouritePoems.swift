@@ -70,19 +70,8 @@ class FavouritePoems {
     }
     
     func checkIfFavourite(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool {
-        let poems = self.fetchPoems(view: UIView())
-        for favPoem in poems {
-            if let email = favPoem.userEmail, email == userEmail{
-                if poetName == favPoem.author{
-                    if poemTitle == favPoem.title{
-                        if poemText == favPoem.poemText {
-                            return true
-                        }
-                    }
-                }
-            }
-        }
-        return false
+        let poems = self.fetchPoems(view: UIView())        
+        return poems.contains(where: {($0.userEmail == userEmail) && ($0.author == poetName) && ($0.title == poemTitle) && $0.poemText == poemText})
     }
   
     // Firebase Database func's

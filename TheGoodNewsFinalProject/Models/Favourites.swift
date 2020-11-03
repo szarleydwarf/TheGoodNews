@@ -73,18 +73,7 @@ class Favourites {
     }
     
     func checkIfFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", favourites:[Favourite]) -> Bool{
-        for favQuote in favourites {
-            if let email = favQuote.userEmail, email == userEmail {
-                if let author = favQuote.author, let oneQoute = favQuote.quote {
-                    if author == authorName {
-                        if oneQoute == quote {
-                            return true
-                        }
-                    }
-                }
-            }
-        }
-        return false
+        return favourites.contains(where: {($0.userEmail == userEmail) && ($0.author == authorName) && ($0.quote == quote)})
     }
     
     // Firebase Database func's
