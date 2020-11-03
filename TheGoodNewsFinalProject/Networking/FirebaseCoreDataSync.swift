@@ -73,4 +73,25 @@ class FirebaseCoreDataSync {
             }
         }
     }
+    
+    func syncQuotesIntoCoreData (favouriteQuotesList:[Favourite], completion:@escaping(Bool) -> Void) {
+        if let userID = firebaseController.fAuth.currentUser?.uid {
+            Favourites().fetchFromFireDatabase(userID: userID) { firebaseQouteList in
+                var synced:Bool = false
+                // itereate over lists to check if they containe the same quotes
+                // Skip checking ids as those my be different compare by other elements
+                for favQoute in favouriteQuotesList {
+                    for fireQoute in firebaseQouteList {
+                        if fireQoute.quote == favQoute.quote && fireQoute.author == favQoute.author{
+                            
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    completion(synced)
+                }
+            }
+        }
+    }
 }

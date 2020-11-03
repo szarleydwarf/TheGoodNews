@@ -106,15 +106,7 @@ class UserPoemsAndQutes {
         }
         return false
     }
-    
-    func saveIntoFireDataBase(userID:String, userEmail:String, title:String, text:String, isQoute:Bool) {
-        if let textID = firebaseController.refuserTexts.child(userID).childByAutoId().key {
-            let isQ = boolToString(isQoute: isQoute)
-            let text = UserText(userTextID: textID, userEmail: userEmail, title: title, text: text, isQoute: isQ)
-            firebaseController.refuserTexts.child(userID).child(textID).setValue(text.dictionary)
-        }
-    }
-    
+  
     func saveIntoFireDataBaseReturnID(userID:String, userEmail:String, title: String, text:String, isQoute:Bool) -> String {
         if let textID = firebaseController.refuserTexts.child(userID).childByAutoId().key {
             let isQ = self.boolToString(isQoute: isQoute)

@@ -103,16 +103,7 @@ class FavouritePoems {
         }
     }
     
-    func saveIntoFireDatabase(userID:String, authorName:String, poemText:String, poemTitle:String) {
-         if let poemID = firebaseController.refFavPoems.child(userID).childByAutoId().key{
-             
-             let poem = FavPoem(poemID: poemID, author: authorName, title: poemTitle, poemText: poemText)
-             firebaseController.refFavPoems.child(userID).child(poemID)
-                 .setValue(poem.favoritePoem)
-         }
-     }
-     
-     func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, poemText:String, poemTitle:String) -> String {
+    func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, poemText:String, poemTitle:String) -> String {
          if let poemID = firebaseController.refFavPoems.child(userID).childByAutoId().key{
              
              let poem = FavPoem(poemID: poemID, author: authorName, title: poemTitle, poemText: poemText)

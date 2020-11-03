@@ -104,15 +104,6 @@ class Favourites {
         }
     }
     
-    func saveIntoFireDatabase(userID:String, authorName:String, quoteText:String) {
-        if let quoteID = firebaseController.refFavQuotes.child(userID).childByAutoId().key{
-            
-            let quote = FavQuote(qid: quoteID, author: authorName, quote: quoteText)
-            firebaseController.refFavQuotes.child(userID).child(quoteID)
-                .setValue(quote.dictionary)
-        }
-    }
-    
     func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, quoteText:String) -> String {
         if let quoteID = firebaseController.refFavQuotes.child(userID).childByAutoId().key{
             
