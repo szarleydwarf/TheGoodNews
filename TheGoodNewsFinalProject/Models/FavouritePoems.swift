@@ -116,7 +116,7 @@ class FavouritePoems {
         }
     }
     
-    func saveIntoFireDatabaseReturnQouteID(userID:String, authorName:String, poemText:String, poemTitle:String) -> String {
+    func saveIntoFireDatabaseReturnPoemID(userID:String, authorName:String, poemText:String, poemTitle:String) -> String {
          if let poemID = firebaseController.refFavPoems.child(userID).childByAutoId().key{
              
              let poem = FavPoem(poemID: poemID, author: authorName, title: poemTitle, poemText: poemText)
@@ -126,6 +126,14 @@ class FavouritePoems {
          }
          return ""
      }
+    
+    func saveIntoFireDataBaseWithFireID(userID: String, poetName: String, poemTitle: String, poemText: String, fireDataBaseID: String) -> Bool {
+        let poem = FavPoem(poemID: fireDataBaseID, author: poetName, title: poemTitle, poemText: poemText)
+        firebaseController.refFavPoems.child(userID).child(fireDataBaseID)
+            .setValue(poem.favoritePoem)
+        
+        return true
+    }
 
      func fetchFromFireDatabase(userID: String, completion:@escaping(([FavPoem])) -> Void) {
          let ref = firebaseController.refFavPoems.child(userID)

@@ -46,8 +46,12 @@ class FirebaseCoreDataSync {
                 for favPoem in favouritePoemsList {
                     if favPoem.fireDataBaseID == nil {
                         if let author = favPoem.author, let title = favPoem.title, let text = favPoem.poemText, let email = favPoem.userEmail {
-                            let poemID = FavouritePoems().saveIntoFireDatabaseReturnQouteID(userID: userID, authorName: author, poemText: text, poemTitle: title)
+                            let poemID = FavouritePoems().saveIntoFireDatabaseReturnPoemID(userID: userID, authorName: author, poemText: text, poemTitle: title)
                             saved = FavouritePoems().updatePoem(poetName: author, poemTitle: title, poemText: text, userEmail: email, fireDataBaseID: poemID)
+                        }
+                    } else {
+                        if let author = favPoem.author, let title = favPoem.title, let text = favPoem.poemText, let fireBaseID = favPoem.fireDataBaseID {
+                            saved = FavouritePoems().saveIntoFireDataBaseWithFireID(userID: userID, poetName: author, poemTitle: title, poemText: text, fireDataBaseID: fireBaseID)
                         }
                     }
                 }
@@ -69,6 +73,10 @@ class FirebaseCoreDataSync {
                             let userTextID = UserPoemsAndQutes().saveIntoFireDataBaseReturnID(userID: userID, userEmail: email, title: title, text: text, isQoute: userText.isQuote)
                             saved = UserPoemsAndQutes().updateUserText( userEmail: email, title: title, text: text, isQoute: userText.isQuote, fireDataBaseID: userTextID)
                             print("SYNC USERTEXT >> \(saved) <<>> \(userTextID)")
+                        }
+                    } else {
+                        if let email = userText.userEmail, let text = userText.text, let title = userText.title, let fireID = userText.fireDataBaseID {
+                            saved = UserPoemsAndQutes().saveIntoFireDataBaseWithFireID(userID: userID, fireID: fireID, userEmail: email, title: title, text: text, isQoute: userText.isQuote)
                         }
                     }
                 }

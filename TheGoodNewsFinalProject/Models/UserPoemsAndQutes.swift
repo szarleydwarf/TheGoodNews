@@ -128,6 +128,13 @@ class UserPoemsAndQutes {
         return ""
     }
     
+    func saveIntoFireDataBaseWithFireID(userID:String, fireID:String, userEmail:String, title:String, text:String, isQoute:Bool) -> Bool {
+        let isQ = self.boolToString(isQoute: isQoute)
+        let text = UserText(userTextID: fireID, userEmail: userEmail, title: title, text: text, isQoute: isQ)
+        firebaseController.refuserTexts.child(userID).child(fireID).setValue(text.dictionary)
+        return true
+    }
+    
     func saveTextWithFireDataBaseID(title:String, text:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String, isQuote: Bool) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let userText = UserQuotePoems(context: ctx)
