@@ -136,8 +136,8 @@ class Favourites {
     func fetchFromFireDatabase(userID: String, completion:@escaping(([FavQuote])) -> Void) {
         let ref = firebaseController.refFavQuotes.child(userID)
         ref.observe(.value, with: { snapshot in
+            var listOfQuotes:[FavQuote]=[]
             if snapshot.childrenCount > 0{
-                var listOfQuotes:[FavQuote]=[]
                 for quote in snapshot.children.allObjects as! [DataSnapshot] {
                     let qouteObject = quote.value as? [String:String]
                     if let qObj = qouteObject {
@@ -147,9 +147,9 @@ class Favourites {
                         }
                     }
                 }
-                DispatchQueue.main.async {
-                    completion(listOfQuotes)
-                }
+            }
+            DispatchQueue.main.async {
+                completion(listOfQuotes)
             }
         })
     }

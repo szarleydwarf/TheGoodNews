@@ -14,7 +14,7 @@ class FirebaseCoreDataSync {
     func syncQuotesToFireDataBase(favouriteQuotesList:[Favourite], completion:@escaping(Bool) -> Void) {
         // get firebase qoute list
         if let userID = firebaseController.fAuth.currentUser?.uid {
-            Favourites().fetchFromFireDatabase(userID: userID) { firebaseQouteList in
+            Favourites().fetchFromFireDatabase(userID: userID) { _ in
                 // check if core data list has uid
                 var saved:Bool = false
                 for favQuote in favouriteQuotesList {
@@ -36,7 +36,7 @@ class FirebaseCoreDataSync {
     
     func syncPoemsToFireDataBase(favouritePoemsList:[Poems], completion:@escaping(Bool) -> Void) {
         if let userID = firebaseController.fAuth.currentUser?.uid {
-            FavouritePoems().fetchFromFireDatabase(userID: userID) { firebaseList in
+            FavouritePoems().fetchFromFireDatabase(userID: userID) { _ in
                 var saved:Bool = false
                 for favPoem in favouritePoemsList {
                     if favPoem.fireDataBaseID == nil {
@@ -56,7 +56,7 @@ class FirebaseCoreDataSync {
     
     func syncUserTextToFireDataBase(userTextList:[UserQuotePoems], completion:@escaping(Bool) -> Void) {
         if let userID = firebaseController.fAuth.currentUser?.uid {
-            UserPoemsAndQutes().fetchFromFireDataBase(userID: userID) { firebaseList in
+            UserPoemsAndQutes().fetchFromFireDataBase(userID: userID) { _ in
                 var saved:Bool = false
                 for userText in userTextList {
                     if userText.fireDataBaseID == nil {

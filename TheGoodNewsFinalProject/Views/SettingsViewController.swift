@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        container = CoreDataController.shared.persistentContainer
+        self.container = CoreDataController.shared.persistentContainer
         
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if let user = self.user {
@@ -54,6 +54,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
                 self.email = ""
             }
         }
+        
         guard let container = self.container else {return}
         container.loadPersistentStores{ storeDescription, error in
             print("SETTINGS viewWillAppear >>\(storeDescription)>><<\(error)")
@@ -61,7 +62,6 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

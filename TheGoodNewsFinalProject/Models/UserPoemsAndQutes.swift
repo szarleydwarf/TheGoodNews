@@ -120,8 +120,8 @@ class UserPoemsAndQutes {
     func fetchFromFireDataBase (userID:String, completion:@escaping(([UserText]))-> Void) {
         let ref = firebaseController.refuserTexts.child(userID)
         ref.observe(.value, with: { snapshot in
+            var userTextList:[UserText] = []
             if snapshot.childrenCount > 0 {
-                var userTextList:[UserText] = []
                 for text in snapshot.children.allObjects as! [DataSnapshot] {
                     let textObject = text.value as? [String:String]
                     if let textObj = textObject {
@@ -132,9 +132,9 @@ class UserPoemsAndQutes {
                         }
                     }
                 }
-                DispatchQueue.main.async {
-                    completion(userTextList)
-                }
+            }
+            DispatchQueue.main.async {
+                completion(userTextList)
             }
         })
     }

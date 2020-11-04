@@ -46,9 +46,9 @@ class ViewController: UIViewController {
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
         }
-        //Favourites().deleteAllCoreData("Favourite")
-        //Favourites().deleteAllCoreData("Poems")
-        //Favourites().deleteAllCoreData("UserQuotePoems")
+//        Favourites().deleteAllCoreData("Favourite")
+//        Favourites().deleteAllCoreData("Poems")
+//        Favourites().deleteAllCoreData("UserQuotePoems")
         
         setBackground()
         setQuote()

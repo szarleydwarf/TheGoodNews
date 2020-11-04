@@ -130,8 +130,8 @@ class FavouritePoems {
      func fetchFromFireDatabase(userID: String, completion:@escaping(([FavPoem])) -> Void) {
          let ref = firebaseController.refFavPoems.child(userID)
          ref.observe(.value, with: { snapshot in
+             var listOfPoems:[FavPoem]=[]
              if snapshot.childrenCount > 0{
-                 var listOfPoems:[FavPoem]=[]
                  for poem in snapshot.children.allObjects as! [DataSnapshot] {
                      let poemObject = poem.value as? [String:String]
                      if let pObj = poemObject {
@@ -141,9 +141,9 @@ class FavouritePoems {
                          }
                      }
                  }
-                 DispatchQueue.main.async {
-                     completion(listOfPoems)
-                 }
+             }
+             DispatchQueue.main.async {
+                 completion(listOfPoems)
              }
          })
      }
