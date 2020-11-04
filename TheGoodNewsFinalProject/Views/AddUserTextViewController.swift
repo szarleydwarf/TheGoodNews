@@ -14,19 +14,29 @@ class AddUserTextViewController: UIViewController {
     @IBOutlet weak var quotePoemTextView: UITextView!
     @IBOutlet weak var quotePoemSwitch: UISwitch!
 
-    var handle:AuthStateDidChangeListenerHandle?
-    var email:String = ""
     let fbAuth = FireBaseController.shared
+
+    var handle:AuthStateDidChangeListenerHandle?
+    var userTextFromTable:UserQuotePoems?
+    var isTextFromTable:Bool = false
+    var email:String = ""
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("AddUserTextViewController > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+
+        self.setDelegates()
+        
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
                 self.email = email
             } else if user == nil {
                 self.email = ""
             }
+        }
+        
+        if self.isTextFromTable {
+            guard let userText = self.userTextFromTable else {return}
+            self.updateFields(with: userText)
         }
     }
     
@@ -49,6 +59,19 @@ class AddUserTextViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             })
         }
-        
+    }
+    
+    func setDelegates() {
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+          favListViewController.delegatUserText = self
+      }
+}
+
+extension AddUserTextViewController: FavouritesListViewControllerUserTextDelegate {
+    func updateFields(with userText: UserQuotePoems) {
+        self.quotePoemTextView.text = userText.text
+        self.titleTextField.text = userText.title
+        self.quotePoemSwitch.isOn = userText.isQuote
     }
 }

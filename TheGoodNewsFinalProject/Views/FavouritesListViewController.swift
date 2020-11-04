@@ -19,6 +19,10 @@ protocol FavouritesListViewControllerPoemsDelegate {
     func updatePoemView(with poem: Poems)
 }
 
+protocol FavouritesListViewControllerUserTextDelegate {
+    func updateFields(with userText: UserQuotePoems)
+}
+
 enum ElementType {
     case quote, poem, userText
 }
@@ -38,6 +42,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     var email:String = ""
     var delegateQuotes: FavouritesListViewControllerQuotesDelegate?
     var delegatePoems: FavouritesListViewControllerPoemsDelegate?
+    var delegatUserText: FavouritesListViewControllerUserTextDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -96,7 +101,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             self.arrayToDisplayInTable = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: self.email)
             typeToCompare = .userText
         default:
-            print("default")
+            return
         }
         self.table.reloadData()
     }
@@ -124,7 +129,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
                 let imageName = (text.isQuote) ? "heart.text.square" : "quote.bubble"
                 cell.imageView?.image = UIElementsHelper().prepareImage(name: imageName)
             default:
-                print("DEFAULT")
+                return
             }
         }
     }
@@ -151,7 +156,6 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             quoteDisplayController.quoteFromFavouriteTabel = true
             quoteDisplayController.favouriteQouteFromTable = element
-            //            self.delegate?.updateQouteView(with: element)
             otherController = quoteDisplayController
         case .poem:
             let element = self.arrayToDisplayInTable[indexPath.row] as! Poems
@@ -159,12 +163,14 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             let poemViewController = storyboard.instantiateViewController(withIdentifier: "PoemsViewController") as! PoemsViewController
             poemViewController.poemFromFavouriteTable = true
             poemViewController.favouritePoemFromTable = element
-            
             otherController = poemViewController
-            //        case .userText:
-            //        let element = self.arrayToDisplayInTable[indexPath.row] as! UserQuotePoems
-            //        Toast().showToast(message: "USERTEX \(element.text)", font: .systemFont(ofSize: 19), view: self.view)
-            
+        case .userText:
+            let element = self.arrayToDisplayInTable[indexPath.row] as! UserQuotePoems
+            Toast().showToast(message: "USERTEX \(element.text)", font: .systemFont(ofSize: 19), view: self.view)
+            let userTextViewController = storyboard.instantiateViewController(withIdentifier: "AddUserTextViewController") as! AddUserTextViewController
+            userTextViewController.isTextFromTable = true
+            userTextViewController.userTextFromTable = element
+            otherController = userTextViewController
         default:
             return
         }
