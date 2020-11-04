@@ -14,7 +14,7 @@ class FirebaseCoreDataSync {
     func syncQuotesToFireDataBase(favouriteQuotesList:[Favourite], completion:@escaping(Bool) -> Void) {
         // get firebase qoute list
         if let userID = firebaseController.fAuth.currentUser?.uid {
-            Favourites().fetchFromFireDatabase(userID: userID) { _ in
+            Favourites().fetchFromFireDatabase(userID: userID) { fireList in
                 // check if core data list has uid
                 var saved:Bool = false
                 for favQuote in favouriteQuotesList {
@@ -23,6 +23,11 @@ class FirebaseCoreDataSync {
                         if let author = favQuote.author,let quote = favQuote.quote, let email = favQuote.userEmail {
                             let quoteID = Favourites().saveIntoFireDatabaseReturnQouteID(userID: userID, authorName: author, quoteText: quote)
                             saved = Favourites().updateFavourite(authorName: author, quote: quote, userEmail: email, fireDataBaseID: quoteID)
+                        }
+                    } else {
+                        if let author = favQuote.author,let quote = favQuote.quote, let fireDataBaseID = favQuote.fireDataBaseID {
+                            saved = Favourites().saveIntoFireDatabaseWithQouteID(userID: userID, authorName: author, quoteText: quote, fireDataBaseID: fireDataBaseID)
+                            
                         }
                     }
                 }
@@ -36,7 +41,7 @@ class FirebaseCoreDataSync {
     
     func syncPoemsToFireDataBase(favouritePoemsList:[Poems], completion:@escaping(Bool) -> Void) {
         if let userID = firebaseController.fAuth.currentUser?.uid {
-            FavouritePoems().fetchFromFireDatabase(userID: userID) { _ in
+            FavouritePoems().fetchFromFireDatabase(userID: userID) { fireList in
                 var saved:Bool = false
                 for favPoem in favouritePoemsList {
                     if favPoem.fireDataBaseID == nil {
@@ -56,7 +61,7 @@ class FirebaseCoreDataSync {
     
     func syncUserTextToFireDataBase(userTextList:[UserQuotePoems], completion:@escaping(Bool) -> Void) {
         if let userID = firebaseController.fAuth.currentUser?.uid {
-            UserPoemsAndQutes().fetchFromFireDataBase(userID: userID) { _ in
+            UserPoemsAndQutes().fetchFromFireDataBase(userID: userID) { fireList in
                 var saved:Bool = false
                 for userText in userTextList {
                     if userText.fireDataBaseID == nil || userText.fireDataBaseID == ""{

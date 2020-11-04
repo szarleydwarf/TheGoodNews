@@ -132,6 +132,12 @@ class Favourites {
         }
         return ""
     }
+    
+    func saveIntoFireDatabaseWithQouteID(userID:String, authorName:String, quoteText:String, fireDataBaseID: String) -> Bool {
+        let quote = FavQuote(qid: fireDataBaseID, author: authorName, quote: quoteText)
+        self.firebaseController.refFavQuotes.child(userID).child(fireDataBaseID).setValue(quote.dictionary)
+        return true
+    }
 
     func fetchFromFireDatabase(userID: String, completion:@escaping(([FavQuote])) -> Void) {
         let ref = firebaseController.refFavQuotes.child(userID)
