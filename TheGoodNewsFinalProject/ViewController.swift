@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     var fetchedFavourites:[Favourite]=[]
     var email:String = ""
     var quoteFromFavouriteTabel:Bool = false
+    var favouriteQouteFromTable:Favourite?
     
     let fbAuth = FireBaseController.shared
     let tappedTintColor:UIColor = .systemOrange
@@ -39,6 +40,9 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+        favListViewController.delegate = self
 
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
@@ -55,6 +59,9 @@ class ViewController: UIViewController {
         setBackground()
         if !quoteFromFavouriteTabel {
             setQuote()
+        } else {
+            guard let favQoute = self.favouriteQouteFromTable else {return}
+            self.updateQouteView(with: favQoute)
         }
     }
     
@@ -140,11 +147,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: FavouritesListViewControllerQuotesDelegate {
-    func updateQouteView(with quote: Favourite, quoteFromFavouriteTabel: Bool) {
-        self.quoteFromFavouriteTabel = quoteFromFavouriteTabel
+    func updateQouteView(with quote: Favourite) {
         self.quoteTextView.text = quote.quote
         self.authorNameLabel.text = quote.author
+        self.favouriteButton.tintColor = self.tappedTintColor
     }
-    
-    
 }

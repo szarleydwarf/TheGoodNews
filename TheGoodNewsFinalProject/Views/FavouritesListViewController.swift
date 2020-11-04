@@ -12,7 +12,7 @@ import Firebase
 import ProgressHUD
 
 protocol FavouritesListViewControllerQuotesDelegate {
-    func updateQouteView(with quote: Favourite, quoteFromFavouriteTabel: Bool)
+    func updateQouteView(with quote: Favourite)
 }
 
 enum ElementType {
@@ -142,11 +142,12 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         switch typeToCompare {
         case .quote:
             let element = self.arrayToDisplayInTable[indexPath.row] as! Favourite
-            let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
- 
-            self.delegate?.updateQouteView(with: element, quoteFromFavouriteTabel: true)
-            otherController = quoteDisplayController
             Toast().showToast(message: "QOUTE \(element.quote)", font: .systemFont(ofSize: 19), view: self.view)
+            let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            quoteDisplayController.quoteFromFavouriteTabel = true
+            quoteDisplayController.favouriteQouteFromTable = element
+            self.delegate?.updateQouteView(with: element)
+            otherController = quoteDisplayController
             //        case .poem:
             //        let element = self.arrayToDisplayInTable[indexPath.row] as! Poem
             //        Toast().showToast(message: "POEM \(element.content)", font: .systemFont(ofSize: 19), view: self.view)
