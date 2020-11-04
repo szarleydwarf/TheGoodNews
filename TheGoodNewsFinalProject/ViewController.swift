@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     var handle:AuthStateDidChangeListenerHandle?
     var fetchedFavourites:[Favourite]=[]
     var email:String = ""
+    var quoteFromFavouriteTabel:Bool = false
+    
     let fbAuth = FireBaseController.shared
     let tappedTintColor:UIColor = .systemOrange
     let defaultTintColor:UIColor = .systemGray
@@ -37,7 +39,7 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        print("viewWillAppear > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
                 self.email = email
@@ -46,12 +48,14 @@ class ViewController: UIViewController {
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
         }
-        Favourites().deleteAllCoreData("Favourite")
-        Favourites().deleteAllCoreData("Poems")
-        Favourites().deleteAllCoreData("UserQuotePoems")
-        
+//        Favourites().deleteAllCoreData("Favourite")
+//        Favourites().deleteAllCoreData("Poems")
+//        Favourites().deleteAllCoreData("UserQuotePoems")
+
         setBackground()
-        setQuote()
+        if !quoteFromFavouriteTabel {
+            setQuote()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -135,3 +139,12 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: FavouritesListViewControllerQuotesDelegate {
+    func updateQouteView(with quote: Favourite, quoteFromFavouriteTabel: Bool) {
+        self.quoteFromFavouriteTabel = quoteFromFavouriteTabel
+        self.quoteTextView.text = quote.quote
+        self.authorNameLabel.text = quote.author
+    }
+    
+    
+}

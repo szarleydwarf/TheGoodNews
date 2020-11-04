@@ -11,6 +11,10 @@ import GoogleMobileAds
 import Firebase
 import ProgressHUD
 
+protocol FavouritesListViewControllerQuotesDelegate {
+    func updateQouteView(with quote: Favourite, quoteFromFavouriteTabel: Bool)
+}
+
 enum ElementType {
     case quote, poem, userText
 }
@@ -28,13 +32,14 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     var banner:GADBannerView!
     var handle:AuthStateDidChangeListenerHandle?
     var email:String = ""
+    var delegate: FavouritesListViewControllerQuotesDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-
+        
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, user != nil, let email = user?.email {
                 self.email = email
@@ -130,6 +135,33 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         return self.arrayToDisplayInTable.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let otherController:UIViewController
+        
+        switch typeToCompare {
+        case .quote:
+            let element = self.arrayToDisplayInTable[indexPath.row] as! Favourite
+            let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+ 
+            self.delegate?.updateQouteView(with: element, quoteFromFavouriteTabel: true)
+            otherController = quoteDisplayController
+            Toast().showToast(message: "QOUTE \(element.quote)", font: .systemFont(ofSize: 19), view: self.view)
+            //        case .poem:
+            //        let element = self.arrayToDisplayInTable[indexPath.row] as! Poem
+            //        Toast().showToast(message: "POEM \(element.content)", font: .systemFont(ofSize: 19), view: self.view)
+            //
+            //        case .userText:
+            //        let element = self.arrayToDisplayInTable[indexPath.row] as! UserQuotePoems
+            //        Toast().showToast(message: "USERTEX \(element.text)", font: .systemFont(ofSize: 19), view: self.view)
+            
+        default:
+            return
+        }
+        
+        self.navigationController?.pushViewController(otherController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
         
@@ -141,7 +173,7 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         
         return cell
     }
- 
+    
     func setBanner() {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self
