@@ -126,4 +126,28 @@ class FirebaseCoreDataSync {
             }
         }
     }
+    
+    func syncUserTextIntoCoreData(userTextList: [UserQuotePoems], completion:@escaping(Bool) -> Void) {
+        if let userID = firebaseController.fAuth.currentUser?.uid {
+            UserPoemsAndQutes().fetchFromFireDataBase(userID: userID) { fireBaseTexts in
+                if let userEmail = self.firebaseController.fAuth.currentUser?.email {
+                    for fireText in fireBaseTexts {
+                        let userText = UserPoemsAndQutes().getUserText(fireDataBaseObjec: fireText, userTextList: userTextList)
+                        let isQuote = UserPoemsAndQutes().stringToBool(isQoute: fireText.isQoute)
+                        if userText == nil {
+                            if UserPoemsAndQutes().saveTextWithFireDataBaseID(title: fireText.title, text: fireText.text,userEmail: userEmail, fireDataBaseID: fireText.userTextID, isQuote: isQuote){
+                                print("syncUserTextIntoCoreData Saved new user text")
+                            }
+                        } else if userText?.fireDataBaseID == nil || userText?.fireDataBaseID != fireText.userTextID {
+                            if UserPoemsAndQutes().updateUserText(userEmail: userEmail, title: fireText.title, text: fireText.text, isQoute: isQuote,  fireDataBaseID: fireText.userTextID) {
+                                print("syncUserTextIntoCoreData update user text")
+                            }
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

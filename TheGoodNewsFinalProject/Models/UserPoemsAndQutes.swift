@@ -73,10 +73,17 @@ class UserPoemsAndQutes {
         return self.coreDataController.save()
     }
     
+    func getUserText(fireDataBaseObjec: UserText, userTextList: [UserQuotePoems]) -> UserQuotePoems? {
+        if let userEmail = self.firebaseController.fAuth.currentUser?.email {
+            return userTextList.first(where: {($0 == fireDataBaseObjec) && ($0.userEmail == userEmail)})
+        }
+        return nil
+    }
+    
     // Firebase Database func's
     let firebaseController = FireBaseController.shared
     
-    struct UserText {
+    struct UserText: Equatable {
         var userTextID:String
         var userEmail:String
         var title:String
@@ -90,6 +97,10 @@ class UserPoemsAndQutes {
                     "text":text,
                     "isQuote":isQoute
             ]
+        }
+        
+        static func == (lh: UserQuotePoems, rh: UserText) -> Bool{
+            return lh.title == rh.title && lh.text == rh.text && lh.userEmail == rh.userEmail
         }
     }
     
@@ -115,6 +126,18 @@ class UserPoemsAndQutes {
             return textID
         }
         return ""
+    }
+    
+    func saveTextWithFireDataBaseID(title:String, text:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String, isQuote: Bool) -> Bool {
+        let ctx = self.coreDataController.mainCtx
+        let userText = UserQuotePoems(context: ctx)
+        userText.title = title
+        userText.text = text
+        userText.userEmail = userEmail
+        userText.isQuote = isQuote
+        userText.fireDataBaseID = fireDataBaseID
+        
+        return self.coreDataController.save()
     }
     
     func fetchFromFireDataBase (userID:String, completion:@escaping(([UserText]))-> Void) {
