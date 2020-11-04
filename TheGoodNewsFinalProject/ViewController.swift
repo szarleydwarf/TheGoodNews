@@ -40,10 +40,9 @@ class ViewController: UIViewController {
         ProgressHUD.colorAnimation = .red
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
-        favListViewController.delegate = self
-
+        
+        self.setDelegates()
+        
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, let email = user?.email {
                 self.email = email
@@ -117,6 +116,12 @@ class ViewController: UIViewController {
             activity.popoverPresentationController?.sourceView = sender
             self.present(activity, animated: true, completion: nil)
         }
+    }
+    
+    func setDelegates() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+        favListViewController.delegateQuotes = self
     }
     
     func setBanner() {

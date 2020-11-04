@@ -15,6 +15,10 @@ protocol FavouritesListViewControllerQuotesDelegate {
     func updateQouteView(with quote: Favourite)
 }
 
+protocol FavouritesListViewControllerPoemsDelegate {
+    func updatePoemView(with poem: Poems)
+}
+
 enum ElementType {
     case quote, poem, userText
 }
@@ -32,7 +36,8 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
     var banner:GADBannerView!
     var handle:AuthStateDidChangeListenerHandle?
     var email:String = ""
-    var delegate: FavouritesListViewControllerQuotesDelegate?
+    var delegateQuotes: FavouritesListViewControllerQuotesDelegate?
+    var delegatePoems: FavouritesListViewControllerPoemsDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -146,12 +151,16 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
             let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             quoteDisplayController.quoteFromFavouriteTabel = true
             quoteDisplayController.favouriteQouteFromTable = element
-            self.delegate?.updateQouteView(with: element)
+            //            self.delegate?.updateQouteView(with: element)
             otherController = quoteDisplayController
-            //        case .poem:
-            //        let element = self.arrayToDisplayInTable[indexPath.row] as! Poem
-            //        Toast().showToast(message: "POEM \(element.content)", font: .systemFont(ofSize: 19), view: self.view)
-            //
+        case .poem:
+            let element = self.arrayToDisplayInTable[indexPath.row] as! Poems
+            Toast().showToast(message: "POEM \(element.poemText)", font: .systemFont(ofSize: 19), view: self.view)
+            let poemViewController = storyboard.instantiateViewController(withIdentifier: "PoemsViewController") as! PoemsViewController
+            poemViewController.poemFromFavouriteTable = true
+            poemViewController.favouritePoemFromTable = element
+            
+            otherController = poemViewController
             //        case .userText:
             //        let element = self.arrayToDisplayInTable[indexPath.row] as! UserQuotePoems
             //        Toast().showToast(message: "USERTEX \(element.text)", font: .systemFont(ofSize: 19), view: self.view)

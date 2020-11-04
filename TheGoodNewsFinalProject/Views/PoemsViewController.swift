@@ -29,6 +29,8 @@ class PoemsViewController: UIViewController {
     var handle:AuthStateDidChangeListenerHandle?
     var googleAdsManager = GoogleAdsManager()
     var banner:GADBannerView!
+    var poemFromFavouriteTable:Bool = false
+    var favouritePoemFromTable:Poems?
     var fetchedPoems:[Poems] = []
     var email:String = ""
     
@@ -38,7 +40,8 @@ class PoemsViewController: UIViewController {
         ProgressHUD.animationType = .circleRotateChase
         ProgressHUD.show()
         
-        print("viewWillAppear in Favourites list > \(self.email) <> \(fbAuth.fAuth.currentUser)<")
+        self.setDelegates()
+        
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, user != nil, let email = user?.email {
                 self.email = email
@@ -49,7 +52,12 @@ class PoemsViewController: UIViewController {
             
         }
         setBackground()
-        setPoemInView()
+        if !self.poemFromFavouriteTable {
+            setPoemInView()
+        } else {
+            guard let favPoem = self.favouritePoemFromTable else {return}
+            self.updatePoemView(with: favPoem)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,6 +115,13 @@ class PoemsViewController: UIViewController {
         
     }
     
+      func setDelegates() {
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+          favListViewController.delegatePoems = self
+      }
+    
+    
     func setBanner() {
         self.banner = googleAdsManager.getBanner()
         banner.rootViewController = self
@@ -130,5 +145,13 @@ class PoemsViewController: UIViewController {
             self.favouriteButton.tintColor = tintColor
         }
     }
-    
+}
+
+extension PoemsViewController: FavouritesListViewControllerPoemsDelegate {
+    func updatePoemView(with poem: Poems) {
+        self.poemTextView.text = poem.poemText
+        self.authorLabel.text  = poem.author
+        self.poemTitleLabel.text = poem.title
+        self.favouriteButton.tintColor = self.tappedTintColor
+    }
 }
