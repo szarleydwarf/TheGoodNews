@@ -59,7 +59,7 @@ class FirebaseCoreDataSync {
             UserPoemsAndQutes().fetchFromFireDataBase(userID: userID) { _ in
                 var saved:Bool = false
                 for userText in userTextList {
-                    if userText.fireDataBaseID == nil {
+                    if userText.fireDataBaseID == nil || userText.fireDataBaseID == ""{
                         if let email = userText.userEmail, let text = userText.text, let title = userText.title {
                             let userTextID = UserPoemsAndQutes().saveIntoFireDataBaseReturnID(userID: userID, userEmail: email, title: title, text: text, isQoute: userText.isQuote)
                             saved = UserPoemsAndQutes().updateUserText( userEmail: email, title: title, text: text, isQoute: userText.isQuote, fireDataBaseID: userTextID)

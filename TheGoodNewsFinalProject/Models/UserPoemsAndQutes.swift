@@ -55,9 +55,9 @@ class UserPoemsAndQutes {
     
     func deleteUserText(title:String?, text:String, isQuote:Bool, userEmail:String="Unknown@Unknown.org") -> Bool {
         let mainCtx = self.coreDataController.mainCtx
-        let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+        let request: NSFetchRequest<UserQuotePoems> = UserQuotePoems.fetchRequest()
         if let title = title {
-            request.predicate = NSPredicate(format: "text = %@ && title = %@ && isQuote && userEmail = %@", text, title, isQuote, userEmail)
+            request.predicate = NSPredicate(format: "text = %@ && title = %@ && isQuote == %@ && userEmail = %@", text, title, NSNumber(booleanLiteral: isQuote), userEmail)
         } else {
             request.predicate = NSPredicate(format: "text = %@ && isQuote && userEmail = %@", text, isQuote, userEmail)
         }

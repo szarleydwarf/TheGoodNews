@@ -50,6 +50,8 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
         
+        self.segmentController.selectedSegmentIndex = 0
+        
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
             if self.email.isEmpty, user != nil, let email = user?.email {
                 self.email = email
@@ -124,8 +126,8 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
                 cell.imageView?.image = image
             case .userText:
                 let text = element as! UserQuotePoems
-                cell.textLabel?.text = text.text
-                cell.detailTextLabel?.text = UserHelper().getUserName(email: self.email)
+                cell.textLabel?.text = text.title
+                cell.detailTextLabel?.text = text.text
                 let imageName = (text.isQuote) ? "heart.text.square" : "quote.bubble"
                 cell.imageView?.image = UIElementsHelper().prepareImage(name: imageName)
             default:
@@ -152,21 +154,18 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         switch typeToCompare {
         case .quote:
             let element = self.arrayToDisplayInTable[indexPath.row] as! Favourite
-            Toast().showToast(message: "QOUTE \(element.quote)", font: .systemFont(ofSize: 19), view: self.view)
             let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             quoteDisplayController.quoteFromFavouriteTabel = true
             quoteDisplayController.favouriteQouteFromTable = element
             otherController = quoteDisplayController
         case .poem:
             let element = self.arrayToDisplayInTable[indexPath.row] as! Poems
-            Toast().showToast(message: "POEM \(element.poemText)", font: .systemFont(ofSize: 19), view: self.view)
             let poemViewController = storyboard.instantiateViewController(withIdentifier: "PoemsViewController") as! PoemsViewController
             poemViewController.poemFromFavouriteTable = true
             poemViewController.favouritePoemFromTable = element
             otherController = poemViewController
         case .userText:
             let element = self.arrayToDisplayInTable[indexPath.row] as! UserQuotePoems
-            Toast().showToast(message: "USERTEX \(element.text)", font: .systemFont(ofSize: 19), view: self.view)
             let userTextViewController = storyboard.instantiateViewController(withIdentifier: "AddUserTextViewController") as! AddUserTextViewController
             userTextViewController.isTextFromTable = true
             userTextViewController.userTextFromTable = element

@@ -13,17 +13,17 @@ class AddUserTextViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var quotePoemTextView: UITextView!
     @IBOutlet weak var quotePoemSwitch: UISwitch!
-
+    
     let fbAuth = FireBaseController.shared
-
+    
     var handle:AuthStateDidChangeListenerHandle?
     var userTextFromTable:UserQuotePoems?
     var isTextFromTable:Bool = false
     var email:String = ""
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         self.setDelegates()
         
         handle = fbAuth.fAuth.addStateDidChangeListener { (auth, user) in
@@ -51,7 +51,10 @@ class AddUserTextViewController: UIViewController {
     
     @IBAction func saveText(_ sender: UIButton) {
         guard let textToSave = self.quotePoemTextView.text, let titleToSave = self.titleTextField.text, !textToSave.isEmpty else {return}
-        
+        if self.isTextFromTable {
+            guard let title = userTextFromTable?.title, let text = userTextFromTable?.text, let isQuote = userTextFromTable?.isQuote, let userEmail = userTextFromTable?.userEmail else {return}
+            UserPoemsAndQutes().deleteUserText(title: title, text: text, isQuote: isQuote, userEmail: userEmail)
+        }
         if UserPoemsAndQutes().saveUserQuoteOrPoem(title: titleToSave, text: textToSave, isQuote: self.quotePoemSwitch.isOn, userEmail: self.email) {
             let quoteOrPoem = self.quotePoemSwitch.isOn ? "poem" : "quote"
             Toast().showToast(message: NSString(format: "Your %@ was saved", quoteOrPoem) as String , font: .systemFont(ofSize: 22.0), view: self.view)
@@ -62,10 +65,10 @@ class AddUserTextViewController: UIViewController {
     }
     
     func setDelegates() {
-          let storyboard = UIStoryboard(name: "Main", bundle: nil)
-          let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
-          favListViewController.delegatUserText = self
-      }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+        favListViewController.delegatUserText = self
+    }
 }
 
 extension AddUserTextViewController: FavouritesListViewControllerUserTextDelegate {
