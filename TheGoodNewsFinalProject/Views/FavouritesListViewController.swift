@@ -119,6 +119,13 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.arrayToDisplayInTable.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .middle)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayToDisplayInTable.count
     }
