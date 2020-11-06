@@ -115,11 +115,20 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             Toast().showToast(message: "You need to sign in to Sync your data", font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
             Toast().showToast(message: "Starting to syncing your favourites to cloud allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
-            var message = self.quoteSync()
-            message += self.poemSync()
-            message += self.userTextSync()
+            var toastMessage:String = ""
             
-            Toast().showToast(message: message, font: .systemFont(ofSize: 16), view: self.view)
+            self.quoteSync{ message in
+                toastMessage += message
+            }
+            self.poemSync{ message in
+                toastMessage += message
+            }
+            self.userTextSync{message in
+                toastMessage += message
+            }
+            if !toastMessage.isEmpty{
+                Toast().showToast(message: toastMessage, font: .systemFont(ofSize: 16), view: self.view)
+            }
         }
     }
     
@@ -153,43 +162,37 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     @IBAction func unvindToSettings(_ sender: UIStoryboardSegue) {}
     
-    func quoteSync() -> String {
-        var messageToReturn:String = "NO QOUTES TO SYNC "
+    func quoteSync(completion:@escaping(String) -> Void){
         let quotesToSync = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
         if quotesToSync.count > 0 {
             FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: quotesToSync) { completed in
                 if completed {
-                    messageToReturn = "QUOTES SYNCED "
+                    completion("QUOTES SYNCED ")
                 }
             }
         }
-        return messageToReturn
     }
     
-    func poemSync() ->String {
-        var messageToReturn:String = "NO POEMS TO SYNC "
+    func poemSync(completion:@escaping(String) -> Void){
         let poemsToSync = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
         if poemsToSync.count > 0 {
             FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: poemsToSync) { completed in
                 if completed {
-                    messageToReturn = "POEMS SYNCED"
+                    completion( "POEMS SYNCED")
                 }
             }
         }
-        return messageToReturn
     }
     
-    func userTextSync() -> String{
-        var messageToReturn:String = "NO TEXT TO SYNC "
+    func userTextSync(completion:@escaping(String) -> Void) {
         let userTextToSync = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: self.email)
         if userTextToSync.count > 0 {
             FirebaseCoreDataSync().syncUserTextToFireDataBase(userTextList: userTextToSync){ completed in
                 if completed {
-                    messageToReturn = "\(self.user?.name ?? ""), Your texts are updated"
+                    completion("\(self.user?.name ?? ""), Your texts are updated")
                 }
             }
         }
-        return messageToReturn
     }
     
     func signOut() {

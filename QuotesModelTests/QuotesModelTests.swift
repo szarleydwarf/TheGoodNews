@@ -2,7 +2,7 @@
 //  QuotesModelTests.swift
 //  QuotesModelTests
 //
-//  Created by The App Experts on 15/10/2020.
+//  Created by The App Experts on 06/11/2020.
 //  Copyright © 2020 The App Experts. All rights reserved.
 //
 
@@ -70,5 +70,4 @@ class QuotesModelTests: XCTestCase {
         }
     }
     
-
 }

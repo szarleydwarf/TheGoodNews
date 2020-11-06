@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		54D611969E351D7FD1ABFA6F /* Pods_TheGoodNewsFinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */; };
-		9C4B82247E161A3C0CD1B12C /* Pods_TheGoodNewsFinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */; };
+		BE2B844F40BA8940735DF73C /* Pods_TheGoodNewsFinalProject_TheGoodNewsFinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B57BE6759A8ECA240B77EA /* Pods_TheGoodNewsFinalProject_TheGoodNewsFinalProjectTests.framework */; };
 		D76D36F6254DCAF80046636C /* FirebaseCoreDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D36F5254DCAF80046636C /* FirebaseCoreDataSync.swift */; };
 		D76F24442549ED6A0010B327 /* SegueHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F24432549ED6A0010B327 /* SegueHelper.swift */; };
 		D76F9525253EF1E000FAC477 /* PoemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F9524253EF1E000FAC477 /* PoemModel.swift */; };
 		D76F9528253EF3B400FAC477 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76F9527253EF3B400FAC477 /* ViewHelper.swift */; };
 		D7703F2E253D9E2C006D9A48 /* FavouritePoems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */; };
-		D7715E5E25383C550062B024 /* BackgroundImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E5D25383C550062B024 /* BackgroundImageTests.swift */; };
-		D7715E6C2538425E0062B024 /* QuotesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E6B2538425E0062B024 /* QuotesModelTests.swift */; };
-		D7715E7A2538498E0062B024 /* Favouritesests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E792538498E0062B024 /* Favouritesests.swift */; };
+		D770F755255544F1004A134D /* TheGoodNewsFinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770F754255544F1004A134D /* TheGoodNewsFinalProjectTests.swift */; };
+		D770F76325554C4A004A134D /* BackgroundsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770F76225554C4A004A134D /* BackgroundsTests.swift */; };
+		D770F77125555882004A134D /* QuotesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770F77025555882004A134D /* QuotesModelTests.swift */; };
+		D770F77F25555931004A134D /* FavouritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770F77E25555931004A134D /* FavouritesTests.swift */; };
 		D7715E82253883630062B024 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E81253883630062B024 /* SettingsViewController.swift */; };
 		D7715E842538BAD00062B024 /* PoemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E832538BAD00062B024 /* PoemsViewController.swift */; };
 		D771B62F2535B6FA003E99A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B62E2535B6FA003E99A9 /* AppDelegate.swift */; };
@@ -26,7 +27,6 @@
 		D771B6392535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D771B6372535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld */; };
 		D771B63B2535B6FC003E99A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D771B63A2535B6FC003E99A9 /* Assets.xcassets */; };
 		D771B63E2535B6FC003E99A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D771B63C2535B6FC003E99A9 /* LaunchScreen.storyboard */; };
-		D771B6492535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */; };
 		D771B6552535B76F003E99A9 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */; };
 		D771B65B25360536003E99A9 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D771B65A25360536003E99A9 /* BackgroundImage.swift */; };
 		D7720EE2254C4A46002DA8FF /* FileStoringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */; };
@@ -51,28 +51,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D7715E6025383C550062B024 /* PBXContainerItemProxy */ = {
+		D770F757255544F1004A134D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D771B6232535B6FA003E99A9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D771B62A2535B6FA003E99A9;
 			remoteInfo = TheGoodNewsFinalProject;
 		};
-		D7715E6E2538425E0062B024 /* PBXContainerItemProxy */ = {
+		D770F76525554C4A004A134D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D771B6232535B6FA003E99A9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D771B62A2535B6FA003E99A9;
 			remoteInfo = TheGoodNewsFinalProject;
 		};
-		D7715E7C2538498E0062B024 /* PBXContainerItemProxy */ = {
+		D770F77325555882004A134D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D771B6232535B6FA003E99A9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D771B62A2535B6FA003E99A9;
 			remoteInfo = TheGoodNewsFinalProject;
 		};
-		D771B6452535B6FC003E99A9 /* PBXContainerItemProxy */ = {
+		D770F78125555931004A134D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D771B6232535B6FA003E99A9 /* Project object */;
 			proxyType = 1;
@@ -82,25 +82,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19B57BE6759A8ECA240B77EA /* Pods_TheGoodNewsFinalProject_TheGoodNewsFinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProject_TheGoodNewsFinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D989C55B25D54344B7CBBA2 /* Pods-TheGoodNewsFinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		68250907F8B108E922C7DCAA /* Pods-TheGoodNewsFinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7C772FA9342A0207855ECDAD /* Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		846007B7B0F3528DF4104E34 /* Pods-TheGoodNewsFinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.debug.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5EFC7245EB7BF40CE7EBD5 /* Pods-TheGoodNewsFinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject.release.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject.release.xcconfig"; sourceTree = "<group>"; };
-		C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGoodNewsFinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEED2C347C1D6852DD9FF3E7 /* Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D76D36F5254DCAF80046636C /* FirebaseCoreDataSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCoreDataSync.swift; sourceTree = "<group>"; };
 		D76F24432549ED6A0010B327 /* SegueHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHelper.swift; sourceTree = "<group>"; };
 		D76F9524253EF1E000FAC477 /* PoemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemModel.swift; sourceTree = "<group>"; };
 		D76F9527253EF3B400FAC477 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		D7703F2D253D9E2C006D9A48 /* FavouritePoems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePoems.swift; sourceTree = "<group>"; };
-		D7715E5B25383C550062B024 /* BackgroundImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7715E5D25383C550062B024 /* BackgroundImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageTests.swift; sourceTree = "<group>"; };
-		D7715E5F25383C550062B024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7715E692538425E0062B024 /* QuotesModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotesModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7715E6B2538425E0062B024 /* QuotesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModelTests.swift; sourceTree = "<group>"; };
-		D7715E6D2538425E0062B024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7715E772538498E0062B024 /* Favouritesests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Favouritesests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7715E792538498E0062B024 /* Favouritesests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favouritesests.swift; sourceTree = "<group>"; };
-		D7715E7B2538498E0062B024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D770F752255544F1004A134D /* TheGoodNewsFinalProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheGoodNewsFinalProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D770F754255544F1004A134D /* TheGoodNewsFinalProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheGoodNewsFinalProjectTests.swift; sourceTree = "<group>"; };
+		D770F756255544F1004A134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D770F76025554C4A004A134D /* BackgroundsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D770F76225554C4A004A134D /* BackgroundsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundsTests.swift; sourceTree = "<group>"; };
+		D770F76425554C4A004A134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D770F76E25555882004A134D /* QuotesModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotesModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D770F77025555882004A134D /* QuotesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModelTests.swift; sourceTree = "<group>"; };
+		D770F77225555882004A134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D770F77C25555931004A134D /* FavouritesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavouritesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D770F77E25555931004A134D /* FavouritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTests.swift; sourceTree = "<group>"; };
+		D770F78025555931004A134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7715E81253883630062B024 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D7715E832538BAD00062B024 /* PoemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsViewController.swift; sourceTree = "<group>"; };
 		D771B62B2535B6FA003E99A9 /* TheGoodNewsFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGoodNewsFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,9 +117,6 @@
 		D771B63A2535B6FC003E99A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D771B63D2535B6FC003E99A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D771B63F2535B6FC003E99A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D771B6442535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheGoodNewsFinalProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheGoodNewsFinalProjectTests.swift; sourceTree = "<group>"; };
-		D771B64A2535B6FC003E99A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D771B6542535B76F003E99A9 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		D771B65A25360536003E99A9 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		D7720EE1254C4A46002DA8FF /* FileStoringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStoringHelper.swift; sourceTree = "<group>"; };
@@ -124,6 +126,32 @@
 		D7722FE52539DE92004F2305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7722FE8253A21D4004F2305 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		D7722FE9253A21D4004F2305 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		D77377CA25543C5C00A6A29B /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377CC25543C5C00A6A29B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377CE25543C5C00A6A29B /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377D025543C5C00A6A29B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377D225543C5C00A6A29B /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377D425543C8500A6A29B /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377D625543C8500A6A29B /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377D825543C8500A6A29B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377DA25543C8500A6A29B /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377DC25543C8500A6A29B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377DE25543C8500A6A29B /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377E025543C8500A6A29B /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377E225543CA000A6A29B /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377E425543CA000A6A29B /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377E625543CA000A6A29B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377E825543CA000A6A29B /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377EA25543CA000A6A29B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377EC25543CA000A6A29B /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377EE25543CA000A6A29B /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377F025543CB600A6A29B /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377F225543CB600A6A29B /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377F425543CB600A6A29B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377F625543CB600A6A29B /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377F825543CB600A6A29B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377FA25543CB600A6A29B /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77377FC25543CB600A6A29B /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7746A47254490A50029E31B /* FireBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseController.swift; sourceTree = "<group>"; };
 		D77486002536EA350040E2CF /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		D774860225371D350040E2CF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -141,21 +169,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D7715E5825383C550062B024 /* Frameworks */ = {
+		D770F74F255544F1004A134D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE2B844F40BA8940735DF73C /* Pods_TheGoodNewsFinalProject_TheGoodNewsFinalProjectTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D770F75D25554C4A004A134D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7715E662538425E0062B024 /* Frameworks */ = {
+		D770F76B25555882004A134D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7715E742538498E0062B024 /* Frameworks */ = {
+		D770F77925555931004A134D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -170,22 +206,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D771B6412535B6FC003E99A9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9C4B82247E161A3C0CD1B12C /* Pods_TheGoodNewsFinalProjectTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		23CB2F3073032A9150B19864 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D77377F025543CB600A6A29B /* CryptoSwift.framework */,
+				D77377F225543CB600A6A29B /* FirebaseAuth.framework */,
+				D77377F425543CB600A6A29B /* FirebaseCore.framework */,
+				D77377F625543CB600A6A29B /* FirebaseCoreDiagnostics.framework */,
+				D77377F825543CB600A6A29B /* FirebaseDatabase.framework */,
+				D77377FA25543CB600A6A29B /* FirebaseInstallations.framework */,
+				D77377FC25543CB600A6A29B /* Kingfisher.framework */,
+				D77377E225543CA000A6A29B /* CryptoSwift.framework */,
+				D77377E425543CA000A6A29B /* FirebaseAuth.framework */,
+				D77377E625543CA000A6A29B /* FirebaseCore.framework */,
+				D77377E825543CA000A6A29B /* FirebaseCoreDiagnostics.framework */,
+				D77377EA25543CA000A6A29B /* FirebaseDatabase.framework */,
+				D77377EC25543CA000A6A29B /* FirebaseInstallations.framework */,
+				D77377EE25543CA000A6A29B /* Kingfisher.framework */,
+				D77377D425543C8500A6A29B /* CryptoSwift.framework */,
+				D77377D625543C8500A6A29B /* FirebaseAuth.framework */,
+				D77377D825543C8500A6A29B /* FirebaseCore.framework */,
+				D77377DA25543C8500A6A29B /* FirebaseCoreDiagnostics.framework */,
+				D77377DC25543C8500A6A29B /* FirebaseDatabase.framework */,
+				D77377DE25543C8500A6A29B /* FirebaseInstallations.framework */,
+				D77377E025543C8500A6A29B /* Kingfisher.framework */,
+				D77377CA25543C5C00A6A29B /* FirebaseAuth.framework */,
+				D77377CC25543C5C00A6A29B /* FirebaseCore.framework */,
+				D77377CE25543C5C00A6A29B /* FirebaseCoreDiagnostics.framework */,
+				D77377D025543C5C00A6A29B /* FirebaseDatabase.framework */,
+				D77377D225543C5C00A6A29B /* FirebaseInstallations.framework */,
 				E759445925DB9C393CBCAF85 /* Pods_TheGoodNewsFinalProject.framework */,
-				C7A32FB8F3B2DF9B693F3CA7 /* Pods_TheGoodNewsFinalProjectTests.framework */,
+				19B57BE6759A8ECA240B77EA /* Pods_TheGoodNewsFinalProject_TheGoodNewsFinalProjectTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -197,6 +251,8 @@
 				8F5EFC7245EB7BF40CE7EBD5 /* Pods-TheGoodNewsFinalProject.release.xcconfig */,
 				68250907F8B108E922C7DCAA /* Pods-TheGoodNewsFinalProjectTests.debug.xcconfig */,
 				2D989C55B25D54344B7CBBA2 /* Pods-TheGoodNewsFinalProjectTests.release.xcconfig */,
+				BEED2C347C1D6852DD9FF3E7 /* Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.debug.xcconfig */,
+				7C772FA9342A0207855ECDAD /* Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -210,41 +266,50 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		D7715E5C25383C550062B024 /* BackgroundImageTests */ = {
+		D770F753255544F1004A134D /* TheGoodNewsFinalProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7715E5D25383C550062B024 /* BackgroundImageTests.swift */,
-				D7715E5F25383C550062B024 /* Info.plist */,
+				D770F754255544F1004A134D /* TheGoodNewsFinalProjectTests.swift */,
+				D770F756255544F1004A134D /* Info.plist */,
 			);
-			path = BackgroundImageTests;
+			path = TheGoodNewsFinalProjectTests;
 			sourceTree = "<group>";
 		};
-		D7715E6A2538425E0062B024 /* QuotesModelTests */ = {
+		D770F76125554C4A004A134D /* BackgroundsTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7715E6B2538425E0062B024 /* QuotesModelTests.swift */,
-				D7715E6D2538425E0062B024 /* Info.plist */,
+				D770F76225554C4A004A134D /* BackgroundsTests.swift */,
+				D770F76425554C4A004A134D /* Info.plist */,
+			);
+			path = BackgroundsTests;
+			sourceTree = "<group>";
+		};
+		D770F76F25555882004A134D /* QuotesModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				D770F77025555882004A134D /* QuotesModelTests.swift */,
+				D770F77225555882004A134D /* Info.plist */,
 			);
 			path = QuotesModelTests;
 			sourceTree = "<group>";
 		};
-		D7715E782538498E0062B024 /* Favouritesests */ = {
+		D770F77D25555931004A134D /* FavouritesTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7715E792538498E0062B024 /* Favouritesests.swift */,
-				D7715E7B2538498E0062B024 /* Info.plist */,
+				D770F77E25555931004A134D /* FavouritesTests.swift */,
+				D770F78025555931004A134D /* Info.plist */,
 			);
-			path = Favouritesests;
+			path = FavouritesTests;
 			sourceTree = "<group>";
 		};
 		D771B6222535B6FA003E99A9 = {
 			isa = PBXGroup;
 			children = (
 				D771B62D2535B6FA003E99A9 /* TheGoodNewsFinalProject */,
-				D771B6472535B6FC003E99A9 /* TheGoodNewsFinalProjectTests */,
-				D7715E5C25383C550062B024 /* BackgroundImageTests */,
-				D7715E6A2538425E0062B024 /* QuotesModelTests */,
-				D7715E782538498E0062B024 /* Favouritesests */,
+				D770F753255544F1004A134D /* TheGoodNewsFinalProjectTests */,
+				D770F76125554C4A004A134D /* BackgroundsTests */,
+				D770F76F25555882004A134D /* QuotesModelTests */,
+				D770F77D25555931004A134D /* FavouritesTests */,
 				D771B62C2535B6FA003E99A9 /* Products */,
 				49BDDF4A18F26B391E6EE030 /* Pods */,
 				23CB2F3073032A9150B19864 /* Frameworks */,
@@ -255,10 +320,10 @@
 			isa = PBXGroup;
 			children = (
 				D771B62B2535B6FA003E99A9 /* TheGoodNewsFinalProject.app */,
-				D771B6442535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.xctest */,
-				D7715E5B25383C550062B024 /* BackgroundImageTests.xctest */,
-				D7715E692538425E0062B024 /* QuotesModelTests.xctest */,
-				D7715E772538498E0062B024 /* Favouritesests.xctest */,
+				D770F752255544F1004A134D /* TheGoodNewsFinalProjectTests.xctest */,
+				D770F76025554C4A004A134D /* BackgroundsTests.xctest */,
+				D770F76E25555882004A134D /* QuotesModelTests.xctest */,
+				D770F77C25555931004A134D /* FavouritesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,15 +352,6 @@
 				D771B6372535B6FA003E99A9 /* TheGoodNewsFinalProject.xcdatamodeld */,
 			);
 			path = TheGoodNewsFinalProject;
-			sourceTree = "<group>";
-		};
-		D771B6472535B6FC003E99A9 /* TheGoodNewsFinalProjectTests */ = {
-			isa = PBXGroup;
-			children = (
-				D771B6482535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift */,
-				D771B64A2535B6FC003E99A9 /* Info.plist */,
-			);
-			path = TheGoodNewsFinalProjectTests;
 			sourceTree = "<group>";
 		};
 		D771B6532535B742003E99A9 /* GoogleAds */ = {
@@ -382,58 +438,79 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D7715E5A25383C550062B024 /* BackgroundImageTests */ = {
+		D770F751255544F1004A134D /* TheGoodNewsFinalProjectTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7715E6425383C550062B024 /* Build configuration list for PBXNativeTarget "BackgroundImageTests" */;
+			buildConfigurationList = D770F759255544F1004A134D /* Build configuration list for PBXNativeTarget "TheGoodNewsFinalProjectTests" */;
 			buildPhases = (
-				D7715E5725383C550062B024 /* Sources */,
-				D7715E5825383C550062B024 /* Frameworks */,
-				D7715E5925383C550062B024 /* Resources */,
+				68CB4FA2D27A795299A04B00 /* [CP] Check Pods Manifest.lock */,
+				19A4F7389DA6E92ED1A0449F /* [CP] Prepare Artifacts */,
+				D770F74E255544F1004A134D /* Sources */,
+				D770F74F255544F1004A134D /* Frameworks */,
+				D770F750255544F1004A134D /* Resources */,
+				11C96B85D6A3A70824AC9040 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D7715E6125383C550062B024 /* PBXTargetDependency */,
+				D770F758255544F1004A134D /* PBXTargetDependency */,
 			);
-			name = BackgroundImageTests;
-			productName = BackgroundImageTests;
-			productReference = D7715E5B25383C550062B024 /* BackgroundImageTests.xctest */;
+			name = TheGoodNewsFinalProjectTests;
+			productName = TheGoodNewsFinalProjectTests;
+			productReference = D770F752255544F1004A134D /* TheGoodNewsFinalProjectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D7715E682538425E0062B024 /* QuotesModelTests */ = {
+		D770F75F25554C4A004A134D /* BackgroundsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7715E702538425E0062B024 /* Build configuration list for PBXNativeTarget "QuotesModelTests" */;
+			buildConfigurationList = D770F76925554C4A004A134D /* Build configuration list for PBXNativeTarget "BackgroundsTests" */;
 			buildPhases = (
-				D7715E652538425E0062B024 /* Sources */,
-				D7715E662538425E0062B024 /* Frameworks */,
-				D7715E672538425E0062B024 /* Resources */,
+				D770F75C25554C4A004A134D /* Sources */,
+				D770F75D25554C4A004A134D /* Frameworks */,
+				D770F75E25554C4A004A134D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D7715E6F2538425E0062B024 /* PBXTargetDependency */,
+				D770F76625554C4A004A134D /* PBXTargetDependency */,
+			);
+			name = BackgroundsTests;
+			productName = BackgroundsTests;
+			productReference = D770F76025554C4A004A134D /* BackgroundsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D770F76D25555882004A134D /* QuotesModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D770F77525555882004A134D /* Build configuration list for PBXNativeTarget "QuotesModelTests" */;
+			buildPhases = (
+				D770F76A25555882004A134D /* Sources */,
+				D770F76B25555882004A134D /* Frameworks */,
+				D770F76C25555882004A134D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D770F77425555882004A134D /* PBXTargetDependency */,
 			);
 			name = QuotesModelTests;
 			productName = QuotesModelTests;
-			productReference = D7715E692538425E0062B024 /* QuotesModelTests.xctest */;
+			productReference = D770F76E25555882004A134D /* QuotesModelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D7715E762538498E0062B024 /* Favouritesests */ = {
+		D770F77B25555931004A134D /* FavouritesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7715E7E2538498E0062B024 /* Build configuration list for PBXNativeTarget "Favouritesests" */;
+			buildConfigurationList = D770F78325555931004A134D /* Build configuration list for PBXNativeTarget "FavouritesTests" */;
 			buildPhases = (
-				D7715E732538498E0062B024 /* Sources */,
-				D7715E742538498E0062B024 /* Frameworks */,
-				D7715E752538498E0062B024 /* Resources */,
+				D770F77825555931004A134D /* Sources */,
+				D770F77925555931004A134D /* Frameworks */,
+				D770F77A25555931004A134D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D7715E7D2538498E0062B024 /* PBXTargetDependency */,
+				D770F78225555931004A134D /* PBXTargetDependency */,
 			);
-			name = Favouritesests;
-			productName = Favouritesests;
-			productReference = D7715E772538498E0062B024 /* Favouritesests.xctest */;
+			name = FavouritesTests;
+			productName = FavouritesTests;
+			productReference = D770F77C25555931004A134D /* FavouritesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */ = {
@@ -441,6 +518,7 @@
 			buildConfigurationList = D771B64D2535B6FC003E99A9 /* Build configuration list for PBXNativeTarget "TheGoodNewsFinalProject" */;
 			buildPhases = (
 				FC274C5EBE12F524F5710361 /* [CP] Check Pods Manifest.lock */,
+				F0A7CB4CA7BC86F6A7DA9260 /* [CP] Prepare Artifacts */,
 				D771B6272535B6FA003E99A9 /* Sources */,
 				D771B6282535B6FA003E99A9 /* Frameworks */,
 				D771B6292535B6FA003E99A9 /* Resources */,
@@ -455,26 +533,6 @@
 			productReference = D771B62B2535B6FA003E99A9 /* TheGoodNewsFinalProject.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D771B6432535B6FC003E99A9 /* TheGoodNewsFinalProjectTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D771B6502535B6FC003E99A9 /* Build configuration list for PBXNativeTarget "TheGoodNewsFinalProjectTests" */;
-			buildPhases = (
-				5CDD0E52F1FA74181A9C6FB7 /* [CP] Check Pods Manifest.lock */,
-				D771B6402535B6FC003E99A9 /* Sources */,
-				D771B6412535B6FC003E99A9 /* Frameworks */,
-				D771B6422535B6FC003E99A9 /* Resources */,
-				DBB4DDB8ABC7B65F647440DC /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D771B6462535B6FC003E99A9 /* PBXTargetDependency */,
-			);
-			name = TheGoodNewsFinalProjectTests;
-			productName = TheGoodNewsFinalProjectTests;
-			productReference = D771B6442535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -485,24 +543,24 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "The App Experts";
 				TargetAttributes = {
-					D7715E5A25383C550062B024 = {
+					D770F751255544F1004A134D = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = D771B62A2535B6FA003E99A9;
 					};
-					D7715E682538425E0062B024 = {
+					D770F75F25554C4A004A134D = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = D771B62A2535B6FA003E99A9;
 					};
-					D7715E762538498E0062B024 = {
+					D770F76D25555882004A134D = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = D771B62A2535B6FA003E99A9;
+					};
+					D770F77B25555931004A134D = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = D771B62A2535B6FA003E99A9;
 					};
 					D771B62A2535B6FA003E99A9 = {
 						CreatedOnToolsVersion = 11.3.1;
-					};
-					D771B6432535B6FC003E99A9 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = D771B62A2535B6FA003E99A9;
 					};
 				};
 			};
@@ -520,30 +578,37 @@
 			projectRoot = "";
 			targets = (
 				D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */,
-				D771B6432535B6FC003E99A9 /* TheGoodNewsFinalProjectTests */,
-				D7715E5A25383C550062B024 /* BackgroundImageTests */,
-				D7715E682538425E0062B024 /* QuotesModelTests */,
-				D7715E762538498E0062B024 /* Favouritesests */,
+				D770F751255544F1004A134D /* TheGoodNewsFinalProjectTests */,
+				D770F75F25554C4A004A134D /* BackgroundsTests */,
+				D770F76D25555882004A134D /* QuotesModelTests */,
+				D770F77B25555931004A134D /* FavouritesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D7715E5925383C550062B024 /* Resources */ = {
+		D770F750255544F1004A134D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7715E672538425E0062B024 /* Resources */ = {
+		D770F75E25554C4A004A134D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7715E752538498E0062B024 /* Resources */ = {
+		D770F76C25555882004A134D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D770F77A25555931004A134D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -561,17 +626,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D771B6422535B6FC003E99A9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5CDD0E52F1FA74181A9C6FB7 /* [CP] Check Pods Manifest.lock */ = {
+		11C96B85D6A3A70824AC9040 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19A4F7389DA6E92ED1A0449F /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68CB4FA2D27A795299A04B00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -586,7 +678,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TheGoodNewsFinalProjectTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -610,21 +702,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DBB4DDB8ABC7B65F647440DC /* [CP] Embed Pods Frameworks */ = {
+		F0A7CB4CA7BC86F6A7DA9260 /* [CP] Prepare Artifacts */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject-artifacts-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Prepare Artifacts";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject-artifacts-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProjectTests/Pods-TheGoodNewsFinalProjectTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheGoodNewsFinalProject/Pods-TheGoodNewsFinalProject-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC274C5EBE12F524F5710361 /* [CP] Check Pods Manifest.lock */ = {
@@ -652,27 +744,35 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D7715E5725383C550062B024 /* Sources */ = {
+		D770F74E255544F1004A134D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7715E5E25383C550062B024 /* BackgroundImageTests.swift in Sources */,
+				D770F755255544F1004A134D /* TheGoodNewsFinalProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7715E652538425E0062B024 /* Sources */ = {
+		D770F75C25554C4A004A134D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7715E6C2538425E0062B024 /* QuotesModelTests.swift in Sources */,
+				D770F76325554C4A004A134D /* BackgroundsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7715E732538498E0062B024 /* Sources */ = {
+		D770F76A25555882004A134D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7715E7A2538498E0062B024 /* Favouritesests.swift in Sources */,
+				D770F77125555882004A134D /* QuotesModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D770F77825555931004A134D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D770F77F25555931004A134D /* FavouritesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,36 +814,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D771B6402535B6FC003E99A9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D771B6492535B6FC003E99A9 /* TheGoodNewsFinalProjectTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D7715E6125383C550062B024 /* PBXTargetDependency */ = {
+		D770F758255544F1004A134D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */;
-			targetProxy = D7715E6025383C550062B024 /* PBXContainerItemProxy */;
+			targetProxy = D770F757255544F1004A134D /* PBXContainerItemProxy */;
 		};
-		D7715E6F2538425E0062B024 /* PBXTargetDependency */ = {
+		D770F76625554C4A004A134D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */;
-			targetProxy = D7715E6E2538425E0062B024 /* PBXContainerItemProxy */;
+			targetProxy = D770F76525554C4A004A134D /* PBXContainerItemProxy */;
 		};
-		D7715E7D2538498E0062B024 /* PBXTargetDependency */ = {
+		D770F77425555882004A134D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */;
-			targetProxy = D7715E7C2538498E0062B024 /* PBXContainerItemProxy */;
+			targetProxy = D770F77325555882004A134D /* PBXContainerItemProxy */;
 		};
-		D771B6462535B6FC003E99A9 /* PBXTargetDependency */ = {
+		D770F78225555931004A134D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D771B62A2535B6FA003E99A9 /* TheGoodNewsFinalProject */;
-			targetProxy = D771B6452535B6FC003E99A9 /* PBXContainerItemProxy */;
+			targetProxy = D770F78125555931004A134D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -767,19 +859,169 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D7715E6225383C550062B024 /* Debug */ = {
+		D770F75A255544F1004A134D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEED2C347C1D6852DD9FF3E7 /* Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
-				INFOPLIST_FILE = BackgroundImageTests/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-armv7_arm64\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-armv7_arm64_arm64e\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift/CryptoSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD/ProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				INFOPLIST_FILE = TheGoodNewsFinalProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.BackgroundImageTests;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.TheGoodNewsFinalProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "${inherited} ${SRCROOT}/Firebase";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheGoodNewsFinalProject.app/TheGoodNewsFinalProject";
+			};
+			name = Debug;
+		};
+		D770F75B255544F1004A134D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C772FA9342A0207855ECDAD /* Pods-TheGoodNewsFinalProject-TheGoodNewsFinalProjectTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4B9WRAZKW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-armv7_arm64\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-armv7_arm64_arm64e\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift/CryptoSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD/ProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				INFOPLIST_FILE = TheGoodNewsFinalProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.TheGoodNewsFinalProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "${inherited} ${SRCROOT}/Firebase";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheGoodNewsFinalProject.app/TheGoodNewsFinalProject";
+			};
+			name = Release;
+		};
+		D770F76725554C4A004A134D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4B9WRAZKW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"${inherited}",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"${inherited}",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				INFOPLIST_FILE = BackgroundsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.BackgroundsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -787,19 +1029,27 @@
 			};
 			name = Debug;
 		};
-		D7715E6325383C550062B024 /* Release */ = {
+		D770F76825554C4A004A134D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
-				INFOPLIST_FILE = BackgroundImageTests/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"${inherited}",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"${inherited}",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				INFOPLIST_FILE = BackgroundsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.BackgroundImageTests;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.BackgroundsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -807,7 +1057,7 @@
 			};
 			name = Release;
 		};
-		D7715E712538425E0062B024 /* Debug */ = {
+		D770F77625555882004A134D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -827,7 +1077,7 @@
 			};
 			name = Debug;
 		};
-		D7715E722538425E0062B024 /* Release */ = {
+		D770F77725555882004A134D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -847,19 +1097,19 @@
 			};
 			name = Release;
 		};
-		D7715E7F2538498E0062B024 /* Debug */ = {
+		D770F78425555931004A134D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
-				INFOPLIST_FILE = Favouritesests/Info.plist;
+				INFOPLIST_FILE = FavouritesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.Favouritesests;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.FavouritesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -867,19 +1117,19 @@
 			};
 			name = Debug;
 		};
-		D7715E802538498E0062B024 /* Release */ = {
+		D770F78525555931004A134D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
-				INFOPLIST_FILE = Favouritesests/Info.plist;
+				INFOPLIST_FILE = FavouritesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.Favouritesests;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.FavouritesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -937,6 +1187,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TheGoodNewsFinalProject/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -991,6 +1242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TheGoodNewsFinalProject/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1010,6 +1262,55 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-armv7_arm64\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-armv7_arm64_arm64e\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift/CryptoSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD/ProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
 				INFOPLIST_FILE = TheGoodNewsFinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1032,6 +1333,55 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4B9WRAZKW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-armv7_arm64\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-armv7_arm64_arm64e\"",
+					"\"${PODS_ROOT}/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/ios-i386_x86_64-simulator\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift/CryptoSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseDatabase/FirebaseDatabase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport/GoogleDataTransport.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ProgressHUD/ProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"${PODS_TARGET_SRCROOT}/Sources/FBLPromises/include\"",
+					"\"${PODS_ROOT}/Firebase/CoreOnly/Sources\"",
+				);
 				INFOPLIST_FILE = TheGoodNewsFinalProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1045,78 +1395,41 @@
 			};
 			name = Release;
 		};
-		D771B6512535B6FC003E99A9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68250907F8B108E922C7DCAA /* Pods-TheGoodNewsFinalProjectTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4B9WRAZKW;
-				INFOPLIST_FILE = TheGoodNewsFinalProjectTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.TheGoodNewsFinalProjectTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheGoodNewsFinalProject.app/TheGoodNewsFinalProject";
-			};
-			name = Debug;
-		};
-		D771B6522535B6FC003E99A9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D989C55B25D54344B7CBBA2 /* Pods-TheGoodNewsFinalProjectTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4B9WRAZKW;
-				INFOPLIST_FILE = TheGoodNewsFinalProjectTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.rjch.TheGoodNewsFinalProjectTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheGoodNewsFinalProject.app/TheGoodNewsFinalProject";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D7715E6425383C550062B024 /* Build configuration list for PBXNativeTarget "BackgroundImageTests" */ = {
+		D770F759255544F1004A134D /* Build configuration list for PBXNativeTarget "TheGoodNewsFinalProjectTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7715E6225383C550062B024 /* Debug */,
-				D7715E6325383C550062B024 /* Release */,
+				D770F75A255544F1004A134D /* Debug */,
+				D770F75B255544F1004A134D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7715E702538425E0062B024 /* Build configuration list for PBXNativeTarget "QuotesModelTests" */ = {
+		D770F76925554C4A004A134D /* Build configuration list for PBXNativeTarget "BackgroundsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7715E712538425E0062B024 /* Debug */,
-				D7715E722538425E0062B024 /* Release */,
+				D770F76725554C4A004A134D /* Debug */,
+				D770F76825554C4A004A134D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7715E7E2538498E0062B024 /* Build configuration list for PBXNativeTarget "Favouritesests" */ = {
+		D770F77525555882004A134D /* Build configuration list for PBXNativeTarget "QuotesModelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7715E7F2538498E0062B024 /* Debug */,
-				D7715E802538498E0062B024 /* Release */,
+				D770F77625555882004A134D /* Debug */,
+				D770F77725555882004A134D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D770F78325555931004A134D /* Build configuration list for PBXNativeTarget "FavouritesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D770F78425555931004A134D /* Debug */,
+				D770F78525555931004A134D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1135,15 +1448,6 @@
 			buildConfigurations = (
 				D771B64E2535B6FC003E99A9 /* Debug */,
 				D771B64F2535B6FC003E99A9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D771B6502535B6FC003E99A9 /* Build configuration list for PBXNativeTarget "TheGoodNewsFinalProjectTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D771B6512535B6FC003E99A9 /* Debug */,
-				D771B6522535B6FC003E99A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

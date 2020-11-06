@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var quoteTextView: UITextView!
     @IBOutlet weak var authorNameLabel: UILabel!
     
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var favouriteButton: UIButton!
     
     var googleAdsManager = GoogleAdsManager()
@@ -30,9 +29,6 @@ class ViewController: UIViewController {
     var favouriteQouteFromTable:Favourite?
     
     let fbAuth = FireBaseController.shared
-    let tappedTintColor:UIColor = .systemOrange
-    let defaultTintColor:UIColor = .systemGray
-    let favouriteImageName:String = "star.circle"
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +47,6 @@ class ViewController: UIViewController {
             }
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
         }
-//        Favourites().deleteAllCoreData("Favourite")
-//        Favourites().deleteAllCoreData("Poems")
-//        Favourites().deleteAllCoreData("UserQuotePoems")
 
         setBackground()
         if !quoteFromFavouriteTabel {
@@ -91,19 +84,19 @@ class ViewController: UIViewController {
             var tintColor:UIColor?
             
             if Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email, favourites: fetchedFavourites) {
-                tintColor = self.defaultTintColor
+                tintColor = Constants.iconColors.defaultTintColor
                 if Favourites().deleteFavourite( author: author, quote: quote, userEmail: self.email) {
-                    message = "REMOVED FROM FAVOURITES"
+                    message = Constants.defaultMessages.removedFromFavourites
                 }
             } else {
-                tintColor = self.tappedTintColor
+                tintColor = Constants.iconColors.tappedTintColor
                 if Favourites().saveFavourite(authorName: author, quote: quote, userEmail: self.email ) {
-                    message = "SAVED TO FAVOURITES"
+                    message = Constants.defaultMessages.savedToFavourites
                 }
             }
             favouriteButton.tintColor = tintColor
             
-            Toast().showToast(message: message, font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: message, font: .systemFont(ofSize: Constants.numericValues.toastFontSizeNormal), view: self.view)
             self.fetchedFavourites = Favourites().fetchFavourites(view: self.view, userEmail: self.email )
         }
     }
@@ -120,7 +113,7 @@ class ViewController: UIViewController {
     
     func setDelegates() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+        let favListViewController = storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.favouriteLists) as! FavouritesListViewController
         favListViewController.delegateQuotes = self
     }
     
@@ -132,8 +125,8 @@ class ViewController: UIViewController {
     
     func setBackground() {
         Backgrounds().getBackgroundImage{ url in
-            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
-            self.backgroundImageView.alpha = 0.3
+            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: Constants.imageDefaultNames.backgroundPlaceholder))
+            self.backgroundImageView.alpha = Constants.numericValues.backgroundAlpha
         }
     }
     
@@ -143,7 +136,7 @@ class ViewController: UIViewController {
             UIElementsHelper().alignTextVerticallyInContainer(textView: self.quoteTextView)
             self.authorNameLabel.text = author
             if let author = self.authorNameLabel.text, let quote = self.quoteTextView.text{
-                let tintColor = Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email, favourites: self.fetchedFavourites) ? self.tappedTintColor : self.defaultTintColor
+                let tintColor = Favourites().checkIfFavourite(authorName: author, quote: quote, userEmail: self.email, favourites: self.fetchedFavourites) ? Constants.iconColors.tappedTintColor : Constants.iconColors.defaultTintColor
                 
                 self.favouriteButton.tintColor = tintColor
             }
@@ -155,6 +148,6 @@ extension ViewController: FavouritesListViewControllerQuotesDelegate {
     func updateQouteView(with quote: Favourite) {
         self.quoteTextView.text = quote.quote
         self.authorNameLabel.text = quote.author
-        self.favouriteButton.tintColor = self.tappedTintColor
+        self.favouriteButton.tintColor = Constants.iconColors.tappedTintColor
     }
 }

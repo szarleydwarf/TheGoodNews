@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D771B6432535B6FC003E99A9"
+               BlueprintIdentifier = "D770F751255544F1004A134D"
                BuildableName = "TheGoodNewsFinalProjectTests.xctest"
                BlueprintName = "TheGoodNewsFinalProjectTests"
                ReferencedContainer = "container:TheGoodNewsFinalProject.xcodeproj">
@@ -43,9 +43,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7715E5A25383C550062B024"
-               BuildableName = "BackgroundImageTests.xctest"
-               BlueprintName = "BackgroundImageTests"
+               BlueprintIdentifier = "D770F75F25554C4A004A134D"
+               BuildableName = "BackgroundsTests.xctest"
+               BlueprintName = "BackgroundsTests"
                ReferencedContainer = "container:TheGoodNewsFinalProject.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,7 +53,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7715E682538425E0062B024"
+               BlueprintIdentifier = "D770F76D25555882004A134D"
                BuildableName = "QuotesModelTests.xctest"
                BlueprintName = "QuotesModelTests"
                ReferencedContainer = "container:TheGoodNewsFinalProject.xcodeproj">
@@ -63,9 +63,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7715E762538498E0062B024"
-               BuildableName = "Favouritesests.xctest"
-               BlueprintName = "Favouritesests"
+               BlueprintIdentifier = "D770F77B25555931004A134D"
+               BuildableName = "FavouritesTests.xctest"
+               BlueprintName = "FavouritesTests"
                ReferencedContainer = "container:TheGoodNewsFinalProject.xcodeproj">
             </BuildableReference>
          </TestableReference>
