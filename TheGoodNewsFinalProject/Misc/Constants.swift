@@ -21,14 +21,28 @@ struct Constants {
         static let toastFontSizeNormal:CGFloat = 18.0
     }
     
+    struct stringValues {
+        static let defaultUserEmail = "Unknown@Unknown.org"
+    }
+    
     struct imageDefaultNames {
         static let backgroundPlaceholder = "landscape"
+    }
+    
+    struct urls {
+        static let backgroundsAPI = "https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=beautiful+landscape&image_type=photo"
+        static let quotesAPI = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
     }
     
     struct defaultMessages {
         static let quotesSaved = "QUOTES SAVED"
         static let savedToFavourites = "SAVED TO FAVOURITES"
         static let removedFromFavourites = "REMOVED FROM FAVOURITES"
+    }
+    
+    struct predicates {
+        static let userEmail = "userEmail = %@"
+        static let authorQuoteUserEmail = "author = %@ && quote = %@ && userEmail = %@"
     }
     
     struct viewControllersNames {

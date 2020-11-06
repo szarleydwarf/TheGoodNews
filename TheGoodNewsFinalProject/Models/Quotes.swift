@@ -12,7 +12,7 @@ struct Quotes {
     
     public func getQuote( completion:@escaping((String, String))->Void) {
         
-        guard let url = URL(string: "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en") else {return}
+        guard let url = URL(string: Constants.urls.quotesAPI) else {return}
         URLSession.shared.dataTask(with: url) {(data, respons, error) in
             guard let data = data else{return}
             guard let json = try? JSONDecoder().decode(Quote.self, from: data) else {return}

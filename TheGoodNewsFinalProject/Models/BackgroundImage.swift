@@ -12,7 +12,7 @@ import Kingfisher
 struct Backgrounds {
     public func getBackgroundImage(completion:@escaping((URL))->Void) {
         var backgrounds:[URL] = []
-        guard let url = URL(string: "https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=beautiful+landscape&image_type=photo") else {return}
+        guard let url = URL(string: Constants.urls.backgroundsAPI) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else{return}
             guard let results = try? JSONDecoder().decode(BackgroundImages.self, from: data) else {return}

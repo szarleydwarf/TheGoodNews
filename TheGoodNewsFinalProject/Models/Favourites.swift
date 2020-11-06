@@ -17,11 +17,11 @@ class Favourites {
     let coreDataController = CoreDataController.shared
     
     // CoreData func
-    func fetchFavourites(view:UIView, userEmail:String="Unknown@Unknown.org") -> [Favourite] {
+    func fetchFavourites(view:UIView, userEmail:String=Constants.stringValues.defaultUserEmail) -> [Favourite] {
         var fetchedFavourites:[Favourite]=[]
         let ctx = coreDataController.mainCtx
         let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "userEmail = %@", userEmail)
+        fetchRequest.predicate = NSPredicate(format: Constants.predicates.userEmail, userEmail)
         do{
             fetchedFavourites = try ctx.fetch(fetchRequest)
         } catch let err {
@@ -30,7 +30,7 @@ class Favourites {
         return fetchedFavourites
     }
     
-    func saveFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org") -> Bool {
+    func saveFavourite(authorName:String, quote:String, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let favourite = Favourite(context: mainCtx)
         favourite.author = authorName
@@ -41,7 +41,7 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func saveFavouriteWithFireDataBaseID(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool {
+    func saveFavouriteWithFireDataBaseID(authorName:String, quote:String, userEmail:String=Constants.stringValues.defaultUserEmail, fireDataBaseID: String) -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let favourite = Favourite(context: mainCtx)
         favourite.author = authorName
@@ -53,10 +53,10 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func updateFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool {
+    func updateFavourite(authorName:String, quote:String, userEmail:String=Constants.stringValues.defaultUserEmail, fireDataBaseID: String) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let request:NSFetchRequest<Favourite> = Favourite.fetchRequest()
-        request.predicate = NSPredicate(format: "author = %@ && quote = %@ && userEmail = %@", authorName, quote, userEmail)
+        request.predicate = NSPredicate(format: Constants.predicates.authorQuoteUserEmail, authorName, quote, userEmail)
         do {
             let result = try ctx.fetch(request)
             if result.count > 0 {
@@ -68,10 +68,10 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func deleteFavourite(author: String, quote: String, userEmail:String="Unknown@Unknown.org") -> Bool {
+    func deleteFavourite(author: String, quote: String, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Favourite> = Favourite.fetchRequest()
-        request.predicate = NSPredicate(format: "author = %@ && quote = %@ && userEmail = %@", author, quote, userEmail)
+        request.predicate = NSPredicate(format: Constants.predicates.authorQuoteUserEmail, author, quote, userEmail)
         
         do {
             let result = try mainCtx.fetch(request)
@@ -84,11 +84,11 @@ class Favourites {
         return self.coreDataController.save()
     }
     
-    func checkIfFavourite(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", favourites:[Favourite]) -> Bool{
+    func checkIfFavourite(authorName:String, quote:String, userEmail:String=Constants.stringValues.defaultUserEmail, favourites:[Favourite]) -> Bool{
         return favourites.contains(where: {($0.userEmail == userEmail) && ($0.author == authorName) && ($0.quote == quote)})
     }
     
-    func getFavouriteQoute(authorName:String, quote:String, userEmail:String="Unknown@Unknown.org", favourites:[Favourite]) -> Favourite? {
+    func getFavouriteQoute(authorName:String, quote:String, userEmail:String=Constants.stringValues.defaultUserEmail, favourites:[Favourite]) -> Favourite? {
         return favourites.first(where: {($0.author == authorName) && ($0.quote == quote) && ($0.userEmail == userEmail)})
     }
     
