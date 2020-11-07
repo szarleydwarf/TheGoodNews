@@ -13,20 +13,20 @@ import FirebaseDatabase
 class UserPoemsAndQutes {
     let coreDataController = CoreDataController.shared
     
-    func fetchUserTexts (view: UIView, userEmail:String="Unknown@Unknown.org")->[UserQuotePoems] {
+    func fetchUserTexts (view: UIView, userEmail:String=Constants.stringValues.defaultUserEmail)->[UserQuotePoems] {
         var userText:[UserQuotePoems] = []
         let ctx = coreDataController.mainCtx
         let request: NSFetchRequest<UserQuotePoems> = UserQuotePoems.fetchRequest()
-        request.predicate = NSPredicate(format: "userEmail = %@", userEmail)
+        request.predicate = NSPredicate(format: Constants.predicates.userEmail, userEmail)
         do{
             userText = try ctx.fetch(request)
         } catch let err {
-            Toast().showToast(message: "Failed to fetch your texts \(err.localizedDescription)", font: .systemFont(ofSize: 15), view: view)
+            Toast().showToast(message: "\(Constants.error.fetchingText) \(err.localizedDescription)", font: .systemFont(ofSize: 15), view: view)
         }
         return userText
     }
     
-    func saveUserQuoteOrPoem(title:String?, text:String, isQuote:Bool, userEmail:String="Unknown@Unknown.org") -> Bool {
+    func saveUserQuoteOrPoem(title:String?, text:String, isQuote:Bool, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool {
         let context = self.coreDataController.mainCtx
         let userText = UserQuotePoems(context: context)
         
@@ -41,25 +41,25 @@ class UserPoemsAndQutes {
     func updateUserText(userEmail: String, title: String, text: String, isQoute: Bool, fireDataBaseID: String) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let request:NSFetchRequest<UserQuotePoems> = UserQuotePoems.fetchRequest()
-        request.predicate = NSPredicate(format: "userEmail = %@ && title = %@ && text = %@", userEmail, title, text)
+        request.predicate = NSPredicate(format: Constants.predicates.userEmailTitleText, userEmail, title, text)
         do {
             let result = try ctx.fetch(request)
             if result.count > 0 {
                 result[0].fireDataBaseID = fireDataBaseID
             }
         } catch let err {
-            print("User update error \(err)")
+            print("\(Constants.error.userUpdate) \(err)")
         }
         return self.coreDataController.save()
     }
     
-    func deleteUserText(title:String?, text:String, isQuote:Bool, userEmail:String="Unknown@Unknown.org") -> Bool {
+    func deleteUserText(title:String?, text:String, isQuote:Bool, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool {
         let mainCtx = self.coreDataController.mainCtx
         let request: NSFetchRequest<UserQuotePoems> = UserQuotePoems.fetchRequest()
         if let title = title {
-            request.predicate = NSPredicate(format: "text = %@ && title = %@ && isQuote == %@ && userEmail = %@", text, title, NSNumber(booleanLiteral: isQuote), userEmail)
+            request.predicate = NSPredicate(format: Constants.predicates.textTitleIsQuoteUserEmail, text, title, NSNumber(booleanLiteral: isQuote), userEmail)
         } else {
-            request.predicate = NSPredicate(format: "text = %@ && isQuote && userEmail = %@", text, isQuote, userEmail)
+            request.predicate = NSPredicate(format: Constants.predicates.textIsQuoteUserEmail, text, isQuote, userEmail)
         }
         
         do {
@@ -68,7 +68,7 @@ class UserPoemsAndQutes {
                 mainCtx.delete(result[0])
             }
         } catch let err {
-            print("fetch error \(err)")
+            print("\(Constants.error.fetchingText) \(err)")
         }
         return self.coreDataController.save()
     }
@@ -91,11 +91,11 @@ class UserPoemsAndQutes {
         var isQoute:String
         
         var dictionary:[String:Any]{
-            return ["userTextID":userTextID,
-                    "userEmail":userEmail,
-                    "title":title,
-                    "text":text,
-                    "isQuote":isQoute
+            return [Constants.firebaseDictNames.textID:userTextID,
+                    Constants.firebaseDictNames.userEmail:userEmail,
+                    Constants.firebaseDictNames.title:title,
+                    Constants.firebaseDictNames.text:text,
+                    Constants.firebaseDictNames.isQuote:isQoute
             ]
         }
         
@@ -135,7 +135,7 @@ class UserPoemsAndQutes {
         return true
     }
     
-    func saveTextWithFireDataBaseID(title:String, text:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String, isQuote: Bool) -> Bool {
+    func saveTextWithFireDataBaseID(title:String, text:String, userEmail:String=Constants.stringValues.defaultUserEmail, fireDataBaseID: String, isQuote: Bool) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let userText = UserQuotePoems(context: ctx)
         userText.title = title
@@ -155,7 +155,7 @@ class UserPoemsAndQutes {
                 for text in snapshot.children.allObjects as! [DataSnapshot] {
                     let textObject = text.value as? [String:String]
                     if let textObj = textObject {
-                        if let textID = textObj["userTextID"], let userEmail = textObj["userEmail"], let text = textObj["text"], let isQuote = textObj["isQuote"], let title = textObj["title"] {
+                        if let textID = textObj[Constants.firebaseDictNames.textID], let userEmail = textObj[Constants.firebaseDictNames.userEmail], let text = textObj[Constants.firebaseDictNames.text], let isQuote = textObj[Constants.firebaseDictNames.isQuote], let title = textObj[Constants.firebaseDictNames.title] {
 
                             let userText = UserText(userTextID: textID, userEmail: userEmail, title: title, text: text, isQoute: isQuote)
                             userTextList.append(userText)

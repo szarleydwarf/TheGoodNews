@@ -40,9 +40,31 @@ struct Constants {
         static let removedFromFavourites = "REMOVED FROM FAVOURITES"
     }
     
+    struct error {
+        static let fetchingText = "Failed to fetch your texts"
+        static let userUpdate = "User update error"
+        static let fetchingQuotes = "Error fetching favourite quotes"
+        static let updateError = "Update error"
+        static let deleting = "Could not delete with error"
+    }
+    
+    struct firebaseDictNames {
+        static let quoteID = "qid"
+        static let author = "author"
+        static let quote = "quote"
+        static let textID = "userTextID"
+        static let userEmail = "userEmail"
+        static let title = "title"
+        static let text = "text"
+        static let isQuote = "isQuote"
+    }
+    
     struct predicates {
         static let userEmail = "userEmail = %@"
         static let authorQuoteUserEmail = "author = %@ && quote = %@ && userEmail = %@"
+        static let userEmailTitleText = "userEmail = %@ && title = %@ && text = %@"
+        static let textTitleIsQuoteUserEmail = "text = %@ && title = %@ && isQuote == %@ && userEmail = %@"
+        static let textIsQuoteUserEmail = "text = %@ && isQuote && userEmail = %@"
     }
     
     struct viewControllersNames {

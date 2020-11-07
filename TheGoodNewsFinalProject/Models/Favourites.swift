@@ -25,7 +25,7 @@ class Favourites {
         do{
             fetchedFavourites = try ctx.fetch(fetchRequest)
         } catch let err {
-            Toast().showToast(message: "Error fetching favourite quotes \(err)", font: .systemFont(ofSize: 17.0), view: view)
+            Toast().showToast(message: "\(Constants.error.fetchingQuotes) \(err)", font: .systemFont(ofSize: 17.0), view: view)
         }
         return fetchedFavourites
     }
@@ -63,7 +63,7 @@ class Favourites {
                 result[0].fireDataBaseID = fireDataBaseID
             }
         } catch let err {
-            print("Update error \(err)")
+            print("\(Constants.error.updateError) \(err)")
         }
         return self.coreDataController.save()
     }
@@ -79,7 +79,7 @@ class Favourites {
                 mainCtx.delete(result[0])
             } 
         } catch let err {
-            print("fetch error \(err)")
+            print("\(Constants.error.deleting) \(err)")
         }
         return self.coreDataController.save()
     }
@@ -110,9 +110,9 @@ class Favourites {
         
         
         var dictionary:[String:Any]{
-            return ["qid":qid,
-                    "author":author,
-                    "quote":quote
+            return [Constants.firebaseDictNames.quoteID:qid,
+                    Constants.firebaseDictNames.author:author,
+                    Constants.firebaseDictNames.quote:quote
             ]
         }
         
@@ -147,7 +147,7 @@ class Favourites {
                 for quote in snapshot.children.allObjects as! [DataSnapshot] {
                     let qouteObject = quote.value as? [String:String]
                     if let qObj = qouteObject {
-                        if let quoteID = qObj["qid"], let qouteAuthor = qObj["author"], let quoteText = qObj["quote"] {
+                        if let quoteID = qObj[Constants.firebaseDictNames.quoteID], let qouteAuthor = qObj[Constants.firebaseDictNames.author], let quoteText = qObj[Constants.firebaseDictNames.quote] {
                             let favQuote = FavQuote(qid: quoteID, author: qouteAuthor, quote: quoteText)
                             listOfQuotes.append(favQuote)
                         }
