@@ -23,6 +23,9 @@ struct Constants {
     
     struct stringValues {
         static let defaultUserEmail = "Unknown@Unknown.org"
+        static let defaultPoetName = "UNKNOWN"
+        static let yes = "yes"
+        static let no = "no"
     }
     
     struct imageDefaultNames {
@@ -41,11 +44,12 @@ struct Constants {
     }
     
     struct error {
-        static let fetchingText = "Failed to fetch your texts"
-        static let userUpdate = "User update error"
-        static let fetchingQuotes = "Error fetching favourite quotes"
-        static let updateError = "Update error"
-        static let deleting = "Could not delete with error"
+        static let fetchingText = "Failed to fetch your texts >> "
+        static let userUpdate = "User update error >> "
+        static let fetchingQuotes = "Could not fetched favourite quotes >> "
+        static let updateError = "Update error >> "
+        static let deleting = "Could not delete, got error >> "
+        static let fetchingPoems = "Could not fetched poems >> "
     }
     
     struct firebaseDictNames {
@@ -57,6 +61,8 @@ struct Constants {
         static let title = "title"
         static let text = "text"
         static let isQuote = "isQuote"
+        static let poemID = "poemID"
+        static let poemText = "poemText"
     }
     
     struct predicates {
@@ -65,6 +71,8 @@ struct Constants {
         static let userEmailTitleText = "userEmail = %@ && title = %@ && text = %@"
         static let textTitleIsQuoteUserEmail = "text = %@ && title = %@ && isQuote == %@ && userEmail = %@"
         static let textIsQuoteUserEmail = "text = %@ && isQuote && userEmail = %@"
+        static let authorTitlePoemTextUserEmail = "author = %@ && title = %@ && poemText = %@ && userEmail = %@"
+        
     }
     
     struct viewControllersNames {

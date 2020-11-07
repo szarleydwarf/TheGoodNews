@@ -13,20 +13,20 @@ import FirebaseDatabase
 class FavouritePoems {
     let coreDataController = CoreDataController.shared
     
-    func fetchPoems(view: UIView, userEmail:String="Unknown@Unknown.org") -> [Poems] {
+    func fetchPoems(view: UIView, userEmail:String=Constants.stringValues.defaultUserEmail) -> [Poems] {
         var poems:[Poems] = []
         let ctx = coreDataController.mainCtx
         let request: NSFetchRequest<Poems> = Poems.fetchRequest()
-        request.predicate = NSPredicate(format: "userEmail = %@", userEmail)
+        request.predicate = NSPredicate(format: Constants.predicates.userEmail, userEmail)
         do {
             poems = try ctx.fetch(request)
         } catch let err {
-            Toast().showToast(message: "Error fetching poems \(err)", font: .systemFont(ofSize: 15), view:  view)
+            Toast().showToast(message: "\(Constants.error.fetchingPoems) \(err)", font: .systemFont(ofSize: 15), view:  view)
         }
         return poems
     }
     
-    func savePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool {
+    func savePoem(poetName:String = Constants.stringValues.defaultPoetName, poemTitle:String, poemText:String, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let poem = Poems(context: ctx)
         poem.author = poetName
@@ -38,7 +38,7 @@ class FavouritePoems {
         return self.coreDataController.save()
     }
     
-    func savePoemWithFireDataBaseID(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID:String) -> Bool {
+    func savePoemWithFireDataBaseID(poetName:String = Constants.stringValues.defaultPoetName, poemTitle:String, poemText:String, userEmail:String=Constants.stringValues.defaultUserEmail, fireDataBaseID:String) -> Bool {
         let ctx = self.coreDataController.mainCtx
         let poem = Poems(context: ctx)
         poem.author = poetName
@@ -51,38 +51,38 @@ class FavouritePoems {
         return self.coreDataController.save()
     }
     
-    func updatePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org", fireDataBaseID: String) -> Bool{
+    func updatePoem(poetName:String = Constants.stringValues.defaultPoetName, poemTitle:String, poemText:String, userEmail:String=Constants.stringValues.defaultUserEmail, fireDataBaseID: String) -> Bool{
         let ctx = self.coreDataController.mainCtx
         let request:NSFetchRequest<Poems> = Poems.fetchRequest()
-        request.predicate = NSPredicate(format: "author = %@ && title = %@ && poemText = %@ && userEmail = %@", poetName, poemTitle, poemText, userEmail)
+        request.predicate = NSPredicate(format: Constants.predicates.authorTitlePoemTextUserEmail, poetName, poemTitle, poemText, userEmail)
         do {
             let result = try ctx.fetch(request)
             if result.count > 0{
                 result[0].fireDataBaseID = fireDataBaseID
             }
         } catch let err {
-            print("Poem update error >> \(err.localizedDescription)")
+            print("\(Constants.error.updateError) \(err.localizedDescription)")
         }
         return self.coreDataController.save()
     }
     
-    func deletePoem(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool  {
+    func deletePoem(poetName:String = Constants.stringValues.defaultPoetName, poemTitle:String, poemText:String, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool  {
         let ctx = self.coreDataController.mainCtx
         let request: NSFetchRequest<Poems> = Poems.fetchRequest()
-        request.predicate = NSPredicate(format: "author = %@ && title = %@ && poemText = %@ && userEmail = %@", poetName, poemTitle, poemText, userEmail)
+        request.predicate = NSPredicate(format: Constants.predicates.authorTitlePoemTextUserEmail, poetName, poemTitle, poemText, userEmail)
         do {
             let result = try ctx.fetch(request)
             if result.count > 0 {
                 ctx.delete(result[0])
             }
         } catch let err {
-            print("deletion error in poems > \(err)")
+            print("\(Constants.error.deleting) \(err)")
         }
         
         return self.coreDataController.save()
     }
     
-    func checkIfFavourite(poetName:String = "UNKNOWN", poemTitle:String, poemText:String, userEmail:String="Unknown@Unknown.org") -> Bool {
+    func checkIfFavourite(poetName:String = Constants.stringValues.defaultPoetName, poemTitle:String, poemText:String, userEmail:String=Constants.stringValues.defaultUserEmail) -> Bool {
         let poems = self.fetchPoems(view: UIView(), userEmail: userEmail)
         return poems.contains(where: {($0.userEmail == userEmail) && ($0.author == poetName) && ($0.title == poemTitle) && $0.poemText == poemText})
     }
@@ -104,10 +104,10 @@ class FavouritePoems {
         var poemText:String
         
         var favoritePoem:[String:String] {
-            return ["poemID": poemID,
-                    "author": author,
-                    "title": title,
-                    "poemText":poemText
+            return [Constants.firebaseDictNames.poemID: poemID,
+                    Constants.firebaseDictNames.author: author,
+                    Constants.firebaseDictNames.title: title,
+                    Constants.firebaseDictNames.poemText:poemText
             ]
         }
         
@@ -143,7 +143,7 @@ class FavouritePoems {
                  for poem in snapshot.children.allObjects as! [DataSnapshot] {
                      let poemObject = poem.value as? [String:String]
                      if let pObj = poemObject {
-                         if let poemID = pObj["poemID"], let poemAuthor = pObj["author"], let poemText = pObj["poemText"], let poemTitle = pObj["title"] {
+                        if let poemID = pObj[Constants.firebaseDictNames.poemID], let poemAuthor = pObj[Constants.firebaseDictNames.author], let poemText = pObj[Constants.firebaseDictNames.poemText], let poemTitle = pObj[Constants.firebaseDictNames.title] {
                              let favPoem = FavPoem(poemID: poemID, author: poemAuthor, title: poemTitle, poemText: poemText)
                              listOfPoems.append(favPoem)
                          }

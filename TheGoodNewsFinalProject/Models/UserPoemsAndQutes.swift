@@ -106,13 +106,13 @@ class UserPoemsAndQutes {
     
     func boolToString(isQoute:Bool) -> String{
         if isQoute {
-            return "yes"
+            return Constants.stringValues.yes
         }
-        return "no"
+        return Constants.stringValues.no
     }
     
     func stringToBool(isQoute:String) -> Bool {
-        if isQoute == "yes" {
+        if isQoute == Constants.stringValues.yes {
             return true
         }
         return false
