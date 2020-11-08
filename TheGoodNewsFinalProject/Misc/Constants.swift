@@ -52,7 +52,8 @@ struct Constants {
         static let poemsSynced = "Poems sync completed"
         static let userTextSynced = "yuor texts sync completed"
         static let imageSaved = "Image Saved"
-        
+        static let emailAndPasswordRequired = "Enter email and password to sign in"
+        static let thankYouForSigning = "Thank you for signing in. You will be redirected in 4s."
     }
     
     struct error {

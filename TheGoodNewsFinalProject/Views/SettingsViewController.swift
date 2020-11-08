@@ -101,7 +101,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
         if self.email.isEmpty {
-            Toast().showToast(message: Constants.defaultMessages.signingInRequired, font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.signingInRequiredToAddText, font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let addTextViewController = storyboard.instantiateViewController(identifier: Constants.viewControllersNames.addUserText) as! AddUserTextViewController

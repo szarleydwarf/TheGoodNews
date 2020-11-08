@@ -23,7 +23,6 @@ class PoemsViewController: UIViewController {
     let fbAuth = FireBaseController.shared
     let tappedTintColor:UIColor = .systemOrange
     let defaultTintColor:UIColor = .systemGray
-    let favouriteImageName:String = "star.circle"
     
     var user:User?
     var handle:AuthStateDidChangeListenerHandle?
@@ -90,12 +89,12 @@ class PoemsViewController: UIViewController {
                 tintColor = self.defaultTintColor
                 
                 if FavouritePoems().deletePoem(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email) {
-                    message = "REMOVED FROM FAVOURITES"
+                    message = Constants.defaultMessages.removedFromFavourites
                 }
             } else {
                 tintColor = self.tappedTintColor
                 if FavouritePoems().savePoem(poetName: author, poemTitle: title, poemText: poemText, userEmail: self.email){
-                    message = "SAVED TO FAVOURITES"
+                    message = Constants.defaultMessages.savedToFavourites
                 }
             }
             self.favouriteButton.tintColor = tintColor
@@ -117,7 +116,7 @@ class PoemsViewController: UIViewController {
     
       func setDelegates() {
           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-          let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+        let favListViewController = storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.favouriteLists) as! FavouritesListViewController
           favListViewController.delegatePoems = self
       }
     
@@ -130,7 +129,7 @@ class PoemsViewController: UIViewController {
     
     func setBackground() {
         Backgrounds().getBackgroundImage{ url in
-            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName:"landscape"))
+            self.backgroundImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: Constants.imageDefaultNames.backgroundPlaceholder))
             self.backgroundImageView.alpha = 0.3
         }
     }

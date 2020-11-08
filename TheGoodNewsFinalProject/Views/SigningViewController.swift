@@ -33,13 +33,13 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
     
     func fetchUserFromFields() -> Bool {
         guard let newEmail = emailTextField.text, let newPassword = passwordTextField.text , !newEmail.isEmpty && !newPassword.isEmpty else {
-            Toast().showToast(message: "Enter email and password to sign in", font: .systemFont(ofSize: 18), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.emailAndPasswordRequired, font: .systemFont(ofSize: 18), view: self.view)
             return false
         }
         self.hashedPassword = UserHelper().hashThePassword(from: newEmail, password: newPassword)
         let name = UserHelper().getUserName(email: newEmail)
         self.user = User.init(email: newEmail, name: name)
-        Toast().showToast(message: "Hello \(name). Thank you for signing in. You will be redirected in 4s.", font: .systemFont(ofSize: self.toastFontSize), view: self.view)
+        Toast().showToast(message: "Hello \(name). \(Constants.defaultMessages.thankYouForSigning)", font: .systemFont(ofSize: self.toastFontSize), view: self.view)
 
         return true
     }
@@ -101,7 +101,6 @@ class SigningViewController: UIViewController, ASAuthorizationControllerDelegate
         ConnectionHelper().connected{connected in
             guard let email = self.user?.email else {return}
             guard let password = self.hashedPassword else {return}
-            print("SIGNIN connection  >\(email)")
             if connected {
                 //connection try connect with firebase
                 self.createNewUser(email:email, password:password)
