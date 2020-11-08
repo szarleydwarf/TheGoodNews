@@ -10,7 +10,7 @@ import UIKit
 struct PoemModel {
     public func getPoem(completion:@escaping((String, String, String)) ->Void) {
         var poems:[Poem]=[]
-        guard let url = URL(string: "https://www.poemist.com/api/v1/randompoems") else {return}
+        guard let url = URL(string: Constants.urls.poemsAPI) else {return}
         URLSession.shared.dataTask(with: url) {data, response, error in
             guard let data = data else {return}
             

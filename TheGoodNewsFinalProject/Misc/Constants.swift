@@ -26,21 +26,33 @@ struct Constants {
         static let defaultPoetName = "UNKNOWN"
         static let yes = "yes"
         static let no = "no"
+        static let signOut = "Sign Out"
+        static let signIn = "Sign In"
     }
     
     struct imageDefaultNames {
         static let backgroundPlaceholder = "landscape"
+        static let profilePlaceholder = "profile"
     }
     
     struct urls {
         static let backgroundsAPI = "https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=beautiful+landscape&image_type=photo"
         static let quotesAPI = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
+        static let poemsAPI = "https://www.poemist.com/api/v1/randompoems"
     }
     
     struct defaultMessages {
         static let quotesSaved = "QUOTES SAVED"
         static let savedToFavourites = "SAVED TO FAVOURITES"
         static let removedFromFavourites = "REMOVED FROM FAVOURITES"
+        static let signingInRequiredToAddText = "You need to sign in to add your quote or poem"
+        static let singningRequiredToUpdate = "You need to sign in to Sync your data"
+        static let syncStarted = "Starting to syncing your favourites. Allow some time to finish"
+        static let quotesSynced = "Qoutes sync completed"
+        static let poemsSynced = "Poems sync completed"
+        static let userTextSynced = "yuor texts sync completed"
+        static let imageSaved = "Image Saved"
+        
     }
     
     struct error {
@@ -50,6 +62,7 @@ struct Constants {
         static let updateError = "Update error >> "
         static let deleting = "Could not delete, got error >> "
         static let fetchingPoems = "Could not fetched poems >> "
+        static let signout = "Could not sign out >>"
     }
     
     struct firebaseDictNames {
@@ -77,6 +90,8 @@ struct Constants {
     
     struct viewControllersNames {
         static let favouriteLists = "FavouritesListViewController"
+        static let addUserText = "AddUserTextViewController"
+        static let signIn = "SigningViewController"
     }
     
     struct iconColors {

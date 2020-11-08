@@ -57,7 +57,6 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         
         guard let container = self.container else {return}
         container.loadPersistentStores{ storeDescription, error in
-            print("SETTINGS viewWillAppear >>\(storeDescription)>><<\(error)")
             guard let container = self.container else {return}
             container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             
@@ -84,7 +83,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     @IBAction func showFavourites(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let favouritesViewController = storyboard.instantiateViewController(identifier: "FavouritesListViewController") as! FavouritesListViewController
+        let favouritesViewController = storyboard.instantiateViewController(identifier: Constants.viewControllersNames.favouriteLists) as! FavouritesListViewController
         self.navigationController?.pushViewController(favouritesViewController, animated: true)
     }
     
@@ -97,24 +96,23 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     }
     
     @IBAction func changeUserImage(_ sender: UIButton) {
-        print("CHANGING USER IMAGE")
         self.imagePicker.present(from: sender)
     }
     
     @IBAction func addQuoteOrPoem(_ sender: UIButton) {
         if self.email.isEmpty {
-            Toast().showToast(message: "You need to sign in to add your quote or poem", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.signingInRequired, font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let addTextViewController = storyboard.instantiateViewController(identifier: "AddUserTextViewController") as! AddUserTextViewController
+            let addTextViewController = storyboard.instantiateViewController(identifier: Constants.viewControllersNames.addUserText) as! AddUserTextViewController
             self.navigationController?.pushViewController(addTextViewController, animated: true)        }
     }
     
     @IBAction func syncToFireDataBase(_ sender: UIButton) {
         if self.email.isEmpty {
-            Toast().showToast(message: "You need to sign in to Sync your data", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.singningRequiredToUpdate, font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
-            Toast().showToast(message: "Starting to syncing your favourites to cloud allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.syncStarted, font: .systemFont(ofSize: 22.0), view: self.view)
             var toastMessage:String = ""
             
             self.quoteSync{ message in
@@ -134,27 +132,27 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
     
     @IBAction func syncToCoreData(_ sender: UIButton) {
         if self.email.isEmpty {
-            Toast().showToast(message: "You need to sign in to sync your data", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.singningRequiredToUpdate, font: .systemFont(ofSize: 22.0), view: self.view)
         } else {
-            Toast().showToast(message: "Starting to syncing your favourites to device allow some time to finish", font: .systemFont(ofSize: 22.0), view: self.view)
+            Toast().showToast(message: Constants.defaultMessages.syncStarted, font: .systemFont(ofSize: 22.0), view: self.view)
             let quotesList = Favourites().fetchFavourites(view: self.view, userEmail: self.email)
             FirebaseCoreDataSync().syncQuotesIntoCoreData(favouriteQuotesList: quotesList) {
                 completed in
                 if completed {
-                    Toast().showToast(message: "Qoutes synced to local drive", font: .systemFont(ofSize: 16), view: self.view)
+                    Toast().showToast(message: Constants.defaultMessages.quotesSynced, font: .systemFont(ofSize: 16), view: self.view)
                 }
             }
             let poemList = FavouritePoems().fetchPoems(view: self.view, userEmail: self.email)
             FirebaseCoreDataSync().syncPoemsIntoCoreData(favouritePoemsList: poemList) { completed in
                 if completed {
-                    Toast().showToast(message: "Poems sync completed", font: .systemFont(ofSize: 16), view: self.view)
+                    Toast().showToast(message: Constants.defaultMessages.poemsSynced, font: .systemFont(ofSize: 16), view: self.view)
                 }
             }
             
             let userTextList = UserPoemsAndQutes().fetchUserTexts(view: self.view, userEmail: self.email)
             FirebaseCoreDataSync().syncUserTextIntoCoreData(userTextList: userTextList) {completed in
                 if completed {
-                    Toast().showToast(message: "\(self.user?.name ?? ""), Your texts sync complete", font: .systemFont(ofSize: 16), view: self.view)
+                    Toast().showToast(message: "\(self.user?.name ?? ""), \(Constants.defaultMessages.userTextSynced)", font: .systemFont(ofSize: 16), view: self.view)
                 }
             }
         }
@@ -167,7 +165,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         if quotesToSync.count > 0 {
             FirebaseCoreDataSync().syncQuotesToFireDataBase(favouriteQuotesList: quotesToSync) { completed in
                 if completed {
-                    completion("QUOTES SYNCED ")
+                    completion(Constants.defaultMessages.quotesSynced)
                 }
             }
         }
@@ -178,7 +176,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         if poemsToSync.count > 0 {
             FirebaseCoreDataSync().syncPoemsToFireDataBase(favouritePoemsList: poemsToSync) { completed in
                 if completed {
-                    completion( "POEMS SYNCED")
+                    completion(Constants.defaultMessages.poemsSynced)
                 }
             }
         }
@@ -189,7 +187,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         if userTextToSync.count > 0 {
             FirebaseCoreDataSync().syncUserTextToFireDataBase(userTextList: userTextToSync){ completed in
                 if completed {
-                    completion("\(self.user?.name ?? ""), Your texts are updated")
+                    completion("\(self.user?.name ?? ""), \(Constants.defaultMessages.userTextSynced)")
                 }
             }
         }
@@ -204,18 +202,18 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
             self.toggleElementsVisibility()
             self.toggleElementTint()
         } catch let err{
-            Toast().showToast(message: "could not sign out \(err)", font: .systemFont(ofSize: 16), view: self.view)
+            Toast().showToast(message: "\(Constants.error.signout) \(err)", font: .systemFont(ofSize: 16), view: self.view)
         }
     }
     
     func goToSigningView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SigningViewController") as! SigningViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.signIn) as! SigningViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func changeSignInButtonTitle () {
-        let title =  !self.email.isEmpty ? "Sign Out" : "Sign In"
+        let title =  !self.email.isEmpty ?  Constants.stringValues.signOut : Constants.stringValues.signIn
         self.signInButton.setTitle(title, for: .normal)
     }
     
@@ -227,7 +225,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         } else {
             self.usernameLabel.isHidden = true
             self.editUserImageButton.isHidden = true
-            self.userImageView.image = UIImage(imageLiteralResourceName: "profile")
+            self.userImageView.image = UIImage(imageLiteralResourceName: Constants.imageDefaultNames.profilePlaceholder)
         }
     }
     
@@ -248,7 +246,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         if FileStoringHelper().imageExists(name: self.email){
             profileImage = FileStoringHelper().fetchImage(name: self.email)
         } else {
-            profileImage = UIImage(named: "profile")
+            profileImage = UIImage(named: Constants.imageDefaultNames.profilePlaceholder)
         }
         self.userImageView.image = profileImage
     }
@@ -274,7 +272,7 @@ class SettingsViewController: UIViewController, ObservableObject, ImagePickerHel
         if let imageToDisplay = image{
             self.userImageView.image = imageToDisplay
             if FileStoringHelper().saveImage(image: imageToDisplay, name: self.email) {
-                Toast().showToast(message: "Image Saved", font: .systemFont(ofSize: 18.0), view: self.view)
+                Toast().showToast(message: Constants.defaultMessages.imageSaved, font: .systemFont(ofSize: 18.0), view: self.view)
             }
         }
     }
