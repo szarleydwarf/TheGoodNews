@@ -115,20 +115,20 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
                 let quote = element as! Favourite
                 cell.textLabel?.text = quote.author
                 cell.detailTextLabel?.text = quote.quote
-                cell.imageView?.image = UIElementsHelper().prepareImage(name: "quote.bubble")
+                cell.imageView?.image = UIElementsHelper().prepareImage(name: Constants.sfNames.quote)
                 
             case .poem:
                 let poem = element as! Poems
                 if let author = poem.author, let title = poem.title {
                     cell.textLabel?.text = author + " - " + title
                 }
-                let image = UIElementsHelper().prepareImage(name: "heart.text.square")
+                let image = UIElementsHelper().prepareImage(name: Constants.sfNames.poem)
                 cell.imageView?.image = image
             case .userText:
                 let text = element as! UserQuotePoems
                 cell.textLabel?.text = text.title
                 cell.detailTextLabel?.text = text.text
-                let imageName = (text.isQuote) ? "heart.text.square" : "quote.bubble"
+                let imageName = (text.isQuote) ? Constants.sfNames.poem : Constants.sfNames.quote
                 cell.imageView?.image = UIElementsHelper().prepareImage(name: imageName)
             default:
                 return
@@ -154,19 +154,19 @@ class FavouritesListViewController: UIViewController, UITableViewDataSource, UIT
         switch typeToCompare {
         case .quote:
             let element = self.arrayToDisplayInTable[indexPath.row] as! Favourite
-            let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            let quoteDisplayController =     storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.main) as! ViewController
             quoteDisplayController.quoteFromFavouriteTabel = true
             quoteDisplayController.favouriteQouteFromTable = element
             otherController = quoteDisplayController
         case .poem:
             let element = self.arrayToDisplayInTable[indexPath.row] as! Poems
-            let poemViewController = storyboard.instantiateViewController(withIdentifier: "PoemsViewController") as! PoemsViewController
+            let poemViewController = storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.poems) as! PoemsViewController
             poemViewController.poemFromFavouriteTable = true
             poemViewController.favouritePoemFromTable = element
             otherController = poemViewController
         case .userText:
             let element = self.arrayToDisplayInTable[indexPath.row] as! UserQuotePoems
-            let userTextViewController = storyboard.instantiateViewController(withIdentifier: "AddUserTextViewController") as! AddUserTextViewController
+            let userTextViewController = storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.addUserText) as! AddUserTextViewController
             userTextViewController.isTextFromTable = true
             userTextViewController.userTextFromTable = element
             otherController = userTextViewController

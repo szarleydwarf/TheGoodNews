@@ -13,6 +13,8 @@ struct Constants {
     //to be implemented later to hold all constant values
     struct sfNames {
         static let starInCircleFavourite = "star.circle"
+        static let quote = "quote.bubble"
+        static let poem = "heart.text.square"
     }
     
     struct numericValues {
@@ -26,6 +28,8 @@ struct Constants {
         static let defaultPoetName = "UNKNOWN"
         static let yes = "yes"
         static let no = "no"
+        static let poem = "poem"
+        static let quote = "quote"
         static let signOut = "Sign Out"
         static let signIn = "Sign In"
     }
@@ -54,6 +58,7 @@ struct Constants {
         static let imageSaved = "Image Saved"
         static let emailAndPasswordRequired = "Enter email and password to sign in"
         static let thankYouForSigning = "Thank you for signing in. You will be redirected in 4s."
+        static let savedWithFormat:NSString = "Your %@ was saved"
     }
     
     struct error {
@@ -93,6 +98,8 @@ struct Constants {
         static let favouriteLists = "FavouritesListViewController"
         static let addUserText = "AddUserTextViewController"
         static let signIn = "SigningViewController"
+        static let main = "ViewController"
+        static let poems = "PoemsViewController"
     }
     
     struct iconColors {

@@ -56,8 +56,8 @@ class AddUserTextViewController: UIViewController {
             UserPoemsAndQutes().deleteUserText(title: title, text: text, isQuote: isQuote, userEmail: userEmail)
         }
         if UserPoemsAndQutes().saveUserQuoteOrPoem(title: titleToSave, text: textToSave, isQuote: self.quotePoemSwitch.isOn, userEmail: self.email) {
-            let quoteOrPoem = self.quotePoemSwitch.isOn ? "poem" : "quote"
-            Toast().showToast(message: NSString(format: "Your %@ was saved", quoteOrPoem) as String , font: .systemFont(ofSize: 22.0), view: self.view)
+            let quoteOrPoem = self.quotePoemSwitch.isOn ? Constants.stringValues.poem : Constants.stringValues.quote
+            Toast().showToast(message: NSString(format: Constants.defaultMessages.savedWithFormat, quoteOrPoem) as String , font: .systemFont(ofSize: 22.0), view: self.view)
             DispatchQueue.main.asyncAfter(deadline: .now() + (Toast().animationDuration - 1.0), execute: {
                 self.navigationController?.popViewController(animated: true)
             })
@@ -66,7 +66,7 @@ class AddUserTextViewController: UIViewController {
     
     func setDelegates() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let favListViewController = storyboard.instantiateViewController(withIdentifier: "FavouritesListViewController") as! FavouritesListViewController
+        let favListViewController = storyboard.instantiateViewController(withIdentifier: Constants.viewControllersNames.favouriteLists) as! FavouritesListViewController
         favListViewController.delegatUserText = self
     }
 }
