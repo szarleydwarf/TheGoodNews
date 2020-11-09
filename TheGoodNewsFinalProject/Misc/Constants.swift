@@ -69,6 +69,8 @@ struct Constants {
         static let deleting = "Could not delete, got error >> "
         static let fetchingPoems = "Could not fetched poems >> "
         static let signout = "Could not sign out >>"
+        static let persistentContainer = "Unresolved lazy persistant container error >> "
+        static let saving = "Could not save >> "
     }
     
     struct firebaseDictNames {
@@ -82,6 +84,14 @@ struct Constants {
         static let isQuote = "isQuote"
         static let poemID = "poemID"
         static let poemText = "poemText"
+    }
+    
+    struct firebaseDataBaseRefNames {
+        static let users = "users"
+        static let quotes = "favQoutes"
+        static let poems = "favPoems"
+        static let userText = "userTexts"
+        
     }
     
     struct predicates {
@@ -105,5 +115,9 @@ struct Constants {
     struct iconColors {
         static let tappedTintColor:UIColor = .systemOrange
         static let defaultTintColor:UIColor = .systemGray
+    }
+    
+    struct coredata {
+        static let persistentContainarName = "TheGoodNewsFinalProject"
     }
 }

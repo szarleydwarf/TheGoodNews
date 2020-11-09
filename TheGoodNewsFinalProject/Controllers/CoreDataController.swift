@@ -19,10 +19,10 @@ class CoreDataController {
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TheGoodNewsFinalProject")
+        let container = NSPersistentContainer(name: Constants.coredata.persistentContainarName)
         container.loadPersistentStores(completionHandler: {(storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved lazy error \(error)")
+                fatalError("\(Constants.error.persistentContainer) \(error)")
             }
         })
         return container
@@ -36,7 +36,7 @@ class CoreDataController {
                 return true
             } catch{
                 let nserror = error as NSError
-                fatalError("Unresolve save error \(nserror)")
+                fatalError("\(Constants.error.saving) \(nserror)")
             }
         }
         

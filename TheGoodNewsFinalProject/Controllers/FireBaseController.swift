@@ -23,15 +23,15 @@ class FireBaseController{
     }
     
     var refUsers:DatabaseReference {
-        return Database.database().reference(withPath: "users")
+        return Database.database().reference(withPath: Constants.firebaseDataBaseRefNames.users)
     }
     var refFavQuotes:DatabaseReference {
-        return Database.database().reference(withPath: "favQoutes")
+        return Database.database().reference(withPath: Constants.firebaseDataBaseRefNames.quotes)
     }
     var refFavPoems:DatabaseReference {
-        return Database.database().reference(withPath: "favPoems")
+        return Database.database().reference(withPath: Constants.firebaseDataBaseRefNames.poems)
     }
     var refuserTexts:DatabaseReference {
-        return Database.database().reference(withPath: "userTexts")
+        return Database.database().reference(withPath: Constants.firebaseDataBaseRefNames.userText)
     }
 }
