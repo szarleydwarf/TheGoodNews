@@ -38,6 +38,7 @@ struct Constants {
     struct imageDefaultNames {
         static let backgroundPlaceholder = "landscape"
         static let profilePlaceholder = "profile"
+        static let png = ".png"
     }
     
     struct urls {
@@ -72,6 +73,7 @@ struct Constants {
         static let signout = "Could not sign out >>"
         static let persistentContainer = "Unresolved lazy persistant container error >> "
         static let saving = "Could not save >> "
+        static let userProfileCreationKeyChain = "Could Not create account in KeyChain >> "
     }
     
     struct firebaseDictNames {
@@ -96,6 +98,10 @@ struct Constants {
     
     struct google {
         static let addUnitID = "ca-app-pub-1421069741839692/8814297048"
+    }
+    
+    struct networking {
+        static let monitor = "ConnectionMonitor"
     }
     
     struct predicates {

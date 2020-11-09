@@ -10,7 +10,7 @@ import Network
 
 class ConnectionHelper {
     let monitor = NWPathMonitor()
-    let queue = DispatchQueue(label: "ConnectionMonitor")
+    let queue = DispatchQueue(label: Constants.networking.monitor)
 
     func connected(completion:@escaping(Bool)->Void) {
         monitor.pathUpdateHandler = { pathUpdateHandler in

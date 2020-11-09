@@ -12,7 +12,7 @@ class FileStoringHelper {
     
     func imagePath(name:String) -> URL? {
         guard let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
-        return imageURL.appendingPathComponent(name + ".png")
+        return imageURL.appendingPathComponent(name + Constants.imageDefaultNames.png)
     }
     
     func imageExists(name:String) ->Bool{
@@ -31,7 +31,7 @@ class FileStoringHelper {
                     try pngData.write(to: imagePathOnDisc)
                     return true
                 } catch let err {
-                    print("Saving faild with error: "+err.localizedDescription)
+                    print("\(Constants.error.saving) "+err.localizedDescription)
                 }
             }
         }

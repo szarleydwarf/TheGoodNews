@@ -25,7 +25,7 @@ class UserHelper {
             let paswordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email)
             try paswordItem.savePassword(hashedPassword)
         } catch let error{
-            Toast().showToast(message: "Could Not create account in KeyChain \(error)", font: .systemFont(ofSize: 16), view: view)
+            Toast().showToast(message: "\(Constants.error.userProfileCreationKeyChain) \(error)", font: .systemFont(ofSize: 16), view: view)
         }
     }
     
