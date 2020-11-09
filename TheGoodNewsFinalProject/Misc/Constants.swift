@@ -24,6 +24,7 @@ struct Constants {
     }
     
     struct stringValues {
+        static let serviceName = "eu.rjch.TheGoodNewsFinalProject"
         static let defaultUserEmail = "Unknown@Unknown.org"
         static let defaultPoetName = "UNKNOWN"
         static let yes = "yes"
@@ -91,7 +92,10 @@ struct Constants {
         static let quotes = "favQoutes"
         static let poems = "favPoems"
         static let userText = "userTexts"
-        
+    }
+    
+    struct google {
+        static let addUnitID = "ca-app-pub-1421069741839692/8814297048"
     }
     
     struct predicates {

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct UserImageView: View {
-    @State var image:UIImage = UIImage(imageLiteralResourceName: "profile")
+    @State var image:UIImage = UIImage(imageLiteralResourceName: Constants.imageDefaultNames.profilePlaceholder)
     
     var body: some View {
         Image(uiImage: image)

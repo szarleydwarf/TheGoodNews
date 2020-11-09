@@ -17,7 +17,7 @@ class GoogleAdsManager {
     
     func getBanner() -> GADBannerView {
         let banner = GADBannerView()
-        banner.adUnitID = "ca-app-pub-1421069741839692/8814297048"
+        banner.adUnitID = Constants.google.addUnitID
         banner.load(GADRequest())
         banner.backgroundColor = .secondarySystemBackground
         return banner

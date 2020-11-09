@@ -9,7 +9,7 @@
 import Foundation
 
 struct KeychainConfiguration {
-    static let serviceName = "eu.rjch.TheGoodNewsFinalProject"
+    static let serviceName = Constants.stringValues.serviceName
     
     /*
         Specifying an access group to use with `KeychainPasswordItem` instances
